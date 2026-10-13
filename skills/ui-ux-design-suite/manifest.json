@@ -1,0 +1,37 @@
+{
+  "name": "ui-ux-design-suite",
+  "version": "1.0.0",
+  "entrypoint": "SKILL.md",
+  "mode": "external-first-with-fallback",
+  "primary_workflows": [
+    "zero-to-one",
+    "existing-redesign",
+    "small-change",
+    "specialist-only"
+  ],
+  "internal_fallback_playbooks": [
+    "ui-ux-accessibility",
+    "ui-ux-audit",
+    "ui-ux-clarify",
+    "ui-ux-context",
+    "ui-ux-copy",
+    "ui-ux-design-system",
+    "ui-ux-handoff",
+    "ui-ux-harden",
+    "ui-ux-ia",
+    "ui-ux-impact",
+    "ui-ux-implementation",
+    "ui-ux-journey",
+    "ui-ux-measure",
+    "ui-ux-motion",
+    "ui-ux-onboarding",
+    "ui-ux-performance",
+    "ui-ux-prototype",
+    "ui-ux-qa",
+    "ui-ux-research",
+    "ui-ux-responsive",
+    "ui-ux-strategy",
+    "ui-ux-visual-direction",
+    "ui-ux-wireframe"
+  ]
+}
