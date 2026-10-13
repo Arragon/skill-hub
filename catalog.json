@@ -8,7 +8,7 @@
       "ref": "923d31bf5cbd77e58a846570c2445687b70a2bf3",
       "entry": "skills/developertools/solutions/alibabacloud-workbench-cli/SKILL.md",
       "status": "active",
-      "description": "alibabacloud workbench cli",
+      "description": "通过 Workbench CLI 管理阿里云 ECS，执行远程命令与传输文件。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -28,7 +28,7 @@
       "ref": "2d228630ba1446365f614a108cb8252f1feda202",
       "entry": "skills/animate/SKILL.md",
       "status": "active",
-      "description": "animate",
+      "description": "从零设计并实现界面动画，确定动效用途、曲线、时长和性能方案。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -74,7 +74,7 @@
       "ref": "3fc38dff381ce0e4dec8f52c97c3e37abd95e10e",
       "entry": "skills/articulate/SKILL.md",
       "status": "active",
-      "description": "articulate",
+      "description": "设计按钮、提示、错误信息、引导等产品文案及语气规范。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -108,7 +108,7 @@
       "ref": "3fc38dff381ce0e4dec8f52c97c3e37abd95e10e",
       "entry": "skills/blueprint/SKILL.md",
       "status": "active",
-      "description": "blueprint",
+      "description": "梳理服务蓝图、业务流程、系统关系与跨角色依赖。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -128,7 +128,7 @@
       "ref": "51c272e2196a34fba489fc27079cf2c839c46e71",
       "entry": "skills/taste-skill/SKILL.md",
       "status": "active",
-      "description": "design taste frontend",
+      "description": "为落地页、营销网站与作品集确定视觉方向，减少模板化设计。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -161,7 +161,7 @@
       "ref": "2d228630ba1446365f614a108cb8252f1feda202",
       "entry": "skills/emil-design-eng/SKILL.md",
       "status": "active",
-      "description": "emil design eng",
+      "description": "打磨界面组件、交互细节、视觉质感和动画体验。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -181,7 +181,7 @@
       "ref": "3fc38dff381ce0e4dec8f52c97c3e37abd95e10e",
       "entry": "skills/evaluate/SKILL.md",
       "status": "active",
-      "description": "evaluate",
+      "description": "结构化评估 UX，识别问题并建议优先级和改进方向。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -213,7 +213,7 @@
       "ref": "2d228630ba1446365f614a108cb8252f1feda202",
       "entry": "skills/find-animation-opportunities/SKILL.md",
       "status": "active",
-      "description": "find animation opportunities",
+      "description": "只读检查界面，找出值得添加动画的位置并给出具体建议。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -233,7 +233,7 @@
       "ref": "3fc38dff381ce0e4dec8f52c97c3e37abd95e10e",
       "entry": "skills/fortify/SKILL.md",
       "status": "active",
-      "description": "fortify",
+      "description": "补齐加载、空数据、失败等边界状态，提升产品健壮性。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -253,7 +253,7 @@
       "ref": "dbd4588f9e1033efb41dad4bef2f7947c8993d44",
       "entry": "skills/frontend-design/SKILL.md",
       "status": "active",
-      "description": "frontend design",
+      "description": "设计并实现有辨识度的前端界面、字体与视觉布局。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -271,7 +271,7 @@
       "kind": "external",
       "project": "https://github.com/openai/plugins",
       "status": "active",
-      "description": "google docs",
+      "description": "创建、编辑 Google Docs，并保留文档结构和模板要求。",
       "requires": [
         "authorized-service-tools"
       ],
@@ -289,7 +289,7 @@
       "kind": "external",
       "project": "https://github.com/openai/plugins",
       "status": "active",
-      "description": "google drive",
+      "description": "查找、读取、整理及管理 Drive 中的文档、表格与演示文件。",
       "requires": [
         "authorized-service-tools"
       ],
@@ -307,7 +307,7 @@
       "kind": "external",
       "project": "https://github.com/openai/plugins",
       "status": "active",
-      "description": "google drive comments",
+      "description": "在 Drive 文件中创建、回复或解决评论，并核实定位与上下文。",
       "requires": [
         "authorized-service-tools"
       ],
@@ -325,7 +325,7 @@
       "kind": "external",
       "project": "https://github.com/openai/plugins",
       "status": "active",
-      "description": "google sheets",
+      "description": "分析及编辑 Google Sheets 的数据、公式、格式和图表。",
       "requires": [
         "authorized-service-tools"
       ],
@@ -343,7 +343,7 @@
       "kind": "external",
       "project": "https://github.com/openai/plugins",
       "status": "active",
-      "description": "google slides",
+      "description": "根据模板或参考演示确定 Google Slides 的创作流程和设计规范。",
       "requires": [
         "authorized-service-tools"
       ],
@@ -375,7 +375,7 @@
       "ref": "51c272e2196a34fba489fc27079cf2c839c46e71",
       "entry": "skills/soft-skill/SKILL.md",
       "status": "active",
-      "description": "high end visual design",
+      "description": "制定高级视觉界面的字体、配色、卡片、层次和动效规范。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -395,7 +395,7 @@
       "ref": "2f98774f86bc05563876643db37e6c37c322850f",
       "entry": ".agents/skills/impeccable/SKILL.md",
       "status": "active",
-      "description": "impeccable",
+      "description": "审查和改进前端 UX、视觉、文案、无障碍与响应式体验。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -415,7 +415,7 @@
       "ref": "2d228630ba1446365f614a108cb8252f1feda202",
       "entry": "skills/improve-animations/SKILL.md",
       "status": "active",
-      "description": "improve animations",
+      "description": "审查现有动效代码，输出按优先级排序的问题和实施计划。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -435,7 +435,7 @@
       "ref": "3fc38dff381ce0e4dec8f52c97c3e37abd95e10e",
       "entry": "skills/include/SKILL.md",
       "status": "active",
-      "description": "include",
+      "description": "从设计阶段考虑无障碍、键盘、屏幕阅读器及多样化用户需求。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -467,7 +467,7 @@
       "ref": "3fc38dff381ce0e4dec8f52c97c3e37abd95e10e",
       "entry": "skills/intent/SKILL.md",
       "status": "active",
-      "description": "intent",
+      "description": "建立 UX 项目背景，并将任务路由到合适的设计专项技能。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -487,7 +487,7 @@
       "ref": "3fc38dff381ce0e4dec8f52c97c3e37abd95e10e",
       "entry": "skills/investigate/SKILL.md",
       "status": "active",
-      "description": "investigate",
+      "description": "规划用户访谈、问卷与可用性测试，并整理研究发现。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -507,7 +507,7 @@
       "ref": "3fc38dff381ce0e4dec8f52c97c3e37abd95e10e",
       "entry": "skills/journey/SKILL.md",
       "status": "active",
-      "description": "journey",
+      "description": "设计用户旅程、任务流程、导航及多步骤产品体验。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -527,7 +527,7 @@
       "ref": "3fc38dff381ce0e4dec8f52c97c3e37abd95e10e",
       "entry": "skills/localize/SKILL.md",
       "status": "active",
-      "description": "localize",
+      "description": "面向新语言与地区调整产品体验、内容及文化表达。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -547,7 +547,7 @@
       "ref": "3fc38dff381ce0e4dec8f52c97c3e37abd95e10e",
       "entry": "skills/measure/SKILL.md",
       "status": "active",
-      "description": "measure",
+      "description": "建立 UX 成功指标、测量框架和实验方案。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -565,7 +565,7 @@
       "kind": "external",
       "project": "https://github.com/openai/plugins",
       "status": "reference-only",
-      "description": "notion database designer",
+      "description": "根据实际工作设计 Notion 跟踪表、字段与视图。",
       "requires": [
         "authorized-service-tools"
       ],
@@ -578,7 +578,7 @@
       "kind": "external",
       "project": "https://github.com/openai/plugins",
       "status": "active",
-      "description": "notion meeting intelligence",
+      "description": "结合 Notion 上下文准备议程、会前材料和会议行动项。",
       "requires": [
         "authorized-service-tools"
       ],
@@ -596,7 +596,7 @@
       "kind": "external",
       "project": "https://github.com/openai/plugins",
       "status": "active",
-      "description": "notion research documentation",
+      "description": "从 Notion 资料综合出带来源的研究简报、比较和报告。",
       "requires": [
         "authorized-service-tools"
       ],
@@ -614,7 +614,7 @@
       "kind": "external",
       "project": "https://github.com/openai/plugins",
       "status": "active",
-      "description": "notion spec to implementation",
+      "description": "将 Notion 需求规格转成实施计划、任务和进度跟踪。",
       "requires": [
         "authorized-service-tools"
       ],
@@ -632,7 +632,7 @@
       "kind": "external",
       "project": "https://github.com/openai/plugins",
       "status": "reference-only",
-      "description": "notion weekly project digest",
+      "description": "比较报告周期内的进度、决定与阻塞，生成项目周报。",
       "requires": [
         "authorized-service-tools"
       ],
@@ -647,7 +647,7 @@
       "ref": "3fc38dff381ce0e4dec8f52c97c3e37abd95e10e",
       "entry": "skills/organize/SKILL.md",
       "status": "active",
-      "description": "organize",
+      "description": "设计信息架构、分类、标签、导航及搜索和浏览方式。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -667,7 +667,7 @@
       "ref": "2d228630ba1446365f614a108cb8252f1feda202",
       "entry": "skills/pick-ui-library/SKILL.md",
       "status": "active",
-      "description": "pick ui library",
+      "description": "为具体前端需求选择合适的组件、交互及状态管理库。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -725,7 +725,7 @@
       "ref": "2d228630ba1446365f614a108cb8252f1feda202",
       "entry": "skills/prototype/SKILL.md",
       "status": "active",
-      "description": "prototype",
+      "description": "生成多个不同的界面方案，通过可视化选择器比较原型。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -757,7 +757,7 @@
       "ref": "51c272e2196a34fba489fc27079cf2c839c46e71",
       "entry": "skills/redesign-skill/SKILL.md",
       "status": "active",
-      "description": "redesign existing projects",
+      "description": "审查已有界面并提升视觉质量，同时保留现有功能。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -777,7 +777,7 @@
       "ref": "2d228630ba1446365f614a108cb8252f1feda202",
       "entry": "skills/review-animations/SKILL.md",
       "status": "active",
-      "description": "review animations",
+      "description": "按动效设计标准审查动画实现，指出具体体验问题。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -797,7 +797,7 @@
       "ref": "3fc38dff381ce0e4dec8f52c97c3e37abd95e10e",
       "entry": "skills/specify/SKILL.md",
       "status": "active",
-      "description": "specify",
+      "description": "把设计转成工程可用的详细规格、资源清单和交接说明。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -817,7 +817,7 @@
       "ref": "3fc38dff381ce0e4dec8f52c97c3e37abd95e10e",
       "entry": "skills/strategize/SKILL.md",
       "status": "active",
-      "description": "strategize",
+      "description": "澄清产品设计机会、用户目标、假设及项目范围。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -837,7 +837,7 @@
       "ref": "2c6d02d4565babe784103ee4d446a93ae9b24151",
       "entry": "skills/supabase/SKILL.md",
       "status": "active",
-      "description": "supabase",
+      "description": "指导 Supabase 数据库、认证、存储、实时能力与集成开发。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -857,7 +857,7 @@
       "ref": "2c6d02d4565babe784103ee4d446a93ae9b24151",
       "entry": "skills/supabase-postgres-best-practices/SKILL.md",
       "status": "active",
-      "description": "supabase postgres best practices",
+      "description": "审查和优化 PostgreSQL 查询、数据模型、索引及安全配置。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -877,7 +877,7 @@
       "ref": "bb92a77741419a4ab5f06e711a283343f1ada0c3",
       "entry": "skills/brainstorming/SKILL.md",
       "status": "active",
-      "description": "brainstorming",
+      "description": "在实施前澄清目标、约束与方案，形成可审阅的设计。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -897,7 +897,7 @@
       "ref": "bb92a77741419a4ab5f06e711a283343f1ada0c3",
       "entry": "skills/diagnosing-superpowers/SKILL.md",
       "status": "active",
-      "description": "diagnosing superpowers",
+      "description": "诊断 Superpowers 工作流中的重复执行、遗漏、成本和效率问题。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -917,7 +917,7 @@
       "ref": "bb92a77741419a4ab5f06e711a283343f1ada0c3",
       "entry": "skills/dispatching-parallel-agents/SKILL.md",
       "status": "active",
-      "description": "dispatching parallel agents",
+      "description": "把相互独立的任务分派给多个 Agent 并行处理。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -937,7 +937,7 @@
       "ref": "bb92a77741419a4ab5f06e711a283343f1ada0c3",
       "entry": "skills/executing-plans/SKILL.md",
       "status": "active",
-      "description": "executing plans",
+      "description": "按已确认的计划在当前会话逐步实施并记录验证结果。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -957,7 +957,7 @@
       "ref": "bb92a77741419a4ab5f06e711a283343f1ada0c3",
       "entry": "skills/finishing-a-development-branch/SKILL.md",
       "status": "active",
-      "description": "finishing a development branch",
+      "description": "在实现与测试完成后处理分支合并、PR 或收尾。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -977,7 +977,7 @@
       "ref": "bb92a77741419a4ab5f06e711a283343f1ada0c3",
       "entry": "skills/receiving-code-review/SKILL.md",
       "status": "active",
-      "description": "receiving code review",
+      "description": "核实代码审查意见的依据，再实施适用的修改。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -997,7 +997,7 @@
       "ref": "bb92a77741419a4ab5f06e711a283343f1ada0c3",
       "entry": "skills/requesting-code-review/SKILL.md",
       "status": "active",
-      "description": "requesting code review",
+      "description": "在交付或合并前发起代码审查，核对需求和实现质量。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -1017,7 +1017,7 @@
       "ref": "bb92a77741419a4ab5f06e711a283343f1ada0c3",
       "entry": "skills/subagent-driven-development/SKILL.md",
       "status": "active",
-      "description": "subagent driven development",
+      "description": "用子 Agent 执行计划中的独立任务，并安排审查与整合。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -1037,7 +1037,7 @@
       "ref": "bb92a77741419a4ab5f06e711a283343f1ada0c3",
       "entry": "skills/systematic-debugging/SKILL.md",
       "status": "active",
-      "description": "systematic debugging",
+      "description": "按证据定位根因，再修复错误并验证结果。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -1057,7 +1057,7 @@
       "ref": "bb92a77741419a4ab5f06e711a283343f1ada0c3",
       "entry": "skills/test-driven-development/SKILL.md",
       "status": "active",
-      "description": "test driven development",
+      "description": "先写失败测试，再实现功能或修复问题。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -1077,7 +1077,7 @@
       "ref": "bb92a77741419a4ab5f06e711a283343f1ada0c3",
       "entry": "skills/using-git-worktrees/SKILL.md",
       "status": "active",
-      "description": "using git worktrees",
+      "description": "为开发任务建立隔离的 Git 工作区，保护现有修改。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -1097,7 +1097,7 @@
       "ref": "bb92a77741419a4ab5f06e711a283343f1ada0c3",
       "entry": "skills/using-superpowers/SKILL.md",
       "status": "active",
-      "description": "using superpowers",
+      "description": "解释 Superpowers 的技能发现、加载顺序与工作流规则。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -1117,7 +1117,7 @@
       "ref": "bb92a77741419a4ab5f06e711a283343f1ada0c3",
       "entry": "skills/verification-before-completion/SKILL.md",
       "status": "active",
-      "description": "verification before completion",
+      "description": "在宣称完成或提交前运行检查，以当前证据确认结果。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -1137,7 +1137,7 @@
       "ref": "bb92a77741419a4ab5f06e711a283343f1ada0c3",
       "entry": "skills/writing-plans/SKILL.md",
       "status": "active",
-      "description": "writing plans",
+      "description": "把明确需求或设计拆成可执行、可验证的实施步骤。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -1157,7 +1157,7 @@
       "ref": "bb92a77741419a4ab5f06e711a283343f1ada0c3",
       "entry": "skills/writing-skills/SKILL.md",
       "status": "active",
-      "description": "writing skills",
+      "description": "创建、修改并验证技能的触发规则、工作流程与效果。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -1201,7 +1201,7 @@
       "ref": "3fc38dff381ce0e4dec8f52c97c3e37abd95e10e",
       "entry": "skills/transpose/SKILL.md",
       "status": "active",
-      "description": "transpose",
+      "description": "针对新设备或使用场景重新设计产品体验与交互。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -1236,7 +1236,7 @@
       "ref": "7246805992a42b7bba37d4cac83b01416f0c6c44",
       "entry": ".claude/skills/ui-ux-pro-max/SKILL.md",
       "status": "active",
-      "description": "ui ux pro max",
+      "description": "为网页、移动端和桌面界面提供风格、配色、排版与交互建议。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -1256,7 +1256,7 @@
       "ref": "063bee94c3f4df8453406c830b0a7df0f2860278",
       "entry": "skills/react-best-practices/SKILL.md",
       "status": "active",
-      "description": "vercel react best practices",
+      "description": "按 Vercel 的实践优化 React 与 Next.js 的加载及渲染性能。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -1276,7 +1276,7 @@
       "ref": "b97d74d07702e9fe4bd7ac5ef308bc9f65abc826",
       "entry": "skills/access-protected-vercel-deployment/SKILL.md",
       "status": "active",
-      "description": "access protected vercel deployment",
+      "description": "访问并测试受 Vercel 登录、SSO 或部署保护限制的站点。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -1296,7 +1296,7 @@
       "ref": "b97d74d07702e9fe4bd7ac5ef308bc9f65abc826",
       "entry": "skills/ai-gateway/SKILL.md",
       "status": "active",
-      "description": "ai gateway",
+      "description": "配置 AI Gateway 的模型、认证、路由、回退与费用管理。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -1316,7 +1316,7 @@
       "ref": "b97d74d07702e9fe4bd7ac5ef308bc9f65abc826",
       "entry": "skills/ai-sdk/SKILL.md",
       "status": "active",
-      "description": "ai sdk",
+      "description": "用 AI SDK 实现聊天、流式生成、结构化输出及工具调用。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -1336,7 +1336,7 @@
       "ref": "b97d74d07702e9fe4bd7ac5ef308bc9f65abc826",
       "entry": "skills/auth/SKILL.md",
       "status": "active",
-      "description": "auth",
+      "description": "为应用选择并接入认证服务，处理登录、会话和访问保护。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -1356,7 +1356,7 @@
       "ref": "b97d74d07702e9fe4bd7ac5ef308bc9f65abc826",
       "entry": "skills/bootstrap/SKILL.md",
       "status": "active",
-      "description": "bootstrap",
+      "description": "初始化或修复 Vercel 项目的资源绑定、环境配置与集成。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -1376,7 +1376,7 @@
       "ref": "b97d74d07702e9fe4bd7ac5ef308bc9f65abc826",
       "entry": "skills/build-agents/SKILL.md",
       "status": "active",
-      "description": "build agents",
+      "description": "设计并实现工具调用、持久运行或多 Agent 应用。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -1396,7 +1396,7 @@
       "ref": "b97d74d07702e9fe4bd7ac5ef308bc9f65abc826",
       "entry": "skills/cdn-caching/SKILL.md",
       "status": "active",
-      "description": "cdn caching",
+      "description": "排查 CDN 缓存命中、过期内容、重验证及相关成本。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -1416,7 +1416,7 @@
       "ref": "b97d74d07702e9fe4bd7ac5ef308bc9f65abc826",
       "entry": "skills/chat-sdk/SKILL.md",
       "status": "active",
-      "description": "chat sdk",
+      "description": "用统一代码接入多个聊天平台，处理消息、线程与机器人交互。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -1436,7 +1436,7 @@
       "ref": "b97d74d07702e9fe4bd7ac5ef308bc9f65abc826",
       "entry": "skills/create-a-backend/SKILL.md",
       "status": "active",
-      "description": "create a backend",
+      "description": "规划后端/API，并选择合适的函数、服务、队列和数据库。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -1456,7 +1456,7 @@
       "ref": "b97d74d07702e9fe4bd7ac5ef308bc9f65abc826",
       "entry": "skills/custom-metrics/SKILL.md",
       "status": "active",
-      "description": "custom metrics",
+      "description": "采集和查询应用自定义指标，设计指标名称与属性。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -1476,7 +1476,7 @@
       "ref": "b97d74d07702e9fe4bd7ac5ef308bc9f65abc826",
       "entry": "skills/deployments-cicd/SKILL.md",
       "status": "active",
-      "description": "deployments cicd",
+      "description": "配置部署流水线，处理发布、晋级、检查与回滚。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -1496,7 +1496,7 @@
       "ref": "b97d74d07702e9fe4bd7ac5ef308bc9f65abc826",
       "entry": "skills/domains/SKILL.md",
       "status": "active",
-      "description": "domains",
+      "description": "查询、注册和配置域名，管理 DNS、续费与转移。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -1516,7 +1516,7 @@
       "ref": "b97d74d07702e9fe4bd7ac5ef308bc9f65abc826",
       "entry": "skills/env-vars/SKILL.md",
       "status": "active",
-      "description": "env vars",
+      "description": "管理不同环境的变量、密钥和配置。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -1536,7 +1536,7 @@
       "ref": "b97d74d07702e9fe4bd7ac5ef308bc9f65abc826",
       "entry": "skills/eve/SKILL.md",
       "status": "active",
-      "description": "eve",
+      "description": "用 eve 构建可恢复、持久运行的 Agent 应用。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -1556,7 +1556,7 @@
       "ref": "b97d74d07702e9fe4bd7ac5ef308bc9f65abc826",
       "entry": "skills/flags-sdk/SKILL.md",
       "status": "active",
-      "description": "flags sdk",
+      "description": "实现功能开关、A/B 测试、紧急关闭与逐步发布。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -1576,7 +1576,7 @@
       "ref": "b97d74d07702e9fe4bd7ac5ef308bc9f65abc826",
       "entry": "skills/is-agentic/SKILL.md",
       "status": "active",
-      "description": "is agentic",
+      "description": "评估网站或 MCP 接口对 AI Agent 的可用性与适配程度。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -1596,7 +1596,7 @@
       "ref": "b97d74d07702e9fe4bd7ac5ef308bc9f65abc826",
       "entry": "skills/knowledge-update/SKILL.md",
       "status": "active",
-      "description": "knowledge update",
+      "description": "核对 Vercel 平台变化，纠正过时知识并介绍新能力。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -1616,7 +1616,7 @@
       "ref": "b97d74d07702e9fe4bd7ac5ef308bc9f65abc826",
       "entry": "skills/marketplace/SKILL.md",
       "status": "active",
-      "description": "marketplace",
+      "description": "查找并管理 Vercel Marketplace 的第三方集成。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -1636,7 +1636,7 @@
       "ref": "b97d74d07702e9fe4bd7ac5ef308bc9f65abc826",
       "entry": "skills/microfrontends/SKILL.md",
       "status": "active",
-      "description": "microfrontends",
+      "description": "规划多个前端应用的边界、独立部署和跨应用路由。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -1656,7 +1656,7 @@
       "ref": "b97d74d07702e9fe4bd7ac5ef308bc9f65abc826",
       "entry": "skills/queues/SKILL.md",
       "status": "active",
-      "description": "queues",
+      "description": "实现持久消息队列、后台任务、重试和幂等处理。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -1676,7 +1676,7 @@
       "ref": "b97d74d07702e9fe4bd7ac5ef308bc9f65abc826",
       "entry": "skills/react-best-practices/SKILL.md",
       "status": "active",
-      "description": "react best practices",
+      "description": "审查 React/TSX 组件结构、Hooks、无障碍及代码质量。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -1696,7 +1696,7 @@
       "ref": "b97d74d07702e9fe4bd7ac5ef308bc9f65abc826",
       "entry": "skills/routing-middleware/SKILL.md",
       "status": "active",
-      "description": "routing middleware",
+      "description": "配置请求拦截、重写、重定向和个性化路由。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -1716,7 +1716,7 @@
       "ref": "b97d74d07702e9fe4bd7ac5ef308bc9f65abc826",
       "entry": "skills/runtime-cache/SKILL.md",
       "status": "active",
-      "description": "runtime cache",
+      "description": "实现运行时缓存、标签失效与跨请求数据复用。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -1736,7 +1736,7 @@
       "ref": "b97d74d07702e9fe4bd7ac5ef308bc9f65abc826",
       "entry": "skills/vercel-agent/SKILL.md",
       "status": "active",
-      "description": "vercel agent",
+      "description": "配置和使用 Vercel Agent 的审查、调查及批准操作流程。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -1756,7 +1756,7 @@
       "ref": "b97d74d07702e9fe4bd7ac5ef308bc9f65abc826",
       "entry": "skills/vercel-cli/SKILL.md",
       "status": "active",
-      "description": "vercel cli",
+      "description": "通过 CLI 管理 Vercel 项目、部署、日志与配置。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -1776,7 +1776,7 @@
       "ref": "b97d74d07702e9fe4bd7ac5ef308bc9f65abc826",
       "entry": "skills/vercel-connect/SKILL.md",
       "status": "active",
-      "description": "vercel connect",
+      "description": "为第三方服务安全获取凭据并接入 API、OAuth 或 MCP。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -1796,7 +1796,7 @@
       "ref": "b97d74d07702e9fe4bd7ac5ef308bc9f65abc826",
       "entry": "skills/vercel-firewall/SKILL.md",
       "status": "active",
-      "description": "vercel firewall",
+      "description": "配置 WAF、防护规则、限流、攻击模式与机器人防护。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -1816,7 +1816,7 @@
       "ref": "b97d74d07702e9fe4bd7ac5ef308bc9f65abc826",
       "entry": "skills/vercel-functions/SKILL.md",
       "status": "active",
-      "description": "vercel functions",
+      "description": "开发和配置 Vercel Functions，处理运行时、流式响应及资源限制。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -1836,7 +1836,7 @@
       "ref": "b97d74d07702e9fe4bd7ac5ef308bc9f65abc826",
       "entry": "skills/vercel-sandbox/SKILL.md",
       "status": "active",
-      "description": "vercel sandbox",
+      "description": "在隔离环境中执行生成的代码或不可信代码。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -1856,7 +1856,7 @@
       "ref": "b97d74d07702e9fe4bd7ac5ef308bc9f65abc826",
       "entry": "skills/vercel-services/SKILL.md",
       "status": "active",
-      "description": "vercel services",
+      "description": "在一个 Vercel 部署中组织多个前端、后端或多语言服务。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -1876,7 +1876,7 @@
       "ref": "b97d74d07702e9fe4bd7ac5ef308bc9f65abc826",
       "entry": "skills/vercel-storage/SKILL.md",
       "status": "active",
-      "description": "vercel storage",
+      "description": "选择并配置 Blob、Global Config 和托管数据库等存储。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -1896,7 +1896,7 @@
       "ref": "b97d74d07702e9fe4bd7ac5ef308bc9f65abc826",
       "entry": "skills/verification/SKILL.md",
       "status": "active",
-      "description": "verification",
+      "description": "贯通浏览器、API、数据及响应，验证完整应用流程。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -1916,7 +1916,7 @@
       "ref": "b97d74d07702e9fe4bd7ac5ef308bc9f65abc826",
       "entry": "skills/workflow/SKILL.md",
       "status": "active",
-      "description": "workflow",
+      "description": "实现支持暂停、恢复、重试及故障恢复的持久工作流。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -1948,7 +1948,7 @@
       "ref": "063bee94c3f4df8453406c830b0a7df0f2860278",
       "entry": "skills/web-design-guidelines/SKILL.md",
       "status": "active",
-      "description": "web design guidelines",
+      "description": "检查界面代码是否符合网页设计、交互与无障碍规范。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"
@@ -1968,7 +1968,7 @@
       "ref": "3fc38dff381ce0e4dec8f52c97c3e37abd95e10e",
       "entry": "skills/wireframe/SKILL.md",
       "status": "active",
-      "description": "wireframe",
+      "description": "制作线框，明确页面结构、内容层次和功能位置。",
       "requires": [
         "read-upstream-package",
         "check-skill-specific-tools"

@@ -1,10 +1,12 @@
 """Broken registry/package fixtures must fail before a maintainer publishes them."""
 import importlib.util
 import json
+import sys
 import tempfile
 import unittest
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).parents[1] / 'scripts'))
 spec = importlib.util.spec_from_file_location('hub_validate', Path(__file__).parents[1] / 'scripts/validate.py')
 module = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(module)
@@ -87,6 +89,10 @@ class HubValidationTests(unittest.TestCase):
     def test_invalid_registry_shape_is_reported(self):
         self.write('catalog.json', '{"schema_version":1,"skills":null}')
         self.assertIn('skills must be a list', '\n'.join(module.validate(self.root)))
+
+    def test_outdated_readme_inventory_is_rejected(self):
+        self.write('README.md', '<!-- skill-table:start -->\nOld rows\n<!-- skill-table:end -->\n')
+        self.assertIn('README skill table is stale', self.errors())
 
 if __name__ == '__main__':
     unittest.main()

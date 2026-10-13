@@ -6,6 +6,7 @@ import json
 import re
 from pathlib import Path, PurePosixPath
 from urllib.parse import unquote, urlparse
+from readme_catalog import render, update_readme
 
 
 def safe_path(value):
@@ -134,6 +135,14 @@ def validate(root: Path) -> list[str]:
                     continue
                 if not (p.parent / ref).exists():
                     errors.append(f'{p.relative_to(root)}: broken package reference {ref}')
+    readme = root / 'README.md'
+    if not errors and readme.is_file():
+        text = readme.read_text(encoding='utf-8')
+        try:
+            if update_readme(text, render(data['skills'])) != text:
+                errors.append('README skill table is stale; run: python3 scripts/readme_catalog.py --write')
+        except ValueError as exc:
+            errors.append(str(exc))
     return sorted(set(errors))
 
 
