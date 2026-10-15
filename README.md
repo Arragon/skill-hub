@@ -131,51 +131,6 @@ https://github.com/Arragon/skill-hub/blob/main/ENTRY.md
 | [$superpowers:writing-plans](https://github.com/obra/superpowers/blob/bb92a77741419a4ab5f06e711a283343f1ada0c3/skills/writing-plans/SKILL.md) | 把明确需求或设计拆成可执行、可验证的实施步骤。 | 外部引用 |
 | [$superpowers:writing-skills](https://github.com/obra/superpowers/blob/bb92a77741419a4ab5f06e711a283343f1ada0c3/skills/writing-skills/SKILL.md) | 创建、修改并验证技能的触发规则、工作流程与效果。 | 外部引用 |
 
-### 应用开发与部署 · Vercel（33）
-
-| 调用名称 | 简单介绍 | 状态 |
-| --- | --- | --- |
-| [$vercel:access-protected-vercel-deployment](https://github.com/vercel/vercel-plugin/blob/b97d74d07702e9fe4bd7ac5ef308bc9f65abc826/skills/access-protected-vercel-deployment/SKILL.md) | 访问并测试受 Vercel 登录、SSO 或部署保护限制的站点。 | 外部引用 |
-| [$vercel:ai-gateway](https://github.com/vercel/vercel-plugin/blob/b97d74d07702e9fe4bd7ac5ef308bc9f65abc826/skills/ai-gateway/SKILL.md) | 配置 AI Gateway 的模型、认证、路由、回退与费用管理。 | 外部引用 |
-| [$vercel:ai-sdk](https://github.com/vercel/vercel-plugin/blob/b97d74d07702e9fe4bd7ac5ef308bc9f65abc826/skills/ai-sdk/SKILL.md) | 用 AI SDK 实现聊天、流式生成、结构化输出及工具调用。 | 外部引用 |
-| [$vercel:auth](https://github.com/vercel/vercel-plugin/blob/b97d74d07702e9fe4bd7ac5ef308bc9f65abc826/skills/auth/SKILL.md) | 为应用选择并接入认证服务，处理登录、会话和访问保护。 | 外部引用 |
-| [$vercel:bootstrap](https://github.com/vercel/vercel-plugin/blob/b97d74d07702e9fe4bd7ac5ef308bc9f65abc826/skills/bootstrap/SKILL.md) | 初始化或修复 Vercel 项目的资源绑定、环境配置与集成。 | 外部引用 |
-| [$vercel:build-agents](https://github.com/vercel/vercel-plugin/blob/b97d74d07702e9fe4bd7ac5ef308bc9f65abc826/skills/build-agents/SKILL.md) | 设计并实现工具调用、持久运行或多 Agent 应用。 | 外部引用 |
-| [$vercel:cdn-caching](https://github.com/vercel/vercel-plugin/blob/b97d74d07702e9fe4bd7ac5ef308bc9f65abc826/skills/cdn-caching/SKILL.md) | 排查 CDN 缓存命中、过期内容、重验证及相关成本。 | 外部引用 |
-| [$vercel:chat-sdk](https://github.com/vercel/vercel-plugin/blob/b97d74d07702e9fe4bd7ac5ef308bc9f65abc826/skills/chat-sdk/SKILL.md) | 用统一代码接入多个聊天平台，处理消息、线程与机器人交互。 | 外部引用 |
-| [$vercel:create-a-backend](https://github.com/vercel/vercel-plugin/blob/b97d74d07702e9fe4bd7ac5ef308bc9f65abc826/skills/create-a-backend/SKILL.md) | 规划后端/API，并选择合适的函数、服务、队列和数据库。 | 外部引用 |
-| [$vercel:custom-metrics](https://github.com/vercel/vercel-plugin/blob/b97d74d07702e9fe4bd7ac5ef308bc9f65abc826/skills/custom-metrics/SKILL.md) | 采集和查询应用自定义指标，设计指标名称与属性。 | 外部引用 |
-| [$vercel:deployments-cicd](https://github.com/vercel/vercel-plugin/blob/b97d74d07702e9fe4bd7ac5ef308bc9f65abc826/skills/deployments-cicd/SKILL.md) | 配置部署流水线，处理发布、晋级、检查与回滚。 | 外部引用 |
-| [$vercel:domains](https://github.com/vercel/vercel-plugin/blob/b97d74d07702e9fe4bd7ac5ef308bc9f65abc826/skills/domains/SKILL.md) | 查询、注册和配置域名，管理 DNS、续费与转移。 | 外部引用 |
-| [$vercel:env-vars](https://github.com/vercel/vercel-plugin/blob/b97d74d07702e9fe4bd7ac5ef308bc9f65abc826/skills/env-vars/SKILL.md) | 管理不同环境的变量、密钥和配置。 | 外部引用 |
-| [$vercel:eve](https://github.com/vercel/vercel-plugin/blob/b97d74d07702e9fe4bd7ac5ef308bc9f65abc826/skills/eve/SKILL.md) | 用 eve 构建可恢复、持久运行的 Agent 应用。 | 外部引用 |
-| [$vercel:flags-sdk](https://github.com/vercel/vercel-plugin/blob/b97d74d07702e9fe4bd7ac5ef308bc9f65abc826/skills/flags-sdk/SKILL.md) | 实现功能开关、A/B 测试、紧急关闭与逐步发布。 | 外部引用 |
-| [$vercel:is-agentic](https://github.com/vercel/vercel-plugin/blob/b97d74d07702e9fe4bd7ac5ef308bc9f65abc826/skills/is-agentic/SKILL.md) | 评估网站或 MCP 接口对 AI Agent 的可用性与适配程度。 | 外部引用 |
-| [$vercel:knowledge-update](https://github.com/vercel/vercel-plugin/blob/b97d74d07702e9fe4bd7ac5ef308bc9f65abc826/skills/knowledge-update/SKILL.md) | 核对 Vercel 平台变化，纠正过时知识并介绍新能力。 | 外部引用 |
-| [$vercel:marketplace](https://github.com/vercel/vercel-plugin/blob/b97d74d07702e9fe4bd7ac5ef308bc9f65abc826/skills/marketplace/SKILL.md) | 查找并管理 Vercel Marketplace 的第三方集成。 | 外部引用 |
-| [$vercel:microfrontends](https://github.com/vercel/vercel-plugin/blob/b97d74d07702e9fe4bd7ac5ef308bc9f65abc826/skills/microfrontends/SKILL.md) | 规划多个前端应用的边界、独立部署和跨应用路由。 | 外部引用 |
-| [$vercel:queues](https://github.com/vercel/vercel-plugin/blob/b97d74d07702e9fe4bd7ac5ef308bc9f65abc826/skills/queues/SKILL.md) | 实现持久消息队列、后台任务、重试和幂等处理。 | 外部引用 |
-| [$vercel:react-best-practices](https://github.com/vercel/vercel-plugin/blob/b97d74d07702e9fe4bd7ac5ef308bc9f65abc826/skills/react-best-practices/SKILL.md) | 审查 React/TSX 组件结构、Hooks、无障碍及代码质量。 | 外部引用 |
-| [$vercel:routing-middleware](https://github.com/vercel/vercel-plugin/blob/b97d74d07702e9fe4bd7ac5ef308bc9f65abc826/skills/routing-middleware/SKILL.md) | 配置请求拦截、重写、重定向和个性化路由。 | 外部引用 |
-| [$vercel:runtime-cache](https://github.com/vercel/vercel-plugin/blob/b97d74d07702e9fe4bd7ac5ef308bc9f65abc826/skills/runtime-cache/SKILL.md) | 实现运行时缓存、标签失效与跨请求数据复用。 | 外部引用 |
-| [$vercel:vercel-agent](https://github.com/vercel/vercel-plugin/blob/b97d74d07702e9fe4bd7ac5ef308bc9f65abc826/skills/vercel-agent/SKILL.md) | 配置和使用 Vercel Agent 的审查、调查及批准操作流程。 | 外部引用 |
-| [$vercel:vercel-cli](https://github.com/vercel/vercel-plugin/blob/b97d74d07702e9fe4bd7ac5ef308bc9f65abc826/skills/vercel-cli/SKILL.md) | 通过 CLI 管理 Vercel 项目、部署、日志与配置。 | 外部引用 |
-| [$vercel:vercel-connect](https://github.com/vercel/vercel-plugin/blob/b97d74d07702e9fe4bd7ac5ef308bc9f65abc826/skills/vercel-connect/SKILL.md) | 为第三方服务安全获取凭据并接入 API、OAuth 或 MCP。 | 外部引用 |
-| [$vercel:vercel-firewall](https://github.com/vercel/vercel-plugin/blob/b97d74d07702e9fe4bd7ac5ef308bc9f65abc826/skills/vercel-firewall/SKILL.md) | 配置 WAF、防护规则、限流、攻击模式与机器人防护。 | 外部引用 |
-| [$vercel:vercel-functions](https://github.com/vercel/vercel-plugin/blob/b97d74d07702e9fe4bd7ac5ef308bc9f65abc826/skills/vercel-functions/SKILL.md) | 开发和配置 Vercel Functions，处理运行时、流式响应及资源限制。 | 外部引用 |
-| [$vercel:vercel-sandbox](https://github.com/vercel/vercel-plugin/blob/b97d74d07702e9fe4bd7ac5ef308bc9f65abc826/skills/vercel-sandbox/SKILL.md) | 在隔离环境中执行生成的代码或不可信代码。 | 外部引用 |
-| [$vercel:vercel-services](https://github.com/vercel/vercel-plugin/blob/b97d74d07702e9fe4bd7ac5ef308bc9f65abc826/skills/vercel-services/SKILL.md) | 在一个 Vercel 部署中组织多个前端、后端或多语言服务。 | 外部引用 |
-| [$vercel:vercel-storage](https://github.com/vercel/vercel-plugin/blob/b97d74d07702e9fe4bd7ac5ef308bc9f65abc826/skills/vercel-storage/SKILL.md) | 选择并配置 Blob、Global Config 和托管数据库等存储。 | 外部引用 |
-| [$vercel:verification](https://github.com/vercel/vercel-plugin/blob/b97d74d07702e9fe4bd7ac5ef308bc9f65abc826/skills/verification/SKILL.md) | 贯通浏览器、API、数据及响应，验证完整应用流程。 | 外部引用 |
-| [$vercel:workflow](https://github.com/vercel/vercel-plugin/blob/b97d74d07702e9fe4bd7ac5ef308bc9f65abc826/skills/workflow/SKILL.md) | 实现支持暂停、恢复、重试及故障恢复的持久工作流。 | 外部引用 |
-
-### 数据库 · Supabase（2）
-
-| 调用名称 | 简单介绍 | 状态 |
-| --- | --- | --- |
-| [$supabase:supabase](https://github.com/supabase-community/supabase-plugin/blob/2c6d02d4565babe784103ee4d446a93ae9b24151/skills/supabase/SKILL.md) | 指导 Supabase 数据库、认证、存储、实时能力与集成开发。 | 外部引用 |
-| [$supabase:supabase-postgres-best-practices](https://github.com/supabase-community/supabase-plugin/blob/2c6d02d4565babe784103ee4d446a93ae9b24151/skills/supabase-postgres-best-practices/SKILL.md) | 审查和优化 PostgreSQL 查询、数据模型、索引及安全配置。 | 外部引用 |
-
 ### 办公协作 · Google Drive（5）
 
 | 调用名称 | 简单介绍 | 状态 |
