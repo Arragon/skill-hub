@@ -1,0 +1,1490 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="color-scheme" content="light" />
+  <title>Unify Design · 企业业务设计系统 v1.0.1</title>
+  <style data-asset="assets/css/tokens.css">
+/* Unify Design v1.0.1 · Source style: MCChecker; tokens are scoped to .ud-app. */
+.ud-app {
+  --ud-bg:#f4f6f9; --ud-surface:#ffffff; --ud-surface-alt:#f8fafc; --ud-surface-strong:#f0f4fa;
+  --ud-ink:#162238; --ud-ink-soft:#3d4b60; --ud-muted:#65748a; --ud-subtle:#8793a5;
+  --ud-line:#e2e7ef; --ud-line-strong:#cdd6e2; --ud-control:#bbc7d6;
+  --ud-primary:#2563eb; --ud-primary-hover:#1d4ed8; --ud-primary-ink:#1d4ed8; --ud-primary-tint:#edf4ff;
+  --ud-positive:#16835b; --ud-positive-tint:#e9f7ef; --ud-negative:#bc3f4a; --ud-negative-tint:#fdf0f1;
+  --ud-amber:#b8741b; --ud-amber-tint:#fff5e8; --ud-purple:#7658b8; --ud-purple-tint:#f3effe;
+  --ud-sky:#347aa6; --ud-sky-tint:#eaf6fc; --ud-focus:0 0 0 3px #93b7fa77;
+  --ud-shadow-sm:0 1px 2px #172c4f08; --ud-shadow-pop:0 10px 30px #1424411c; --ud-shadow-modal:0 18px 65px #14244136;
+  --ud-font:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei','Noto Sans CJK SC',sans-serif;
+  --ud-mono:ui-monospace,'Cascadia Code','Cascadia Mono',Consolas,'SFMono-Regular','Noto Sans Mono CJK SC',monospace;
+  --ud-xs:11px; --ud-sm:12px; --ud-md:13px; --ud-lg:15px; --ud-xl:20px;
+  --ud-radius-xs:4px; --ud-radius:6px; --ud-radius-lg:9px; --ud-radius-xl:12px;
+  --ud-topbar-h:54px; --ud-sidebar-w:234px; --ud-tabbar-h:40px; --ud-control-h:34px; --ud-table-row-h:40px;
+  --ud-speed:160ms; --ud-ease:cubic-bezier(.2,0,0,1); color-scheme:light;
+  color:var(--ud-ink); background:var(--ud-bg); font-family:var(--ud-font); font-size:var(--ud-md);
+}
+.ud-app[data-accent='teal'] { --ud-primary:#087e84;--ud-primary-hover:#00656c;--ud-primary-ink:#08747b;--ud-primary-tint:#eaf7f6;--ud-focus:0 0 0 3px #7dcbce77; }
+.ud-app[data-accent='indigo'] { --ud-primary:#594fd5;--ud-primary-hover:#483dc2;--ud-primary-ink:#5146c5;--ud-primary-tint:#f0effe;--ud-focus:0 0 0 3px #aba7f577; }
+.ud-app[data-density='comfortable'] { --ud-control-h:40px; --ud-table-row-h:48px; --ud-md:14px;--ud-sm:13px; }
+.ud-app[data-contrast='high'] { --ud-line:#a1aec0;--ud-line-strong:#8795a9;--ud-control:#77879c;--ud-muted:#44536a; }
+@media(pointer:coarse) { .ud-app {--ud-control-h:42px;--ud-table-row-h:46px;} }
+@media(prefers-reduced-motion:reduce) { .ud-app{--ud-speed:0ms} .ud-app *,.ud-app *::before,.ud-app *::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important;} }
+
+</style>
+  <style data-asset="assets/css/base.css">
+/* Scoped foundation — avoid global body/button/input selectors in host projects. */
+.ud-app,.ud-app *,.ud-app *::before,.ud-app *::after{box-sizing:border-box}
+.ud-app{margin:0;min-height:100dvh;line-height:1.45;-webkit-font-smoothing:antialiased}
+.ud-app button,.ud-app input,.ud-app select,.ud-app textarea{font:inherit}
+.ud-app button{cursor:pointer}
+.ud-app button:disabled,.ud-app input:disabled,.ud-app select:disabled{cursor:not-allowed;opacity:.54}
+.ud-app a{color:var(--ud-primary-ink);text-decoration:none}
+.ud-app a:hover{text-decoration:underline}
+.ud-app h1,.ud-app h2,.ud-app h3,.ud-app h4,.ud-app p{margin:0}
+.ud-app h1{font-size:var(--ud-xl);line-height:1.3;letter-spacing:-.03em;font-weight:680}
+.ud-app h2{font-size:var(--ud-lg);font-weight:670;letter-spacing:-.015em}
+.ud-app h3{font-size:var(--ud-md);font-weight:660}
+.ud-app svg{flex:none}
+.ud-app :focus-visible{outline:2px solid var(--ud-primary);outline-offset:2px}
+.ud-app [hidden]{display:none!important}
+.ud-app .ud-mono,.ud-app code{font-family:var(--ud-mono);font-variant-numeric:tabular-nums}
+.ud-app code{font-size:12px;background:var(--ud-surface-strong);padding:1px 4px;border-radius:4px}
+.ud-app .ud-mut{color:var(--ud-muted)}
+.ud-app .ud-small{font-size:var(--ud-sm)}
+.ud-app .ud-xs{font-size:var(--ud-xs)}
+.ud-app .ud-grow{flex:1 1 auto;min-width:0}
+.ud-app .ud-clip{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
+.ud-app .ud-wrap{flex-wrap:wrap}
+.ud-app .ud-row{display:flex;align-items:center;gap:8px;min-width:0}
+.ud-app .ud-col{display:flex;flex-direction:column;gap:8px;min-width:0}
+.ud-app .ud-sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.ud-app .ud-skip{position:fixed;z-index:9000;top:-50px;left:12px;padding:10px 15px;background:#fff;border:2px solid var(--ud-primary)}
+.ud-app .ud-skip:focus{top:8px}
+.ud-app .ud-icon{height:17px;width:17px;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;fill:none;vertical-align:middle}
+.ud-app .ud-icon.sm{height:14px;width:14px}
+.ud-app .ud-icon.lg{height:21px;width:21px}
+.ud-app .ud-divider{width:1px;height:20px;background:var(--ud-line);flex:none}
+.ud-app .ud-dot{width:7px;height:7px;display:inline-block;border-radius:100%;background:var(--ud-subtle);flex:none}
+.ud-app .ud-dot[data-tone='good']{background:var(--ud-positive)}
+.ud-app .ud-dot[data-tone='warn']{background:var(--ud-amber)}
+.ud-app .ud-dot[data-tone='danger']{background:var(--ud-negative)}
+.ud-app .ud-dot[data-tone='primary']{background:var(--ud-primary)}
+.ud-app .ud-break{overflow-wrap:anywhere}
+.ud-app .ud-scrollbar{scrollbar-width:thin;scrollbar-color:#c8d3e1 transparent}
+
+</style>
+  <style data-asset="assets/css/components.css">
+/* Unify Design common components. All selectors scoped to .ud-app. */
+.ud-app .ud-btn{height:var(--ud-control-h);display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:0 12px;white-space:nowrap;border:1px solid var(--ud-line-strong);border-radius:var(--ud-radius);background:#fff;color:var(--ud-ink-soft);font-size:var(--ud-md);font-weight:550;box-shadow:var(--ud-shadow-sm);transition:background var(--ud-speed),border-color var(--ud-speed),color var(--ud-speed)}
+.ud-app .ud-btn:hover:not(:disabled){background:var(--ud-surface-alt);border-color:#a9b7ca}
+.ud-app .ud-btn[data-variant='primary']{border-color:var(--ud-primary);background:var(--ud-primary);color:white;box-shadow:0 1px 2px #142b6b19}
+.ud-app .ud-btn[data-variant='primary']:hover:not(:disabled){background:var(--ud-primary-hover);border-color:var(--ud-primary-hover)}
+.ud-app .ud-btn[data-variant='ghost']{border-color:transparent;box-shadow:none;background:transparent}
+.ud-app .ud-btn[data-variant='ghost']:hover:not(:disabled){background:var(--ud-surface-strong);border-color:transparent}
+.ud-app .ud-btn[data-variant='danger']{background:var(--ud-negative);color:#fff;border-color:var(--ud-negative)}
+.ud-app .ud-btn[data-variant='danger-ghost']{color:var(--ud-negative);border-color:transparent;box-shadow:none}
+.ud-app .ud-btn[data-variant='danger-ghost']:hover{background:var(--ud-negative-tint);border-color:transparent}
+.ud-app .ud-btn.sm{height:28px;padding:0 9px;font-size:var(--ud-sm)}
+.ud-app .ud-btn.icon{padding:0;width:var(--ud-control-h)}
+.ud-app .ud-btn.icon.sm{width:28px}
+.ud-app .ud-input,.ud-app .ud-select,.ud-app .ud-textarea{width:100%;height:var(--ud-control-h);border:1px solid var(--ud-control);border-radius:var(--ud-radius);color:var(--ud-ink);background:white;padding:0 10px;outline:none;min-width:0;transition:border-color var(--ud-speed),box-shadow var(--ud-speed)}
+.ud-app .ud-input:focus,.ud-app .ud-select:focus,.ud-app .ud-textarea:focus{border-color:var(--ud-primary);box-shadow:var(--ud-focus)}
+.ud-app .ud-input::placeholder,.ud-app .ud-textarea::placeholder{color:var(--ud-subtle)}
+.ud-app .ud-input[aria-invalid='true'],.ud-app .ud-select[aria-invalid='true']{border-color:var(--ud-negative)}
+.ud-app .ud-textarea{height:auto;min-height:82px;padding:9px 10px;resize:vertical}
+.ud-app .ud-input.sm,.ud-app .ud-select.sm{height:28px;font-size:var(--ud-sm)}
+.ud-app .ud-form-field{display:flex;flex-direction:column;gap:5px;min-width:0}
+.ud-app .ud-form-field>label{color:var(--ud-ink-soft);font-size:var(--ud-sm);font-weight:630}
+.ud-app .ud-form-field>.ud-hint{color:var(--ud-muted);font-size:var(--ud-sm)}
+.ud-app .ud-form-field>.ud-error{color:var(--ud-negative);font-size:var(--ud-sm)}
+.ud-app .ud-searchbox{position:relative;display:flex;align-items:center;min-width:0}
+.ud-app .ud-searchbox>.ud-icon{position:absolute;left:11px;color:var(--ud-subtle);pointer-events:none}
+.ud-app .ud-searchbox>.ud-input{padding-left:35px}
+.ud-app .ud-searchbox>.ud-kbd{position:absolute;right:7px}
+.ud-app .ud-kbd{font:11px var(--ud-mono);padding:2px 5px;border:1px solid var(--ud-line-strong);border-radius:4px;color:var(--ud-muted);background:var(--ud-surface-alt)}
+.ud-app .ud-card,.ud-app .ud-panel{background:var(--ud-surface);border:1px solid var(--ud-line);border-radius:var(--ud-radius-lg);box-shadow:var(--ud-shadow-sm);min-width:0}
+.ud-app .ud-panel{display:flex;flex-direction:column;min-height:0;overflow:hidden}
+.ud-app .ud-panel-head{display:flex;align-items:center;gap:10px;padding:11px 14px;min-height:44px;border-bottom:1px solid var(--ud-line)}
+.ud-app .ud-panel-body{padding:14px;min-width:0;min-height:0}
+.ud-app .ud-panel-foot{border-top:1px solid var(--ud-line);padding:9px 12px;display:flex;align-items:center;gap:8px}
+.ud-app .ud-badge{display:inline-flex;align-items:center;gap:4px;max-width:100%;padding:2px 7px;border-radius:4px;font-size:11px;line-height:17px;border:1px solid #e3e7ed;background:#f4f6f9;color:#526176;font-weight:560;white-space:nowrap}
+.ud-app .ud-badge[data-tone='primary']{background:var(--ud-primary-tint);color:var(--ud-primary-ink);border-color:#c9dafa}
+.ud-app .ud-badge[data-tone='good']{background:var(--ud-positive-tint);color:var(--ud-positive);border-color:#c9e9d9}
+.ud-app .ud-badge[data-tone='warn']{background:var(--ud-amber-tint);color:var(--ud-amber);border-color:#f2ddbe}
+.ud-app .ud-badge[data-tone='danger']{background:var(--ud-negative-tint);color:var(--ud-negative);border-color:#f1d0d3}
+.ud-app .ud-badge[data-tone='purple']{background:var(--ud-purple-tint);color:var(--ud-purple);border-color:#ddd4f6}
+.ud-app .ud-badge[data-tone='sky']{background:var(--ud-sky-tint);color:var(--ud-sky);border-color:#d0e6f4}
+.ud-app .ud-table-scroll{overflow:auto;min-height:0;min-width:0;scrollbar-width:thin;scrollbar-color:#bfccdd transparent}
+.ud-app .ud-table{border-collapse:separate;border-spacing:0;text-align:left;width:100%;font-size:var(--ud-md)}
+.ud-app .ud-table thead th{background:#f8f9fc;border-bottom:1px solid var(--ud-line);color:var(--ud-muted);font-size:11.5px;font-weight:640;padding:9px 12px;position:sticky;top:0;z-index:2;white-space:nowrap}
+.ud-app .ud-table tbody tr{height:var(--ud-table-row-h)}
+.ud-app .ud-table td{padding:7px 12px;border-bottom:1px solid #edf0f4;color:var(--ud-ink-soft);vertical-align:middle}
+.ud-app .ud-table tbody tr:last-child td{border-bottom:none}
+.ud-app .ud-table tbody tr:hover{background:#f8fbff}
+.ud-app .ud-table tbody tr[aria-selected='true']{background:var(--ud-primary-tint)}
+.ud-app .ud-table .ud-em{color:var(--ud-ink);font-weight:580}
+.ud-app .ud-table .ud-num{text-align:right;font-variant-numeric:tabular-nums}
+.ud-app .ud-table .ud-sticky-first{position:sticky;left:0;z-index:1;background:inherit;box-shadow:1px 0 var(--ud-line)}
+.ud-app .ud-table th.ud-sticky-first{z-index:3;background:#f8f9fc}
+.ud-app .ud-table .ud-linklike{border:0;background:none;padding:0;text-align:left;color:var(--ud-primary-ink);font-weight:550}
+.ud-app .ud-table .ud-linklike:hover{text-decoration:underline}
+.ud-app .ud-check{display:inline-flex;align-items:center;gap:7px;cursor:pointer;font-size:var(--ud-sm);color:var(--ud-ink-soft)}
+.ud-app input[type='checkbox'],.ud-app input[type='radio']{accent-color:var(--ud-primary);width:15px;height:15px}
+.ud-app .ud-chipbar{display:flex;align-items:center;gap:5px;flex-wrap:wrap}
+.ud-app .ud-chip{display:inline-flex;align-items:center;gap:6px;border-radius:5px;padding:5px 9px;font-size:12px;color:var(--ud-muted);border:1px solid transparent;background:transparent}
+.ud-app .ud-chip:hover{background:var(--ud-surface-alt)}
+.ud-app .ud-chip[aria-pressed='true'],.ud-app .ud-chip.is-active{color:var(--ud-primary-ink);background:var(--ud-primary-tint);border-color:#c8dafb;font-weight:620}
+.ud-app .ud-tabs{display:flex;gap:4px;min-width:0;white-space:nowrap}
+.ud-app .ud-notice{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border:1px solid #cbdcfb;background:var(--ud-primary-tint);border-radius:var(--ud-radius);color:var(--ud-ink-soft)}
+.ud-app .ud-notice[data-tone='warn']{background:var(--ud-amber-tint);border-color:#f4dfbc}
+.ud-app .ud-notice[data-tone='danger']{background:var(--ud-negative-tint);border-color:#efd0d4}
+.ud-app .ud-notice[data-tone='good']{background:var(--ud-positive-tint);border-color:#cce9d7}
+.ud-app .ud-state{padding:32px 18px;display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;color:var(--ud-muted)}
+.ud-app .ud-state .ud-state-icon{height:40px;width:40px;border:1px solid var(--ud-line);border-radius:12px;background:var(--ud-surface-alt);display:grid;place-items:center;color:var(--ud-primary)}
+.ud-app .ud-state h3{font-size:14px;color:var(--ud-ink)}
+.ud-app .ud-state p{font-size:var(--ud-sm);max-width:370px}
+.ud-app .ud-skeleton{background:linear-gradient(110deg,#f1f4f8 8%,#e7edf5 18%,#f1f4f8 33%);background-size:250% 100%;animation:udShimmer 1.4s linear infinite;border-radius:5px;height:13px}
+@keyframes udShimmer{to{background-position-x:-250%}}
+.ud-app .ud-toggle{display:inline-flex;align-items:center;gap:9px;cursor:pointer;color:var(--ud-ink-soft);font-size:var(--ud-sm)}
+.ud-app .ud-toggle input{appearance:none!important;width:32px!important;height:19px!important;background:#b7c2d0;border-radius:11px;position:relative;transition:background var(--ud-speed)}
+.ud-app .ud-toggle input::after{content:'';width:13px;height:13px;border-radius:50%;background:#fff;position:absolute;left:3px;top:3px;transition:transform var(--ud-speed)}
+.ud-app .ud-toggle input:checked{background:var(--ud-primary)}
+.ud-app .ud-toggle input:checked::after{transform:translateX(13px)}
+.ud-app .ud-dialog{border:1px solid var(--ud-line);padding:0;border-radius:12px;box-shadow:var(--ud-shadow-modal);background:var(--ud-surface);color:var(--ud-ink);width:min(560px,calc(100vw - 24px));max-height:min(88dvh,840px)}
+.ud-app .ud-dialog::backdrop{background:#0b193a7a;backdrop-filter:blur(2px)}
+.ud-app .ud-dialog-head{display:flex;align-items:center;justify-content:space-between;padding:17px 20px;border-bottom:1px solid var(--ud-line)}
+.ud-app .ud-dialog-body{padding:18px 20px;max-height:calc(80dvh - 140px);overflow:auto}
+.ud-app .ud-dialog-foot{display:flex;justify-content:flex-end;gap:8px;padding:12px 20px;border-top:1px solid var(--ud-line)}
+.ud-app .ud-popover{position:absolute;z-index:100;background:#fff;border:1px solid var(--ud-line);border-radius:8px;box-shadow:var(--ud-shadow-pop);padding:7px}
+.ud-app .ud-toast-host{position:fixed;bottom:20px;right:22px;z-index:1000;display:flex;flex-direction:column;gap:8px;width:min(380px,calc(100vw - 24px));pointer-events:none}
+.ud-app .ud-toast{pointer-events:auto;display:flex;align-items:flex-start;gap:10px;padding:12px;border-radius:8px;background:white;border:1px solid var(--ud-line);box-shadow:var(--ud-shadow-pop)}
+.ud-app .ud-toast[data-tone='good']{border-left:3px solid var(--ud-positive)}
+.ud-app .ud-toast[data-tone='danger']{border-left:3px solid var(--ud-negative)}
+.ud-app .ud-toast[data-tone='warn']{border-left:3px solid var(--ud-amber)}
+.ud-app .ud-tiny-label{font-size:10px;text-transform:uppercase;letter-spacing:.12em;font-weight:700;color:var(--ud-subtle)}
+
+</style>
+  <style data-asset="assets/css/layout.css">
+/* Application shell / responsive behavior. */
+.ud-app{height:100dvh;overflow:hidden;display:flex;flex-direction:column}
+.ud-app .ud-global-header{height:var(--ud-topbar-h);flex:none;display:flex;align-items:center;gap:14px;padding:0 18px;background:#fff;border-bottom:1px solid var(--ud-line);z-index:31}
+.ud-app .ud-brand{display:flex;align-items:center;gap:10px;flex:none;min-width:0}
+.ud-app .ud-brand-mark{width:29px;height:29px;display:grid;place-items:center;border-radius:7px;background:#1e58cf;color:#fff;font-size:12px;letter-spacing:-.04em;font-weight:800;box-shadow:inset 0 1px #ffffff35}
+.ud-app .ud-brand-name{font-size:14px;letter-spacing:-.025em;font-weight:740;color:#182847}
+.ud-app .ud-brand-sub{font-size:10px;color:var(--ud-subtle);letter-spacing:.04em;margin-top:-1px}
+.ud-app .ud-global-search{width:min(400px,29vw);margin:0 auto 0 clamp(6px,4vw,72px)}
+.ud-app .ud-global-search .ud-input{background:#f8fafc;border-color:#e4e9f0}
+.ud-app .ud-global-search .ud-input:focus{background:white}
+.ud-app .ud-workspace-switch{max-width:230px;display:flex;align-items:center;gap:8px;padding:0 8px 0 12px;height:34px;border:1px solid var(--ud-line);border-radius:7px;background:var(--ud-surface-alt)}
+.ud-app .ud-workspace-switch .ud-select{padding:0 4px;border:0;box-shadow:none!important;background:transparent;flex:1;min-width:100px;font-size:12px;color:var(--ud-ink);font-weight:600}
+.ud-app .ud-identity{width:30px;height:30px;background:#e5edfc;color:#225bc2;display:grid;place-items:center;border-radius:50%;font-weight:750;font-size:12px}
+.ud-app .ud-layout{flex:1;min-height:0;display:grid;grid-template-columns:var(--ud-sidebar-w) minmax(0,1fr)}
+.ud-app .ud-sidebar{background:#fff;border-right:1px solid var(--ud-line);min-height:0;display:flex;flex-direction:column;transition:width var(--ud-speed);overflow:hidden}
+.ud-app .ud-sidebar-scroll{flex:1;overflow:auto;padding:14px 10px 10px;min-height:0;scrollbar-width:thin}
+.ud-app .ud-nav-title{padding:18px 10px 7px;font-size:10px;letter-spacing:.12em;font-weight:770;color:#9aa5b4}
+.ud-app .ud-nav-title:first-child{padding-top:4px}
+.ud-app .ud-nav-item{display:flex;gap:11px;width:100%;align-items:center;padding:0 11px;border:0;border-radius:6px;background:transparent;color:#56657b;height:36px;font-size:12.5px;font-weight:530;position:relative;text-align:left}
+.ud-app .ud-nav-item:hover{background:#f4f7fb;color:var(--ud-ink)}
+.ud-app .ud-nav-item.is-active{background:var(--ud-primary-tint);color:var(--ud-primary-ink);font-weight:665}
+.ud-app .ud-nav-item.is-active::before{content:'';position:absolute;left:0;width:3px;height:17px;border-radius:3px;background:var(--ud-primary)}
+.ud-app .ud-nav-item .ud-icon{color:#8191a4}
+.ud-app .ud-nav-item.is-active .ud-icon{color:var(--ud-primary)}
+.ud-app .ud-nav-badge{margin-left:auto;font-size:10px;min-width:19px;height:19px;border-radius:10px;background:#ffedd7;color:#a66218;display:grid;place-items:center;font-weight:700}
+.ud-app .ud-sidebar-foot{border-top:1px solid var(--ud-line);padding:11px 14px;display:flex;align-items:center;gap:10px;color:var(--ud-muted);font-size:11px}
+.ud-app .ud-server-health{width:8px;height:8px;border-radius:50%;background:#17a16e;box-shadow:0 0 0 3px #e8f8ef}
+.ud-app .ud-main{display:flex;flex-direction:column;min-width:0;min-height:0;background:var(--ud-bg)}
+.ud-app .ud-main-tabs{height:var(--ud-tabbar-h);display:flex;align-items:stretch;gap:2px;padding:0 12px;flex:none;border-bottom:1px solid var(--ud-line);background:#fafbfd;overflow-x:auto;overflow-y:hidden;scrollbar-width:none}
+.ud-app .ud-main-tabs::-webkit-scrollbar{display:none}
+.ud-app .ud-main-tab{border:0;background:none;color:var(--ud-muted);padding:0 14px;display:flex;align-items:center;gap:8px;font-size:12px;white-space:nowrap;min-width:0;max-width:210px;border-bottom:2px solid transparent}
+.ud-app .ud-main-tab:hover{background:#f1f5fb;color:var(--ud-ink)}
+.ud-app .ud-main-tab[aria-selected='true']{color:var(--ud-primary-ink);font-weight:690;border-bottom-color:var(--ud-primary);background:white}
+.ud-app .ud-tab-close{display:grid;place-items:center;width:17px;height:17px;flex:none;border:0;background:transparent;border-radius:3px;color:var(--ud-subtle);padding:0}
+.ud-app .ud-tab-close:hover{background:var(--ud-line);color:var(--ud-ink)}
+.ud-app .ud-content{position:relative;flex:1;min-height:0;min-width:0}
+.ud-app .ud-page{position:absolute;inset:0;display:flex;flex-direction:column;min-height:0;min-width:0}
+.ud-app .ud-page-heading{display:flex;align-items:center;gap:11px;padding:12px 20px 11px;min-height:61px;flex:none}
+.ud-app .ud-page-heading h1{font-size:18px;letter-spacing:-.025em}
+.ud-app .ud-page-heading .ud-subline{font-size:11px;color:var(--ud-muted);margin-top:3px}
+.ud-app .ud-page-heading .ud-page-actions{margin-left:auto;display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.ud-app .ud-page-content{flex:1;min-height:0;overflow:auto;padding:0 20px 20px}
+.ud-app .ud-toolbar{display:flex;align-items:center;gap:8px;flex:none;min-height:44px;flex-wrap:wrap}
+.ud-app .ud-main-split{display:grid;grid-template-columns:minmax(0,1fr) 318px;gap:12px;min-height:0;flex:1}
+.ud-app .ud-main-split.sm{grid-template-columns:minmax(0,1fr) 300px}
+.ud-app .ud-main-split > *{min-height:0;min-width:0}
+.ud-app .ud-overview-layout{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(300px,.83fr);gap:14px;align-items:start}
+.ud-app .ud-view-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.ud-app .ud-table-page-content{display:flex;flex-direction:column;min-height:0;overflow:hidden;padding-bottom:16px}
+.ud-app .ud-table-page-content .ud-panel{flex:1}
+.ud-app .ud-mobile-nav-toggle{display:none!important}
+.ud-app .ud-sidebar-overlay{display:none}
+.ud-app.is-nav-collapsed{--ud-sidebar-w:60px}
+.ud-app.is-nav-collapsed .ud-sidebar-scroll{padding-left:7px;padding-right:7px}
+.ud-app.is-nav-collapsed .ud-nav-title,.ud-app.is-nav-collapsed .ud-nav-label,.ud-app.is-nav-collapsed .ud-sidebar-foot .ud-foot-label,.ud-app.is-nav-collapsed .ud-nav-badge{display:none}
+.ud-app.is-nav-collapsed .ud-nav-item{justify-content:center;padding:0}
+.ud-app.is-nav-collapsed .ud-sidebar-foot{justify-content:center}
+@media(max-width:1200px){.ud-app .ud-overview-layout{grid-template-columns:minmax(0,1fr)}.ud-app .ud-view-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.ud-app .ud-global-search{width:min(310px,26vw);margin-left:auto}.ud-app .ud-main-split{grid-template-columns:minmax(0,1fr) 275px}}
+@media(max-width:980px){.ud-app .ud-layout{display:flex;flex-direction:column}.ud-app .ud-main{flex:1;min-height:0;min-width:0}.ud-app.is-nav-collapsed .ud-sidebar-scroll{padding:14px 10px 10px}.ud-app.is-nav-collapsed .ud-nav-title,.ud-app.is-nav-collapsed .ud-nav-label,.ud-app.is-nav-collapsed .ud-sidebar-foot .ud-foot-label,.ud-app.is-nav-collapsed .ud-nav-badge{display:revert}.ud-app.is-nav-collapsed .ud-nav-title{display:block}.ud-app.is-nav-collapsed .ud-nav-label,.ud-app.is-nav-collapsed .ud-sidebar-foot .ud-foot-label,.ud-app.is-nav-collapsed .ud-nav-badge{display:initial}.ud-app.is-nav-collapsed .ud-nav-item{justify-content:flex-start;padding:0 11px}.ud-app.is-nav-collapsed .ud-sidebar-foot{justify-content:flex-start}.ud-app .ud-sidebar{position:fixed;z-index:60;top:var(--ud-topbar-h);left:0;bottom:0;width:250px;transform:translateX(-105%);box-shadow:var(--ud-shadow-pop)}.ud-app.is-mobile-nav-open .ud-sidebar{transform:translateX(0)}.ud-app .ud-mobile-nav-toggle{display:inline-flex!important}.ud-app .ud-sidebar-overlay{display:block;position:fixed;inset:var(--ud-topbar-h) 0 0;z-index:59;background:#1a284763;opacity:0;pointer-events:none;transition:opacity var(--ud-speed)}.ud-app.is-mobile-nav-open .ud-sidebar-overlay{opacity:1;pointer-events:auto}.ud-app .ud-global-search{width:min(290px,30vw);margin:0 auto}.ud-app .ud-main-split,.ud-app .ud-main-split.sm{grid-template-columns:minmax(0,1fr)}.ud-app .ud-main-split .ud-inspector{max-height:360px}.ud-app .ud-main-split>.ud-panel{min-height:290px}}
+@media(max-width:680px){.ud-app .ud-global-header{gap:8px;padding:0 10px}.ud-app .ud-brand-name,.ud-app .ud-brand-sub,.ud-app .ud-header-optional,.ud-app .ud-workspace-switch .ud-icon{display:none!important}.ud-app .ud-workspace-switch{padding:0 6px;max-width:160px;flex:1}.ud-app .ud-global-search{width:36px;margin:0;flex:none}.ud-app .ud-global-search .ud-input{display:none}.ud-app .ud-global-search .ud-icon{position:static}.ud-app .ud-global-search{background:var(--ud-surface-alt);border-radius:6px;border:1px solid var(--ud-line);height:34px;display:grid;place-items:center}.ud-app .ud-page-heading{align-items:flex-start;flex-wrap:wrap;gap:8px;padding:12px 12px}.ud-app .ud-page-heading .ud-page-actions{width:100%;justify-content:flex-start;margin-left:0}.ud-app .ud-page-content{padding:0 12px 12px}.ud-app .ud-view-grid{grid-template-columns:1fr 1fr;gap:8px}.ud-app .ud-table-page-content{overflow:auto}.ud-app .ud-main-split{display:flex;flex-direction:column;min-height:auto}.ud-app .ud-main-split>.ud-panel{flex:none;min-height:280px}.ud-app .ud-main-split .ud-inspector{flex:none}.ud-app .ud-toolbar{gap:6px}.ud-app .ud-panel-head{padding:9px 10px}.ud-app .ud-panel-body{padding:11px}.ud-app .ud-dialog-head,.ud-app .ud-dialog-body,.ud-app .ud-dialog-foot{padding-left:14px;padding-right:14px}}
+.ud-app button.ud-global-search{display:flex;align-items:center;text-align:left;gap:10px;padding:0 11px;min-height:34px;background:#f8fafc;border:1px solid var(--ud-line);border-radius:7px;color:var(--ud-muted);font-size:12px;white-space:nowrap}
+.ud-app button.ud-global-search:hover{background:#f0f5fb;border-color:#cbd6e5}
+.ud-app button.ud-global-search .ud-icon{position:static}
+@media(max-width:680px){.ud-app button.ud-global-search{padding:0;width:34px;height:34px;justify-content:center}}
+/* v1.0.1 responsive correction: a one-column grid inside a fixed-height flex
+ * workspace must not let independent panels overlap or escape the scrollport. */
+@media(max-width:980px){
+ .ud-app .ud-table-page-content{overflow:auto}
+ .ud-app .ud-main-split,.ud-app .ud-main-split.sm{display:flex;flex-direction:column;min-height:0;flex:none}
+ .ud-app .ud-main-split>.ud-panel{flex:none;min-height:0}
+ .ud-app .ud-main-split .ud-inspector{max-height:none}
+ .ud-app .ud-main-split .ud-log-view{flex:none;max-height:460px;min-height:240px;height:45vh}
+ .ud-app .ud-main-split .ud-log-layout{flex:none}
+}
+@media(max-width:680px){
+ .ud-app .ud-main-split .ud-log-view{height:420px;max-height:420px}
+}
+@media(max-width:1100px){.ud-app #ud-connection{display:none}}
+@media(max-width:980px){.ud-app #ud-collapse-nav{display:none}}
+
+</style>
+  <style data-asset="assets/css/patterns.css">
+/* Reusable business patterns — actionable overview, matrix, version graph, log explorer, approval, files, form lab. */
+.ud-app .ud-metric{min-width:0;position:relative;padding:14px 16px 12px;border:1px solid var(--ud-line);background:white;border-radius:9px;box-shadow:var(--ud-shadow-sm);overflow:hidden}
+.ud-app .ud-metric::before{position:absolute;top:0;left:0;right:0;height:2px;content:'';background:var(--ud-primary)}
+.ud-app .ud-metric[data-tone='amber']::before{background:var(--ud-amber)}
+.ud-app .ud-metric[data-tone='red']::before{background:var(--ud-negative)}
+.ud-app .ud-metric[data-tone='green']::before{background:var(--ud-positive)}
+.ud-app .ud-metric-label{display:flex;align-items:center;gap:6px;color:var(--ud-muted);font-size:12px;white-space:nowrap}
+.ud-app .ud-metric-value{font-size:25px;letter-spacing:-.045em;line-height:1.3;font-variant-numeric:tabular-nums;font-weight:740;margin-top:9px}
+.ud-app .ud-metric-foot{margin-top:6px;color:var(--ud-muted);font-size:11px;white-space:nowrap}
+.ud-app .ud-metric-foot strong{color:var(--ud-positive);font-weight:630}
+.ud-app .ud-overview-section{display:flex;flex-direction:column;gap:14px;min-width:0}
+.ud-app .ud-overview-quick{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.ud-app .ud-work-item{padding:13px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--ud-line)}
+.ud-app .ud-work-item:last-child{border-bottom:0}
+.ud-app .ud-work-icon{width:34px;height:34px;display:grid;place-items:center;border-radius:9px;background:var(--ud-primary-tint);color:var(--ud-primary)}
+.ud-app .ud-work-item .ud-work-item-content{min-width:0;flex:1}
+.ud-app .ud-work-item .ud-work-item-content strong{font-weight:650;font-size:12.5px;display:block}
+.ud-app .ud-work-item .ud-work-item-content p{font-size:11.5px;color:var(--ud-muted);margin-top:3px}
+.ud-app .ud-work-item .ud-btn{flex:none}
+.ud-app .ud-activity{display:flex;align-items:flex-start;gap:10px;padding:13px 13px 13px 17px;position:relative}
+.ud-app .ud-activity:not(:last-child)::after{content:'';position:absolute;left:23px;top:29px;bottom:-8px;border-left:1px solid var(--ud-line-strong)}
+.ud-app .ud-activity-dot{width:12px;height:12px;margin-top:3px;border:3px solid #fff;border-radius:50%;box-shadow:0 0 0 1px var(--ud-line-strong);z-index:1;background:var(--ud-primary)}
+.ud-app .ud-activity time{font-size:11px;color:var(--ud-subtle)}
+.ud-app .ud-activity strong{font-weight:625;font-size:12px}
+.ud-app .ud-activity p{font-size:11.5px;color:var(--ud-muted);margin-top:3px}
+.ud-app .ud-bars{display:flex;flex-direction:column;gap:13px}
+.ud-app .ud-bar-row{display:grid;grid-template-columns:85px minmax(0,1fr) 45px;gap:11px;align-items:center;font-size:11.5px;color:var(--ud-muted)}
+.ud-app .ud-bar-track{height:7px;border-radius:8px;background:#edf1f7;overflow:hidden}
+.ud-app .ud-bar-fill{height:100%;border-radius:8px;background:var(--ud-primary)}
+.ud-app .ud-plain-subheading{font-size:11px;text-transform:uppercase;letter-spacing:.08em;font-weight:750;color:var(--ud-muted)}
+.ud-app .ud-statsline{display:flex;align-items:center;gap:14px;flex-wrap:wrap;font-size:11px;color:var(--ud-muted)}
+.ud-app .ud-statsline strong{color:var(--ud-ink);font-variant-numeric:tabular-nums}
+.ud-app .ud-detail-hint{padding:12px 14px;background:var(--ud-surface-alt);border-bottom:1px solid var(--ud-line);font-size:11px;color:var(--ud-muted)}
+.ud-app .ud-kv{display:grid;grid-template-columns:92px minmax(0,1fr);column-gap:12px;row-gap:12px;font-size:12px}
+.ud-app .ud-kv dt{color:var(--ud-muted)}
+.ud-app .ud-kv dd{margin:0;color:var(--ud-ink);overflow-wrap:anywhere}
+.ud-app .ud-inspector{overflow:auto;min-width:0}
+.ud-app .ud-inspector .ud-subcard{margin:14px 0;padding-top:14px;border-top:1px solid var(--ud-line)}
+.ud-app .ud-inspector .ud-subcard h3{font-size:11px;color:var(--ud-muted);margin-bottom:10px;text-transform:uppercase;letter-spacing:.06em}
+.ud-app .ud-value-highlight{font:600 14px var(--ud-mono);color:var(--ud-ink)}
+.ud-app .ud-diff-value{display:flex;align-items:center;gap:10px;font-family:var(--ud-mono);font-size:12px;flex-wrap:wrap}
+.ud-app .ud-diff-value del{color:var(--ud-negative);background:var(--ud-negative-tint);padding:4px 6px;text-decoration:none;border-radius:4px}
+.ud-app .ud-diff-value ins{color:var(--ud-positive);background:var(--ud-positive-tint);padding:4px 6px;text-decoration:none;border-radius:4px}
+.ud-app .ud-emptybar{background:var(--ud-surface-alt);border-bottom:1px solid var(--ud-line);padding:8px 12px;color:var(--ud-muted);font-size:11px}
+.ud-app .ud-pager{display:flex;align-items:center;gap:10px;padding:10px 12px;border-top:1px solid var(--ud-line);background:#fff;flex:none}
+.ud-app .ud-page-size{width:82px}
+.ud-app .ud-tree-row{display:flex;align-items:center;gap:8px;min-height:34px;padding:5px 11px;border-bottom:1px solid #f0f3f6;background:white;color:var(--ud-ink-soft)}
+.ud-app .ud-tree-row:hover{background:#f8faff}
+.ud-app .ud-tree-row[aria-selected='true']{background:var(--ud-primary-tint)}
+.ud-app .ud-tree-label{border:0;background:none;color:inherit;text-align:left;flex:1;min-width:0}
+.ud-app .ud-tree-path{color:var(--ud-muted);font:11px var(--ud-mono)}
+.ud-app .ud-tree-children{padding-left:18px;border-left:1px solid var(--ud-line);margin-left:18px}
+.ud-app .ud-graph-area{position:relative;flex:none;padding:18px;border-bottom:1px solid var(--ud-line);background:radial-gradient(#dce3ee 1px,transparent 1px);background-size:19px 19px;background-color:#fbfcfe;min-height:315px;overflow-x:auto}
+.ud-app .ud-graph-stage{position:relative;min-width:800px;width:100%;height:288px}
+.ud-app .ud-graph-stage svg.ud-graph-edges{position:absolute;inset:0;height:100%;width:100%;pointer-events:none}
+.ud-app .ud-graph-stage svg.ud-graph-edges path{fill:none;stroke:#aab8ca;stroke-width:2}
+.ud-app .ud-graph-stage svg.ud-graph-edges path[data-tone='primary']{stroke:#6794ef;stroke-dasharray:5 5}
+.ud-app .ud-graph-lane{position:absolute;left:0;top:0;right:0;display:flex;gap:18px;padding:10px 15px;align-items:center;pointer-events:none;color:var(--ud-subtle);font-size:11px}
+.ud-app .ud-graph-lane.line-2{top:102px}
+.ud-app .ud-graph-lane.line-3{top:203px}
+.ud-app .ud-graph-lane::after{content:'';height:1px;flex:1;border-top:1px dashed #dbe1eb}
+.ud-app .ud-graph-node{position:absolute;z-index:2;width:168px;height:70px;display:flex;flex-direction:column;align-items:flex-start;gap:4px;padding:10px 11px;border:1px solid var(--ud-line-strong);background:#fff;border-radius:8px;box-shadow:0 3px 8px #1829440f;text-align:left;transition:border-color var(--ud-speed),box-shadow var(--ud-speed)}
+.ud-app .ud-graph-node:hover{border-color:#92b0ec;box-shadow:0 4px 10px #102d5b17}
+.ud-app .ud-graph-node.is-active{border-color:var(--ud-primary);box-shadow:0 0 0 2px #9bb7f255}
+.ud-app .ud-graph-node strong{font-size:12px;color:var(--ud-ink)}
+.ud-app .ud-graph-node small{font-size:10.5px;color:var(--ud-muted)}
+.ud-app .ud-graph-node .ud-dot{position:absolute;right:10px;top:12px}
+.ud-app .ud-graph-key{display:flex;gap:16px;flex-wrap:wrap;color:var(--ud-muted);font-size:11px;align-items:center}
+.ud-app .ud-graph-key span{display:flex;gap:6px;align-items:center}
+.ud-app .ud-line-swatch{width:16px;border-top:2px solid #aab8ca;height:1px}
+.ud-app .ud-line-swatch.dash{border-top:2px dashed #6794ef}
+.ud-app .ud-log-layout{display:flex;flex-direction:column;min-height:0;flex:1}
+.ud-app .ud-log-view{background:#151e2c;color:#d4deee;border-radius:0 0 7px 7px;min-height:0;overflow:auto;flex:1;font:12.3px/24px var(--ud-mono);scrollbar-width:thin;scrollbar-color:#48566a transparent}
+.ud-app .ud-log-view[data-theme='nord']{background:#202b3a;color:#dfe7f1}
+.ud-app .ud-log-view[data-theme='light']{background:#fcfdff;color:#3b4655}
+.ud-app .ud-log-view .ud-log-row{display:flex;align-items:baseline;min-width:850px;white-space:pre;min-height:25px;cursor:pointer;border-bottom:1px solid #ffffff06}
+.ud-app .ud-log-view .ud-log-row:hover{background:#ffffff0b}
+.ud-app .ud-log-view .ud-log-row.is-active{background:#4f77ba31;box-shadow:inset 2px 0 #69a8ff}
+.ud-app .ud-log-view[data-theme='light'] .ud-log-row:hover{background:#e8eff9}
+.ud-app .ud-log-view .ud-log-num{width:45px;text-align:right;flex:none;padding-right:12px;user-select:none;color:#788aa1;font-size:11px;border-right:1px solid #344153}
+.ud-app .ud-log-view[data-theme='light'] .ud-log-num{border-color:#dde3ec}
+.ud-app .ud-log-view .ud-log-body{display:flex;gap:13px;min-width:0;align-items:baseline;padding:0 12px}
+.ud-app .ud-log-view .ud-log-date{color:#788b9f;flex:none}
+.ud-app .ud-log-view .ud-log-level{width:48px;flex:none;font-weight:750}
+.ud-app .ud-log-view .ud-log-level.error{color:#ed7f89}
+.ud-app .ud-log-view .ud-log-level.warn{color:#eac180}
+.ud-app .ud-log-view .ud-log-level.info{color:#70b2ea}
+.ud-app .ud-log-view .ud-log-level.debug{color:#95a0b0}
+.ud-app .ud-log-view .ud-log-comp{color:#a5a3ee;width:150px;flex:none;overflow:hidden;text-overflow:ellipsis}
+.ud-app .ud-log-view .ud-log-message{color:inherit}
+.ud-app .ud-log-view .ud-log-key{color:#77b5ed}
+.ud-app .ud-log-view .ud-log-string{color:#a7cc90}
+.ud-app .ud-log-view .ud-log-number{color:#e8be81}
+.ud-app .ud-log-view mark{border-radius:2px;padding:1px 1px;color:#142331;background:#f7cd79}
+.ud-app .ud-log-view mark[data-color='cyan']{background:#76d1d6}
+.ud-app .ud-log-view mark[data-color='violet']{background:#b6a0f1}
+.ud-app .ud-log-view[data-theme='light'] .ud-log-date{color:#6e7b8e}
+.ud-app .ud-log-legend{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:8px 12px;background:var(--ud-surface-alt);border-top:1px solid var(--ud-line);font-size:11px;color:var(--ud-muted)}
+.ud-app .ud-log-legend span{display:flex;align-items:center;gap:5px}
+.ud-app .ud-log-legend i{width:7px;height:7px;border-radius:50%}
+.ud-app .ud-rule-row{display:grid;grid-template-columns:24px minmax(0,1fr) 88px 24px;align-items:center;gap:7px;padding:8px 10px;border-bottom:1px solid var(--ud-line)}
+.ud-app .ud-rule-row:last-child{border-bottom:0}
+.ud-app .ud-rule-row .ud-input{height:29px;font:12px var(--ud-mono)}
+.ud-app .ud-rule-row .ud-select{height:29px}
+.ud-app .ud-ruler{font:10px var(--ud-mono);color:var(--ud-subtle)}
+.ud-app .ud-approval-item{display:grid;grid-template-columns:22px minmax(0,1fr) auto;gap:10px;align-items:start;padding:12px 12px;border-bottom:1px solid var(--ud-line);cursor:pointer}
+.ud-app .ud-approval-item:last-child{border-bottom:0}
+.ud-app .ud-approval-item.is-active{background:var(--ud-primary-tint);box-shadow:inset 3px 0 var(--ud-primary)}
+.ud-app .ud-approval-item:hover{background:#f8fbff}
+.ud-app .ud-approval-item strong{color:var(--ud-ink);font-size:12px}
+.ud-app .ud-approval-item small{color:var(--ud-muted);font-size:11px}
+.ud-app .ud-avatar-sm{width:26px;height:26px;display:grid;place-items:center;border:1px solid #d8e2f7;background:#eaf1ff;color:#3f69af;border-radius:7px;font-size:10px;font-weight:700}
+.ud-app .ud-stepper{display:flex;align-items:center;gap:6px;min-width:0}
+.ud-app .ud-step{display:flex;align-items:center;gap:7px;color:var(--ud-muted);font-size:11px}
+.ud-app .ud-step b{width:19px;height:19px;display:grid;place-items:center;border-radius:50%;border:1px solid var(--ud-line-strong);font:700 10px var(--ud-mono);background:white}
+.ud-app .ud-step.is-done b{background:var(--ud-positive);color:#fff;border-color:var(--ud-positive)}
+.ud-app .ud-step.is-current b{background:var(--ud-primary);color:#fff;border-color:var(--ud-primary)}
+.ud-app .ud-step-line{height:1px;width:15px;background:var(--ud-line-strong)}
+.ud-app .ud-file-grid{display:grid;grid-template-columns:220px minmax(0,1fr) 350px;gap:12px;min-height:0;flex:1}
+.ud-app .ud-file-folder{display:flex;gap:8px;align-items:center;padding:8px 12px;background:transparent;border:0;color:var(--ud-ink-soft);width:100%;text-align:left}
+.ud-app .ud-file-folder:hover{background:var(--ud-surface-alt)}
+.ud-app .ud-file-folder.is-active{background:var(--ud-primary-tint);color:var(--ud-primary-ink)}
+.ud-app .ud-code-preview{overflow:auto;font:12px/1.8 var(--ud-mono);background:#182334;color:#c9d5e5;white-space:pre;padding:16px;min-height:0;flex:1}
+.ud-app .ud-code-preview .kw{color:#b4a2f2}.ud-app .ud-code-preview .val{color:#b6d38c}.ud-app .ud-code-preview .num{color:#f2c489}
+.ud-app .ud-droparea{border:1px dashed #a9b9d3;background:#f7faff;padding:24px;text-align:center;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:7px;color:var(--ud-muted)}
+.ud-app .ud-droparea.is-over{border-color:var(--ud-primary);background:var(--ud-primary-tint)}
+.ud-app .ud-gallery-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.ud-app .ud-gallery-grid .ud-panel{overflow:visible}
+.ud-app .ud-gallery-sample{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:8px 0}
+.ud-app .ud-design-palette{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
+.ud-app .ud-color-card{border:1px solid var(--ud-line);border-radius:7px;overflow:hidden;background:white}
+.ud-app .ud-color-card .ud-color-block{height:54px;background:var(--swatch)}
+.ud-app .ud-color-card .ud-color-label{padding:8px;color:var(--ud-muted);font-size:11px}
+.ud-app .ud-design-comparison{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.ud-app .ud-before{padding:17px;border-radius:7px;background:#f3f3f4;border:1px solid #e0e3e7;color:#687384;font-size:11px}
+.ud-app .ud-after{padding:14px;border-radius:7px;background:#f8fbff;border:1px solid #c9dcf7}
+.ud-app .ud-lab-frame{display:flex;flex-direction:column;gap:14px;padding:0 0 22px}
+.ud-app .ud-card-caption{font-size:11px;color:var(--ud-muted);margin-top:4px}
+.ud-app .ud-blank-action{font-size:12px;color:var(--ud-primary-ink);background:none;border:0;padding:0}
+.ud-app .ud-blank-action:hover{text-decoration:underline}
+.ud-app .ud-pill-select{display:flex;align-items:center;border:1px solid var(--ud-line-strong);border-radius:6px;background:#fff;overflow:hidden}
+.ud-app .ud-pill-select button{height:30px;border:0;background:none;padding:0 11px;color:var(--ud-muted);font-size:11.5px}
+.ud-app .ud-pill-select button[aria-pressed='true']{color:var(--ud-primary-ink);background:var(--ud-primary-tint);font-weight:650}
+.ud-app .ud-density-preview{padding:10px 12px;background:#fafbfd;border:1px solid var(--ud-line);border-radius:6px;color:var(--ud-muted);font-size:11px}
+@media(max-width:1200px){.ud-app .ud-file-grid{grid-template-columns:180px minmax(0,1fr)}.ud-app .ud-file-grid .ud-file-preview{grid-column:1/-1;min-height:260px}.ud-app .ud-design-palette{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:760px){.ud-app .ud-file-grid{display:flex;flex-direction:column;min-height:auto}.ud-app .ud-file-grid>.ud-panel{min-height:260px;flex:none}.ud-app .ud-file-grid>.ud-file-tree{max-height:180px;min-height:0}.ud-app .ud-gallery-grid,.ud-app .ud-design-comparison{grid-template-columns:1fr}.ud-app .ud-design-palette{grid-template-columns:repeat(3,1fr)}.ud-app .ud-overview-quick .ud-btn{flex:1}.ud-app .ud-work-item{padding:10px 12px}.ud-app .ud-metric{padding:12px}.ud-app .ud-metric-value{font-size:21px}}
+/* Reusable composed primitives */
+.ud-app .ud-pagination{padding:8px 12px;border-top:1px solid var(--ud-line);background:var(--ud-surface-alt)}
+.ud-app .ud-kv{display:grid;grid-template-columns:minmax(76px,140px) minmax(0,1fr);gap:10px 16px;margin:0;font-size:12px}
+.ud-app .ud-kv dt{color:var(--ud-muted)}.ud-app .ud-kv dd{margin:0;color:var(--ud-ink);overflow-wrap:anywhere}
+.ud-app .ud-skeleton{display:flex;flex-direction:column;gap:10px;padding:14px;overflow:hidden}
+.ud-app .ud-skeleton-line{height:12px;border-radius:6px;background:linear-gradient(90deg,#e6edf5,#f4f7fb,#e6edf5);background-size:240% 100%;animation:ud-skeleton 1.8s linear infinite}
+@keyframes ud-skeleton{from{background-position:120% 0}to{background-position:-120% 0}}
+.ud-app .ud-breadcrumbs{font-size:11.5px;color:var(--ud-muted)}.ud-app .ud-breadcrumbs .ud-icon{color:var(--ud-subtle)}
+@media(prefers-reduced-motion:reduce){.ud-app .ud-skeleton-line{animation:none}}
+
+</style>
+  
+  
+  
+  
+</head>
+<body class="ud-app" data-density="compact" data-accent="blue">
+<a class="ud-skip" href="#ud-viewport">跳到主要内容</a>
+<header class="ud-global-header">
+  <button class="ud-btn icon ud-mobile-nav-toggle" data-variant="ghost" id="ud-open-nav" aria-label="打开导航" aria-expanded="false"></button>
+  <button class="ud-btn icon ud-header-optional" data-variant="ghost" id="ud-collapse-nav" aria-label="收起侧栏"></button>
+  <div class="ud-brand"><span class="ud-brand-mark" aria-hidden="true">UD</span><div><div class="ud-brand-name">Unify Design</div><div class="ud-brand-sub">ENTERPRISE UI SYSTEM · 1.0.1</div></div></div>
+  <div class="ud-divider ud-header-optional"></div>
+  <div class="ud-workspace-switch"><span id="ud-icon-workspace"></span><label class="ud-sr-only" for="ud-workspace">全局工作区</label><select class="ud-select" id="ud-workspace"><option value="east">华东研发中心</option><option value="south">深圳验证中心</option></select></div>
+  <button type="button" class="ud-global-search ud-searchbox" id="ud-command-trigger" aria-label="全局搜索与跳转，Ctrl K"><span id="ud-icon-search"></span><span class="ud-clip ud-header-optional">搜索页面、对象、操作…</span><span class="ud-kbd ud-header-optional">⌘ K</span></button>
+  <div class="ud-grow"></div>
+  <span class="ud-row ud-small ud-header-optional" id="ud-connection"><span class="ud-dot" data-tone="good"></span><span>本地示例</span></span>
+  <div class="ud-divider ud-header-optional"></div>
+  <button class="ud-btn icon" data-variant="ghost" id="ud-design-menu" aria-label="外观与密度" title="外观与密度"></button>
+  <div class="ud-identity" title="演示账号 · 全局管理员">研</div>
+</header>
+<div class="ud-layout">
+  <aside class="ud-sidebar" id="ud-sidebar" aria-label="业务导航">
+    <div class="ud-sidebar-scroll ud-scrollbar"><nav id="ud-navigation" aria-label="主导航"></nav></div>
+    <div class="ud-sidebar-foot"><span class="ud-server-health"></span><div class="ud-foot-label">演示环境 · 无服务器连接<div style="font-size:10px;color:var(--ud-subtle);margin-top:2px">仅存于浏览器内存</div></div></div>
+  </aside>
+  <div class="ud-sidebar-overlay" id="ud-nav-overlay" aria-hidden="true"></div>
+  <div class="ud-main"><div class="ud-main-tabs" id="ud-tabs" role="tablist" aria-label="打开的工作页面"></div><main id="ud-viewport" class="ud-content" tabindex="-1"><div class="ud-state"><div class="ud-state-icon">···</div><h3>正在准备演示数据</h3></div></main></div>
+</div>
+<div id="ud-toast-root" class="ud-toast-host" aria-live="polite" aria-relevant="additions"></div>
+<dialog class="ud-dialog" id="ud-confirm-dialog" aria-labelledby="ud-confirm-title"><div class="ud-dialog-head"><h2 id="ud-confirm-title">确认操作</h2><button class="ud-btn sm" data-variant="ghost" type="button" data-ud-dialog-close aria-label="关闭">×</button></div><div class="ud-dialog-body" id="ud-confirm-body"></div><div class="ud-dialog-foot"><button class="ud-btn" data-ud-dialog-close>取消</button><button class="ud-btn" data-variant="primary" id="ud-confirm-accept">确定</button></div></dialog>
+<dialog class="ud-dialog" id="ud-form-dialog" aria-labelledby="ud-form-title"><div class="ud-dialog-head"><h2 id="ud-form-title">操作</h2><button class="ud-btn sm" data-variant="ghost" type="button" data-ud-dialog-close aria-label="关闭">×</button></div><div class="ud-dialog-body" id="ud-form-body"></div><div class="ud-dialog-foot"><button class="ud-btn" data-ud-dialog-close>取消</button><button class="ud-btn" data-variant="primary" id="ud-form-accept">保存</button></div></dialog>
+<dialog class="ud-dialog" id="ud-command-dialog" aria-labelledby="ud-command-title"><div class="ud-dialog-head"><h2 id="ud-command-title">搜索与跳转</h2><button class="ud-btn sm" data-variant="ghost" data-ud-dialog-close aria-label="关闭">×</button></div><div class="ud-dialog-body"><div class="ud-searchbox"><span id="ud-icon-palette"></span><label class="ud-sr-only" for="ud-command-input">检索页面和操作</label><input class="ud-input" id="ud-command-input" placeholder="输入页面名称或业务关键词…" autocomplete="off" /></div><div id="ud-command-results" style="margin-top:10px;max-height:360px;overflow:auto"></div><div class="ud-small ud-mut" style="padding-top:12px">↑↓ 选择 · Enter 打开 · Esc 关闭</div></div></dialog>
+<noscript>Unify Design 交互预览需要 JavaScript。独立 CSS 和设计文档可在项目包中使用。</noscript>
+
+<script data-asset="assets/js/unify-design.js">
+/* Unify Design UI Kit — framework-free, scoped behavior primitives. */
+(function (global) {
+  "use strict";
+  const api = global.UnifyDesign = global.UnifyDesign || {};
+  const instances = new WeakMap();
+  const busyButtons = new WeakMap();
+  const toastGroups = new WeakMap();
+  let nextId = 0;
+  const uid = (prefix) => prefix + "-" + (++nextId);
+
+  function uiRoot(root) {
+    const candidate = root || global.document.querySelector(".ud-app");
+    if (!candidate || !candidate.matches || !candidate.matches(".ud-app")) {
+      throw new TypeError("UnifyDesign expects a .ud-app root element.");
+    }
+    return candidate;
+  }
+
+  function isDisabled(element) {
+    return element.disabled || element.getAttribute("aria-disabled") === "true";
+  }
+
+  function init(root) {
+    root = uiRoot(root);
+    if (instances.has(root)) {
+      const existing = instances.get(root);
+      existing.refresh();
+      return existing;
+    }
+    const doc = root.ownerDocument;
+    const dialogs = new Map();
+    const fieldDescriptions = new WeakMap();
+    let destroyed = false;
+    let lastFocused = doc.activeElement;
+
+    function tabsIn(group) {
+      return Array.from(group.querySelectorAll('[role="tab"]')).filter((tab) =>
+        tab.closest("[data-ud-tabs]") === group &&
+        tab.closest('[role="tablist"]') &&
+        group.contains(doc.getElementById(tab.getAttribute("aria-controls")))
+      );
+    }
+
+    function activateTab(tab, notify) {
+      const group = tab.closest("[data-ud-tabs]");
+      if (!group || isDisabled(tab)) return;
+      const tabs = tabsIn(group);
+      if (!tabs.includes(tab)) return;
+      const previous = tabs.find((item) => item.getAttribute("aria-selected") === "true");
+      tabs.forEach((item) => {
+        const selected = item === tab;
+        item.setAttribute("aria-selected", String(selected));
+        item.tabIndex = selected ? 0 : -1;
+        const panel = doc.getElementById(item.getAttribute("aria-controls"));
+        panel.hidden = !selected;
+      });
+      if (notify && previous !== tab) {
+        group.dispatchEvent(new CustomEvent("ud:tabchange", {
+          bubbles: true,
+          detail: { tab, panel: doc.getElementById(tab.getAttribute("aria-controls")), previous }
+        }));
+      }
+      syncToggles(true);
+    }
+
+    function linkFields() {
+      root.querySelectorAll(".ud-field").forEach((field) => {
+        const control = field.querySelector("input, select, textarea");
+        if (!control) return;
+        if (!control.id) control.id = uid("ud-field");
+        const label = field.querySelector("label");
+        if (label && !label.htmlFor) label.htmlFor = control.id;
+        const notes = Array.from(field.querySelectorAll(".ud-field-hint, .ud-field-error"));
+        notes.forEach((note) => {
+          if (!note.id) note.id = uid("ud-description");
+        });
+        const managedIds = new Set([...(fieldDescriptions.get(control) || []), ...notes.map((note) => note.id)]);
+        const existing = (control.getAttribute("aria-describedby") || "").split(/\s+/)
+          .filter((id) => id && !managedIds.has(id));
+        notes.filter((note) => !note.hidden && note.textContent.trim()).forEach((note) => {
+          if (!existing.includes(note.id)) existing.push(note.id);
+        });
+        if (existing.length) control.setAttribute("aria-describedby", existing.join(" "));
+        else control.removeAttribute("aria-describedby");
+        fieldDescriptions.set(control, new Set(notes.map((note) => note.id)));
+        const hasError = notes.some((note) => note.classList.contains("ud-field-error") && !note.hidden && note.textContent.trim());
+        if (hasError) {
+          control.setAttribute("aria-invalid", "true");
+          control.dataset.udAutoInvalid = "true";
+        } else if (control.dataset.udAutoInvalid === "true") {
+          control.removeAttribute("aria-invalid");
+          delete control.dataset.udAutoInvalid;
+        }
+      });
+    }
+
+    function bindDialog(dialog) {
+      if (dialogs.has(dialog)) return dialogs.get(dialog);
+      const state = { trigger: null };
+      const onClose = () => {
+        const trigger = state.trigger;
+        state.trigger = null;
+        if (trigger && trigger.isConnected && !isDisabled(trigger) && !trigger.closest("[hidden], [inert]")) {
+          trigger.focus({ preventScroll: true });
+        }
+      };
+      dialog.addEventListener("close", onClose);
+      state.cleanup = () => dialog.removeEventListener("close", onClose);
+      dialogs.set(dialog, state);
+      return state;
+    }
+
+    function openDialog(dialog, trigger) {
+      if (destroyed) throw new Error("UnifyDesign instance has been destroyed.");
+      if (!dialog || dialog.tagName !== "DIALOG" || !root.contains(dialog)) {
+        throw new TypeError("The dialog must be a native <dialog> inside this .ud-app root.");
+      }
+      if (typeof dialog.showModal !== "function") {
+        throw new Error("This browser requires a native dialog polyfill supplied by the host project.");
+      }
+      if (dialog.open) return;
+      bindDialog(dialog).trigger = trigger || doc.activeElement;
+      dialog.showModal();
+    }
+
+    function isRendered(element) {
+      if (element.hidden || element.closest("[hidden], [inert]")) return false;
+      const style = global.getComputedStyle(element);
+      return style.display !== "none" && style.visibility !== "hidden" && element.getClientRects().length > 0;
+    }
+
+    function syncToggles(restoreFocus) {
+      const hiddenRegions = new Set();
+      root.querySelectorAll("[data-ud-toggle]").forEach((button) => {
+        const region = doc.getElementById(button.dataset.udToggle);
+        if (!region || !root.contains(region)) return;
+        region.setAttribute("data-ud-collapsible", "");
+        const expanded = isRendered(region);
+        button.setAttribute("aria-controls", region.id);
+        button.setAttribute("aria-expanded", String(expanded));
+        if (!expanded) hiddenRegions.add(region);
+      });
+      if (restoreFocus) hiddenRegions.forEach((region) => {
+        const current = doc.activeElement;
+        const lostFocus = region.contains(current) ||
+          ((current === doc.body || current === root) && lastFocused && region.contains(lastFocused));
+        if (!lostFocus) return;
+        const trigger = Array.from(root.querySelectorAll("[data-ud-toggle]")).find((button) =>
+          button.dataset.udToggle === region.id && !isDisabled(button) && isRendered(button));
+        if (trigger) trigger.focus({ preventScroll: true });
+      });
+    }
+
+    function onFocusIn(event) { lastFocused = event.target; }
+    function onResize() { if (!destroyed) syncToggles(true); }
+
+    function setToggle(target, expanded, trigger) {
+      const hadFocus = target.contains(doc.activeElement);
+      if (expanded) target.hidden = false;
+      target.dataset.open = String(expanded);
+      syncToggles(false);
+      if (!expanded && hadFocus && trigger) trigger.focus();
+      target.dispatchEvent(new CustomEvent("ud:toggle", { bubbles: true, detail: { expanded } }));
+    }
+
+    function onClick(event) {
+      const target = event.target.closest && event.target.closest("[role=tab], [data-ud-dialog-open], [data-ud-dialog-close], [data-ud-toggle], [aria-disabled=true]");
+      if (!target || !root.contains(target)) return;
+      if (isDisabled(target)) { event.preventDefault(); return; }
+      if (target.matches('[role="tab"]')) {
+        if (target.closest("[data-ud-tabs]")) { event.preventDefault(); activateTab(target, true); }
+      } else if (target.hasAttribute("data-ud-dialog-open")) {
+        event.preventDefault();
+        openDialog(doc.getElementById(target.dataset.udDialogOpen), target);
+      } else if (target.hasAttribute("data-ud-dialog-close")) {
+        const dialog = target.closest("dialog");
+        if (dialog && dialog.open) { event.preventDefault(); dialog.close(target.dataset.udDialogClose || "cancel"); }
+      } else if (target.hasAttribute("data-ud-toggle")) {
+        const region = doc.getElementById(target.dataset.udToggle);
+        if (region && root.contains(region)) {
+          event.preventDefault();
+          setToggle(region, !isRendered(region), target);
+        }
+      }
+    }
+
+    function onKeydown(event) {
+      const tab = event.target.closest && event.target.closest('[role="tab"]');
+      const group = tab && tab.closest("[data-ud-tabs]");
+      if (group && root.contains(group)) {
+        const tabs = tabsIn(group).filter((item) => !isDisabled(item));
+        const index = tabs.indexOf(tab);
+        if (index < 0) return;
+        const vertical = tab.closest('[role="tablist"]').getAttribute("aria-orientation") === "vertical";
+        const rtl = global.getComputedStyle(group).direction === "rtl";
+        const nextKey = vertical ? "ArrowDown" : rtl ? "ArrowLeft" : "ArrowRight";
+        const prevKey = vertical ? "ArrowUp" : rtl ? "ArrowRight" : "ArrowLeft";
+        let newIndex = null;
+        if (event.key === nextKey) newIndex = (index + 1) % tabs.length;
+        if (event.key === prevKey) newIndex = (index - 1 + tabs.length) % tabs.length;
+        if (event.key === "Home") newIndex = 0;
+        if (event.key === "End") newIndex = tabs.length - 1;
+        if (newIndex !== null) {
+          event.preventDefault();
+          tabs.forEach((item, i) => { item.tabIndex = i === newIndex ? 0 : -1; });
+          tabs[newIndex].focus();
+        } else if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          activateTab(tab, true);
+        }
+      }
+      if (event.key === "Escape" && !event.target.closest("dialog[open]")) {
+        const region = event.target.closest('[data-ud-collapsible]');
+        if (region && root.contains(region) && isRendered(region)) {
+          const trigger = Array.from(root.querySelectorAll("[data-ud-toggle]")).find((button) => button.dataset.udToggle === region.id);
+          if (trigger) { event.preventDefault(); setToggle(region, false, trigger); }
+        }
+      }
+    }
+
+    function refresh() {
+      if (destroyed) throw new Error("UnifyDesign instance has been destroyed.");
+      root.querySelectorAll("[data-ud-tabs]").forEach((group) => {
+        const tabs = tabsIn(group);
+        tabs.forEach((tab) => {
+          if (!tab.id) tab.id = uid("ud-tab");
+          if (tab.tagName === "BUTTON" && !tab.hasAttribute("type")) tab.type = "button";
+          const panel = doc.getElementById(tab.getAttribute("aria-controls"));
+          panel.setAttribute("role", "tabpanel");
+          panel.setAttribute("aria-labelledby", tab.id);
+          if (!panel.hasAttribute("tabindex")) panel.tabIndex = 0;
+        });
+        const selected = tabs.find((tab) => tab.getAttribute("aria-selected") === "true" && !isDisabled(tab)) || tabs.find((tab) => !isDisabled(tab));
+        if (selected) activateTab(selected, false);
+      });
+      root.querySelectorAll("dialog").forEach(bindDialog);
+      syncToggles(true);
+      linkFields();
+    }
+
+    function destroy() {
+      if (destroyed) return;
+      destroyed = true;
+      root.removeEventListener("click", onClick);
+      root.removeEventListener("keydown", onKeydown);
+      root.removeEventListener("focusin", onFocusIn);
+      global.removeEventListener("resize", onResize);
+      dialogs.forEach((state, dialog) => {
+        if (dialog.open) dialog.close("destroy");
+        state.cleanup();
+      });
+      dialogs.clear();
+      const toasts = toastGroups.get(root);
+      if (toasts) Array.from(toasts).forEach((dismiss) => dismiss());
+      instances.delete(root);
+    }
+
+    const instance = { refresh, destroy, openDialog };
+    instances.set(root, instance);
+    root.addEventListener("click", onClick);
+    root.addEventListener("keydown", onKeydown);
+    root.addEventListener("focusin", onFocusIn);
+    global.addEventListener("resize", onResize);
+    refresh();
+    return instance;
+  }
+
+  function toast(message, options) {
+    options = options || {};
+    const root = uiRoot(options.root);
+    const doc = root.ownerDocument;
+    const parent = root.querySelector("dialog[open]") || root;
+    let stack = Array.from(parent.children).find((child) => child.classList.contains("ud-toast-stack"));
+    if (!stack) {
+      stack = doc.createElement("div");
+      stack.className = "ud-toast-stack";
+      stack.setAttribute("aria-label", "通知");
+      parent.appendChild(stack);
+    }
+    const tone = ["primary", "success", "warning", "danger"].includes(options.tone) ? options.tone : "primary";
+    const node = doc.createElement("div");
+    node.className = "ud-toast";
+    node.dataset.tone = tone;
+    node.setAttribute("role", tone === "danger" ? "alert" : "status");
+    const text = doc.createElement("span");
+    text.className = "ud-grow ud-break";
+    text.textContent = String(message);
+    const close = doc.createElement("button");
+    close.type = "button";
+    close.className = "ud-btn ud-icon-btn";
+    close.dataset.variant = "ghost";
+    close.setAttribute("aria-label", "关闭通知");
+    close.textContent = "×";
+    node.append(text, close);
+    stack.appendChild(node);
+    let timer = null;
+    let removed = false;
+    const duration = options.duration === undefined ? (tone === "danger" ? 0 : 4500) : Number(options.duration);
+    let group = toastGroups.get(root);
+    if (!group) { group = new Set(); toastGroups.set(root, group); }
+    function dismiss() {
+      if (removed) return;
+      removed = true;
+      global.clearTimeout(timer);
+      node.remove();
+      group.delete(dismiss);
+      if (!stack.children.length) stack.remove();
+    }
+    function pause() { global.clearTimeout(timer); }
+    function resume() {
+      pause();
+      if (Number.isFinite(duration) && duration > 0) timer = global.setTimeout(dismiss, duration);
+    }
+    close.addEventListener("click", dismiss);
+    node.addEventListener("pointerenter", pause);
+    node.addEventListener("pointerleave", resume);
+    node.addEventListener("focusin", pause);
+    node.addEventListener("focusout", resume);
+    group.add(dismiss);
+    resume();
+    return { dismiss, element: node };
+  }
+
+  function setBusy(button, busy) {
+    if (!button || button.tagName !== "BUTTON") throw new TypeError("setBusy expects a native button.");
+    if (busy) {
+      if (!busyButtons.has(button)) busyButtons.set(button, { disabled: button.disabled, ariaBusy: button.getAttribute("aria-busy") });
+      button.disabled = true;
+      button.setAttribute("aria-busy", "true");
+    } else if (busyButtons.has(button)) {
+      const previous = busyButtons.get(button);
+      button.disabled = previous.disabled;
+      if (previous.ariaBusy === null) button.removeAttribute("aria-busy");
+      else button.setAttribute("aria-busy", previous.ariaBusy);
+      busyButtons.delete(button);
+    }
+  }
+
+  function downloadBlob(blob, filename) {
+    if (!(blob instanceof global.Blob)) throw new TypeError("downloadBlob expects a Blob.");
+    const url = global.URL.createObjectURL(blob);
+    const anchor = global.document.createElement("a");
+    anchor.href = url;
+    anchor.download = String(filename || "download").replace(/[\\/\u0000-\u001f]/g, "_").slice(0, 240);
+    anchor.hidden = true;
+    global.document.body.appendChild(anchor);
+    anchor.click();
+    anchor.remove();
+    let revoked = false;
+    const revoke = () => { if (!revoked) { revoked = true; global.URL.revokeObjectURL(url); } };
+    global.setTimeout(revoke, 60000);
+    return { url, revoke };
+  }
+
+  Object.assign(api, { version: "1.0.1", init, toast, setBusy, downloadBlob });
+  if (typeof module !== "undefined" && module.exports) module.exports = api;
+})(typeof window !== "undefined" ? window : globalThis);
+
+</script>
+<script data-asset="assets/js/workspace-controller.js">
+/* UI scope coordination, not an authorization boundary or a persistence layer. */
+(function (global) {
+  "use strict";
+  const api = global.UnifyDesign = global.UnifyDesign || {};
+
+  function createWorkspaceScope(options) {
+    options = options || {};
+    const validId = (value) => typeof value === "string" && value.trim().length > 0;
+    if (!validId(options.initialId)) throw new TypeError("initialId must be a non-empty string.");
+    let workspaceId = options.initialId;
+    let epoch = 0;
+    let intent = 0;
+    let dirty = false;
+    let dirtyRevision = 0;
+    let status = "ready";
+    let error = null;
+    let destroyed = false;
+    let scopeController = new AbortController();
+    let transition = null;
+    const pending = new Set();
+    const reported = new WeakSet();
+    const ABORTED = Symbol("workspace-aborted");
+
+    function untilAborted(value, signal) {
+      return new Promise((resolve, reject) => {
+        let settled = false;
+        const finish = (callback, result) => {
+          if (settled) return;
+          settled = true;
+          signal.removeEventListener("abort", onAbort);
+          callback(result);
+        };
+        const onAbort = () => finish(resolve, ABORTED);
+        Promise.resolve(value).then((result) => finish(resolve, result), (failure) => finish(reject, failure));
+        if (signal.aborted) onAbort();
+        else signal.addEventListener("abort", onAbort, { once: true });
+      });
+    }
+
+    function checkAlive() {
+      if (destroyed) throw new Error("The workspace scope has been destroyed.");
+    }
+    function getState() {
+      return Object.freeze({ workspaceId, epoch, dirty, status, error, destroyed,
+        pending: Array.from(pending).filter((request) => request.epoch === epoch).length,
+        pendingWorkspaceId: transition ? transition.workspaceId : null });
+    }
+    function setDirty(value) {
+      checkAlive();
+      dirty = Boolean(value);
+      dirtyRevision += 1;
+    }
+    function report(failure, operation) {
+      const normalized = failure instanceof Error ? failure : new Error(String(failure));
+      if (!reported.has(normalized)) {
+        reported.add(normalized);
+        if (typeof options.onError === "function") {
+          try { options.onError(normalized, { workspaceId, epoch, operation }); }
+          catch (callbackError) { /* A reporting failure must not turn a failed operation into success. */ }
+        }
+      }
+      return normalized;
+    }
+    function contextFor(id, version, signal, previousId) {
+      return Object.freeze({ workspaceId: id, previousId, epoch: version, signal,
+        isCurrent: () => !destroyed && workspaceId === id && epoch === version && !signal.aborted });
+    }
+
+    async function run(load, commit) {
+      checkAlive();
+      if (typeof load !== "function" || typeof commit !== "function") {
+        throw new TypeError("run requires a loader and a synchronous commit function.");
+      }
+      const context = contextFor(workspaceId, epoch, scopeController.signal, workspaceId);
+      const request = { epoch: context.epoch };
+      pending.add(request);
+      try {
+        const value = await untilAborted(load(context), context.signal);
+        if (value === ABORTED) return { status: "stale" };
+        if (!context.isCurrent()) return { status: "stale" };
+        const committed = commit(value, context);
+        if (committed && typeof committed.then === "function") {
+          Promise.resolve(committed).catch(() => {});
+          throw new TypeError("run commit must be synchronous; await work inside the loader instead.");
+        }
+        error = null;
+        return { status: "committed", value };
+      } catch (failure) {
+        if (!context.isCurrent()) return { status: "stale" };
+        if (failure && failure.name === "AbortError") return { status: "aborted" };
+        error = report(failure, "load");
+        throw error;
+      } finally {
+        pending.delete(request);
+      }
+    }
+
+    function switchTo(nextId, switchOptions) {
+      checkAlive();
+      if (!validId(nextId)) return Promise.reject(new TypeError("Workspace ID must be a non-empty string."));
+      const reload = Boolean(switchOptions && switchOptions.reload);
+      if (transition && transition.workspaceId === nextId && !reload) return transition.promise;
+      if (!transition && workspaceId === nextId && !reload) {
+        return Promise.resolve({ status: "unchanged", workspaceId });
+      }
+      const requestIntent = ++intent;
+      if (transition) transition.controller.abort();
+      if (workspaceId === nextId && !reload) {
+        transition = null;
+        return Promise.resolve({ status: "unchanged", workspaceId });
+      }
+      const request = { workspaceId: nextId, controller: new AbortController(), promise: null };
+      transition = request;
+      request.promise = Promise.resolve().then(async () => {
+        const isLatest = () => !destroyed && intent === requestIntent && !request.controller.signal.aborted;
+        let activeContext = null;
+        if (!isLatest()) return { status: "superseded", workspaceId: nextId };
+        try {
+          if (dirty) {
+            const revisionAtPrompt = dirtyRevision;
+            if (typeof options.confirmLeave !== "function") {
+              return { status: "blocked", reason: "dirty", workspaceId };
+            }
+            const allowed = await untilAborted(options.confirmLeave({ from: workspaceId, to: nextId, signal: request.controller.signal }), request.controller.signal);
+            if (allowed === ABORTED || !isLatest()) return { status: "superseded", workspaceId: nextId };
+            if (!allowed) return { status: "cancelled", workspaceId };
+            if (dirty && dirtyRevision !== revisionAtPrompt) {
+              return { status: "blocked", reason: "dirty-changed", workspaceId };
+            }
+          }
+          if (!isLatest()) return { status: "superseded", workspaceId: nextId };
+          const previousId = workspaceId;
+          scopeController.abort();
+          scopeController = new AbortController();
+          epoch += 1;
+          workspaceId = nextId;
+          dirty = false;
+          dirtyRevision += 1;
+          status = "loading";
+          error = null;
+          const context = contextFor(workspaceId, epoch, scopeController.signal, previousId);
+          activeContext = context;
+          if (typeof options.onReset === "function") {
+            const resetResult = options.onReset(context);
+            if (resetResult && typeof resetResult.then === "function") {
+              Promise.resolve(resetResult).catch(() => {});
+              throw new TypeError("onReset must clear scoped UI synchronously.");
+            }
+          }
+          const result = typeof options.onChange === "function" ? await untilAborted(options.onChange(context), context.signal) : undefined;
+          if (result === ABORTED || !context.isCurrent()) return { status: "superseded", workspaceId: nextId };
+          if (result && result.status === "aborted") {
+            status = "error";
+            error = report(new Error("Workspace loading was cancelled; reload to retry."), "switch");
+            return { status: "error", workspaceId, error };
+          }
+          status = "ready";
+          return { status: isLatest() ? "changed" : "superseded", workspaceId };
+        } catch (failure) {
+          if (!isLatest() && !(activeContext && activeContext.isCurrent())) return { status: "superseded", workspaceId: nextId };
+          error = report(failure, "switch");
+          status = "error";
+          return { status: "error", workspaceId, error };
+        } finally {
+          if (transition === request) transition = null;
+        }
+      });
+      return request.promise;
+    }
+
+    function destroy() {
+      if (destroyed) return;
+      destroyed = true;
+      intent += 1;
+      epoch += 1;
+      scopeController.abort();
+      if (transition) transition.controller.abort();
+      transition = null;
+      status = "destroyed";
+    }
+    return Object.freeze({ getState, setDirty, switchTo, run, destroy });
+  }
+
+  api.createWorkspaceScope = createWorkspaceScope;
+  if (typeof module !== "undefined" && module.exports) module.exports = { createWorkspaceScope };
+})(typeof window !== "undefined" ? window : globalThis);
+
+</script>
+<script data-asset="assets/js/patterns.js">
+/* Unify Design v1.0.1: reusable native DOM primitives, no network, no third-party runtime. */
+(function (global) {
+  'use strict';
+  const UD=global.UnifyDesign=global.UnifyDesign||{};
+  const NS='http://www.w3.org/2000/svg';
+  const paths={
+    menu:'<path d="M4 7h16M4 12h16M4 17h16"/>',
+    panel:'<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18"/>',
+    home:'<rect x="3" y="3" width="7" height="8" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="15" width="7" height="6" rx="1"/>',
+    matrix:'<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 4v16M15 4v16"/>',
+    git:'<circle cx="6" cy="5" r="2"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="8" r="2"/><path d="M6 7v10M18 10v3c0 3-3 4-6 4H8"/>',
+    terminal:'<rect x="3" y="4" width="18" height="16" rx="2"/><path d="m7 9 3 3-3 3M12 16h5"/>',
+    check:'<path d="m5 12 5 5L20 7"/>',
+    shield:'<path d="M12 2 4.5 5v6c0 5 3 8.5 7.5 11 4.5-2.5 7.5-6 7.5-11V5z"/><path d="m9 12 2 2 4-4"/>',
+    folder:'<path d="M3 6a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>',
+    boxes:'<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>',
+    settings:'<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3m-16.6-6.6 2.1 2.1m9 9 2.1 2.1m0-13.2-2.1 2.1m-9 9-2.1 2.1"/>',
+    search:'<circle cx="10.9" cy="10.9" r="6.7"/><path d="m16 16 5 5"/>',
+    arrow:'<path d="m8 5 7 7-7 7"/>',
+    chevron:'<path d="m6 9 6 6 6-6"/>',
+    down:'<path d="M12 3v16m-6-6 6 6 6-6"/>',
+    upload:'<path d="M12 16V3m-5 5 5-5 5 5M4 17v3h16v-3"/>',
+    plus:'<path d="M12 5v14M5 12h14"/>',
+    refresh:'<path d="M20 6v5h-5M4 18v-5h5"/><path d="M4.7 9a8 8 0 0 1 13-3L20 11M4 13l2.4 4a8 8 0 0 0 12.9-2"/>',
+    clock:'<circle cx="12" cy="12" r="9"/><path d="M12 6v6l4 2"/>',
+    filter:'<path d="M4 6h16M7 12h10M10 18h4"/>',
+    sliders:'<path d="M4 7h7m5 0h4M4 17h4m5 0h7"/><circle cx="13" cy="7" r="2"/><circle cx="10" cy="17" r="2"/>',
+    ellipsis:'<circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/>',
+    bell:'<path d="M18 9a6 6 0 0 0-12 0v5l-2 3h16l-2-3zM10 20h4"/>',
+    edit:'<path d="M4 20h4L20 8l-4-4L4 16zM14 6l4 4"/>',
+    copy:'<rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/>',
+    trash:'<path d="M4 7h16M9 7V4h6v3M6 7l1 14h10l1-14M10 11v6M14 11v6"/>',
+    close:'<path d="M5 5l14 14M19 5 5 19"/>',
+    info:'<circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7h.01"/>',
+    alert:'<path d="m12 3 10 18H2zM12 9v5M12 17h.01"/>',
+    user:'<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/>',
+    eye:'<path d="M2 12c3-5 6-7 10-7s7 2 10 7c-3 5-6 7-10 7S5 17 2 12z"/><circle cx="12" cy="12" r="3"/>',
+    file:'<path d="M5 3h9l5 5v13H5zM14 3v6h5M8 13h8M8 17h6"/>',
+    layers:'<path d="m12 2 9 5-9 5-9-5zM3 12l9 5 9-5M3 17l9 5 9-5"/>',
+    list:'<path d="M9 6h12M9 12h12M9 18h12M3 6h.01M3 12h.01M3 18h.01"/>',
+    calendar:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4M17 3v4M3 10h18"/>',
+    command:'<rect x="3" y="3" width="18" height="18" rx="5"/><path d="M9 9h6v6H9z"/>',
+    lock:'<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>',
+    network:'<circle cx="12" cy="4" r="2"/><circle cx="5" cy="20" r="2"/><circle cx="19" cy="20" r="2"/><path d="M12 6v7M12 13l-7 5M12 13l7 5"/>',
+    external:'<path d="M13 4h7v7M20 4 10 14M19 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h5"/>',
+    bolt:'<path d="m13 2-9 12h7l-1 8 10-12h-7z"/>',
+    minus:'<path d="M5 12h14"/>',
+  };
+  function icon(name,cl=''){
+    const svg=document.createElementNS(NS,'svg');svg.setAttribute('viewBox','0 0 24 24');svg.setAttribute('aria-hidden','true');svg.classList.add('ud-icon');if(cl)svg.classList.add(cl);
+    // Fixed, reviewed SVG path dictionary. Never interpolate remote or user-provided values.
+    svg.innerHTML=paths[name]||paths.info;return svg;
+  }
+  function h(tag, attrs,...children){
+    const node=document.createElement(tag);
+    Object.entries(attrs||{}).forEach(([k,v])=>{
+      if(v===null||v===undefined||v===false)return;
+      if(k==='class')node.className=v;
+      else if(k==='text')node.textContent=String(v);
+      else if(k==='value')node.value=v;
+      else if(k==='checked')node.checked=Boolean(v);
+      else if(k==='disabled')node.disabled=Boolean(v);
+      else if(k.startsWith('on')&&typeof v==='function')node.addEventListener(k.slice(2),v);
+      else node.setAttribute(k,String(v));
+    });
+    const insert=x=>{if(x===null||x===undefined||x===false)return;if(Array.isArray(x)){x.forEach(insert);return;}node.append(x instanceof Node?x:document.createTextNode(String(x)))};
+    children.forEach(insert);return node;
+  }
+  const badge=(text,tone)=>h('span',{class:'ud-badge','data-tone':tone||null},text);
+  const btn=(text,click,variant='default',cls='')=>h('button',{class:'ud-btn '+cls,type:'button','data-variant':variant,onclick:click},text);
+  const debounce=(fn,ms)=>{let timer;return(...args)=>{clearTimeout(timer);timer=setTimeout(()=>fn(...args),ms)}};
+  const legacyToast=UD.toast;
+  function toast(kind,title,detail,action){
+    // Preserve v1 API: UD.toast(message, {tone, duration, root}).
+    if((typeof title==='object'&&title!==null)||!['good','warn','danger','primary','info'].includes(kind)){return typeof legacyToast==='function'?legacyToast(kind,title):undefined;}
+    const host=document.querySelector('#ud-toast-root')||document.querySelector('.ud-toast-host');
+    if(!host)return typeof legacyToast==='function'?legacyToast([title,detail].filter(Boolean).join(' · '),{tone:kind==='good'?'success':kind==='warn'?'warning':kind}):undefined;
+    const body=h('div',{class:'ud-grow ud-col',style:'gap:3px'},h('strong',{text:title}),detail?h('span',{class:'ud-small ud-mut'},detail):null);
+    const close=btn(icon('close'),()=>{clearTimeout(timer);item.remove()},'ghost','icon sm');close.setAttribute('aria-label','关闭通知');
+    const item=h('div',{class:'ud-toast','data-tone':kind||'primary',role:kind==='danger'?'alert':'status'},icon(kind==='danger'?'alert':kind==='good'?'check':'info'),body,action?btn(action.label,()=>{action.onClick();item.remove()},'default','sm'):null,close);
+    host.append(item);const timer=setTimeout(()=>item.remove(),kind==='danger'?9000:4800);return item;
+  }
+  let activeConfirm=null;
+  function confirmAction({title='确认操作',message='',confirmText='确认',danger=false,requireText=''}){
+    const dlg=document.getElementById('ud-confirm-dialog');if(!dlg)return Promise.resolve(false);
+    if(dlg.open)dlg.close('cancel');
+    const header=dlg.querySelector('#ud-confirm-title'),body=dlg.querySelector('#ud-confirm-body'),accept=dlg.querySelector('#ud-confirm-accept');
+    header.textContent=title;body.replaceChildren(h('p',{},message));
+    let typed;
+    if(requireText){typed=h('input',{class:'ud-input ud-mono',placeholder:`输入 ${requireText} 以确认`,style:'margin-top:15px'});body.append(typed);typed.addEventListener('input',()=>accept.disabled=typed.value!==requireText)}
+    accept.textContent=confirmText;accept.dataset.variant=danger?'danger':'primary';accept.disabled=Boolean(requireText);
+    return new Promise(resolve=>{
+      let settled=false;const finish=value=>{if(settled)return;settled=true;accept.removeEventListener('click',onAccept);dlg.removeEventListener('close',onClose);resolve(value)};
+      const onAccept=()=>{dlg.close('accepted');finish(true)};
+      const onClose=()=>finish(false);
+      accept.addEventListener('click',onAccept);dlg.addEventListener('close',onClose,{once:true});dlg.showModal();if(typed)typed.focus();else accept.focus();
+    });
+  }
+  function textDownload(name,text,mime='text/plain;charset=utf-8'){
+    const blob=new Blob([text],{type:mime});const url=URL.createObjectURL(blob);const link=document.createElement('a');link.href=url;link.download=String(name).replace(/[\\/:*?"<>|]/g,'_');document.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),500);return blob.size;
+  }
+  let fieldSeq=0;
+  function field(label,input,hint=''){
+    const id=input.id||('ud-field-'+(++fieldSeq));input.id=id;
+    if(hint){const desc=(input.getAttribute('aria-describedby')||'').split(/\s+/).filter(Boolean);if(!desc.includes(id+'-help'))desc.push(id+'-help');input.setAttribute('aria-describedby',desc.join(' '));}
+    return h('div',{class:'ud-form-field'},h('label',{for:id},label),input,hint?h('p',{class:'ud-hint',id:id+'-help'},hint):null);
+  }
+  function empty(title,description,action){return h('div',{class:'ud-state'},h('div',{class:'ud-state-icon'},icon('info','lg')),h('h3',{},title),h('p',{},description),action||null)}
+  function dataTable(container,{columns,rows,selectedId,onSelect,rowId=(row)=>row.id||row.key}){
+    const table=h('table',{class:'ud-table'});const head=h('thead');const hr=h('tr');columns.forEach(c=>hr.append(h('th',{scope:'col',class:c.class||''},c.label)));head.append(hr);table.append(head);
+    const body=h('tbody');rows.forEach(row=>{const tr=h('tr',{'aria-selected':String(rowId(row)===selectedId)});columns.forEach(c=>{const td=h('td',{class:c.cellClass||''});const content=c.render?c.render(row):row[c.key];td.append(content instanceof Node?content:document.createTextNode(String(content??'—')));tr.append(td)});if(onSelect){tr.style.cursor='pointer';tr.tabIndex=0;tr.addEventListener('click',()=>onSelect(row));tr.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();onSelect(row)}})}body.append(tr)});table.append(body);container.replaceChildren(table);return table;
+  }
+  function setFieldError(input,message){
+    const wrap=input.closest('.ud-form-field');if(!wrap)return;
+    let error=wrap.querySelector('.ud-error');const ids=(input.getAttribute('aria-describedby')||'').split(/\s+/).filter(Boolean).filter(id=>id!==input.id+'-error');
+    if(message){if(!error){error=h('p',{class:'ud-error'});wrap.append(error)}error.textContent=message;error.hidden=false;error.id=input.id+'-error';input.setAttribute('aria-invalid','true');ids.push(error.id)}
+    else {if(error)error.hidden=true;input.removeAttribute('aria-invalid')}
+    if(ids.length)input.setAttribute('aria-describedby',Array.from(new Set(ids)).join(' '));else input.removeAttribute('aria-describedby');
+  }
+  function numberFormat(n){return new Intl.NumberFormat('zh-CN').format(n)}
+  function selectionText(items,selected){return `${selected.length} / ${items.length} 已选`}
+  /** Simple reusable composition primitives; business state stays with the host. */
+  function notice({kind='info',title='',message='',action=null,persistent=true}={}){
+    const el=h('div',{class:'ud-notice','data-tone':kind,role:kind==='danger'?'alert':'status'},icon(kind==='danger'?'alert':kind==='good'?'check':'info'),h('div',{class:'ud-grow'},title?h('strong',{},title):null,message?h('span',{class:'ud-small'},message):null),action?btn(action.label,action.onClick,'default','sm'):null);
+    if(!persistent)el.dataset.temporary='true';return el;
+  }
+  function segmented(items,value,onChange,label='切换视图'){
+    const host=h('div',{class:'ud-pill-select',role:'group','aria-label':label});
+    const render=(active)=>{host.replaceChildren(...items.map(item=>h('button',{type:'button','aria-pressed':String(item.value===active),disabled:!!item.disabled,onclick:()=>{if(!item.disabled&&item.value!==active){onChange(item.value);render(item.value)}}},item.label)))};
+    render(value);host.setValue=render;return host;
+  }
+  function pagination({page=1,pageSize=30,total=0,onChange}){
+    const count=Math.max(1,Math.ceil(total/pageSize));const bar=h('nav',{class:'ud-row ud-pagination','aria-label':'分页导航'},h('span',{class:'ud-small ud-mut ud-grow'},`第 ${Math.min(page,count)} / ${count} 页 · 共 ${total} 条`));
+    const previous=btn('上一页',()=>onChange(Math.max(1,page-1)),'default','sm');previous.disabled=page<=1;
+    const next=btn('下一页',()=>onChange(Math.min(count,page+1)),'default','sm');next.disabled=page>=count;
+    bar.append(previous,next);return bar;
+  }
+  function keyValue(items){const dl=h('dl',{class:'ud-kv'});items.forEach(([key,value])=>dl.append(h('dt',{},key),h('dd',{},value??'—')));return dl}
+  function skeleton(lines=4){return h('div',{class:'ud-skeleton',role:'status','aria-label':'内容加载中'},...Array.from({length:lines},(_,i)=>h('div',{class:'ud-skeleton-line',style:`width:${Math.max(35,95-(i%3)*19)}%`})),h('span',{class:'ud-sr-only'},'正在加载内容'))}
+  function metric({label,value,hint='',tone='blue',symbol='matrix'}){return h('div',{class:'ud-metric','data-tone':tone},h('div',{class:'ud-metric-label'},icon(symbol),label),h('div',{class:'ud-metric-value'},value),hint?h('div',{class:'ud-metric-foot'},hint):null)}
+  function breadcrumbs(crumbs){const nav=h('nav',{class:'ud-row ud-breadcrumbs','aria-label':'面包屑'});crumbs.forEach((c,i)=>{if(i)nav.append(icon('arrow','sm'));const node=c.href?h('a',{href:c.href},c.label):h('span',{'aria-current':i===crumbs.length-1?'page':null},c.label);nav.append(node)});return nav}
+  Object.assign(UD,{notice,segmented,pagination,keyValue,skeleton,metric,breadcrumbs});
+  Object.assign(UD,{icon,h,badge,btn,debounce,toast,confirmAction,textDownload,field,empty,dataTable,setFieldError,numberFormat,selectionText});
+  if(typeof module!=='undefined'&&module.exports)module.exports={h,badge,btn,debounce,numberFormat};
+})(typeof window==='undefined'?globalThis:window);
+
+</script>
+<script data-asset="examples/demo.js">
+/* Unify Design 1.0.1 | Multi-screen enterprise UI demonstration.
+ * All business data are synthetic; actions modify memory only. No network calls.
+ * Views reuse the shipped primitives in assets/js/patterns.js. */
+(function(){'use strict';
+const UD=window.UnifyDesign,{h,icon,badge,btn,toast,confirmAction,dataTable,field,empty,textDownload,debounce,setFieldError}=UD;
+const $=(s,host=document)=>host.querySelector(s),$$=(s,host=document)=>Array.from(host.querySelectorAll(s));
+const PAGES=[
+ {id:'overview',name:'工作总览',icon:'home',group:'常用工作'},
+ {id:'matrix',name:'参数矩阵',icon:'matrix',group:'业务数据'},
+ {id:'versions',name:'配置版本',icon:'git',group:'业务数据'},
+ {id:'logs',name:'日志探索',icon:'terminal',group:'业务数据'},
+ {id:'approvals',name:'变更审批',icon:'shield',group:'工作流',count:'4'},
+ {id:'files',name:'文件资源',icon:'folder',group:'工作流'},
+ {id:'components',name:'组件图鉴',icon:'boxes',group:'设计系统'},
+ {id:'rules',name:'设计原则',icon:'layers',group:'设计系统'}];
+const FAMILIES=['光源与能量','时序控制','运动与光学','系统通信','安全联锁','诊断与校准'];
+const DEFAULT_FILES=[
+ {name:'Default_MachineConstant.xml',kind:'XML',size:'284 KB',date:'10-30 14:26',folder:'config',status:'当前版本',content:'<?xml version="1.0"?>\n<MachineConstant version="690">\n  <LaserPower unit="W">48.5</LaserPower>\n  <SampleInterval unit="ms">20</SampleInterval>\n  <SafetyInterlock enabled="true" />\n</MachineConstant>'},
+ {name:'ControlSystem.json',kind:'JSON',size:'86 KB',date:'10-30 11:42',folder:'config',status:'当前版本',content:'{\n  "version": "690",\n  "machine": "A-200",\n  "power_limit": 48.5,\n  "sampling_ms": 20,\n  "safety_enabled": true\n}'},
+ {name:'MachineConstant_68C.xml',kind:'XML',size:'278 KB',date:'10-27 09:18',folder:'history',status:'历史',content:'<MachineConstant version="68C">\n  <LaserPower unit="W">45.5</LaserPower>\n  <SampleInterval unit="ms">20</SampleInterval>\n</MachineConstant>'},
+ {name:'CalibrationReport_1029.json',kind:'JSON',size:'12 KB',date:'10-29 18:16',folder:'records',status:'已留档',content:'{\n  "report_id":"CAL-1029",\n  "passed":true,\n  "delta":0.006\n}'},
+ {name:'workflow_steps.yaml',kind:'YAML',size:'4 KB',date:'10-28 15:06',folder:'config',status:'当前版本',content:'steps:\n  - inspect\n  - compare\n  - approve\n  - export'},
+ {name:'archive_notes.txt',kind:'TXT',size:'3 KB',date:'10-26 10:16',folder:'history',status:'历史',content:'修订 68C → 690\n- 功率上限 45.5 W → 48.5 W\n- 新增检查规则\n- 机台例外保留'}];
+const APPROVALS=[
+ {id:'CHG-2481',name:'调整激光功率上限',scope:'A-200 · 690 / B3',owner:'刘工',time:'今天 14:22',status:'待批准',reason:'新一轮校准后的工艺窗口修订',diffs:[['power_limit','45.5 W','48.5 W'],['power_max','52 W','54 W']]},
+ {id:'CHG-2480',name:'收紧故障恢复超时',scope:'全局 · 690 / D0',owner:'张工',time:'今天 11:07',status:'待批准',reason:'现场超时异常复现',diffs:[['recover_timeout','3500 ms','3000 ms']]},
+ {id:'CHG-2479',name:'新增传感器保护阈值',scope:'B-100 · 690 / B2',owner:'陈工',time:'昨天 17:45',status:'待批准',reason:'温度异常隔离策略',diffs:[['sensor_temp_max','未设','68 °C']]},
+ {id:'CHG-2478',name:'修改设备通信重试上限',scope:'全局 · 690 / D0',owner:'王工',time:'昨天 10:20',status:'待批准',reason:'离线链路回归验证',diffs:[['tcp_retry','5','3']]},
+ {id:'CHG-2477',name:'同步编码器归零策略',scope:'A-200 · 68C / B1',owner:'周工',time:'10-27 14:02',status:'已批准',reason:'控制器固件回归',diffs:[['encoder_reset','false','true']]},
+ {id:'CHG-2476',name:'放宽故障检测采样周期',scope:'A-200 · 68C / B1',owner:'刘工',time:'10-26 12:40',status:'已驳回',reason:'未提供完整设备记录',diffs:[['sample_interval','20 ms','40 ms']]}
+];
+function syntheticParameters(ws){const seed=ws==='south'?11:0;const out=[];
+ const starter=[['功率上限','光源与能量','laser.power_limit','decimal','W','45.5','48.5','48.2'],['采样周期','时序控制','timing.sample_interval','int','ms','20','20','20'],['响应超时','系统通信','tcp.response_timeout','int','ms','3500','3200','3200'],['安全联锁启用','安全联锁','safety.enabled','bool','','true','true','true'],['校准偏移','诊断与校准','calibration.offset','decimal','mm','0','0.06','0.058'],['泵浦触发间隔','光源与能量','laser.pump_interval','int','us','18','18','18'],['光轴补偿','运动与光学','optics.axis_compensation','decimal','um','0','0.14','0.12'],['重试次数','系统通信','tcp.retry_count','int','','5','3','3']];
+ starter.forEach((s,i)=>out.push({id:`PM-${String(i+1).padStart(4,'0')}`,name:s[0],family:s[1],path:s[2],type:s[3],unit:s[4],default:s[5],baseline:s[6],actual:ws==='south'?s[7]:s[7],source:s[6]===s[5]?'继承 D0':'机型覆盖',changed:s[5]!==s[6],description:`${s[0]}的生效配置，采用不可变修订标识` }));
+ for(let i=9;i<=3200;i++){const family=FAMILIES[(i+seed)%FAMILIES.length];const type=i%19===0?'bool':i%29===0?'string':'decimal';let def=type==='bool'?'false':type==='string'?'default':String((i%87)+1);let baseline=i%13===0?String((i%87)+3):def; if(type==='bool'||type==='string')baseline=def;
+ const actual= i%7===0&&type==='decimal'?String((i%87)+2):baseline;
+ out.push({id:`PM-${String(i).padStart(4,'0')}`,name:`参数 ${String(i).padStart(4,'0')}`,family,path:`${family}/模块 ${String(Math.ceil(i/120)).padStart(2,'0')}/parameter_${String(i).padStart(4,'0')}`,type,unit:type==='decimal'?['ms','W','mm',''][i%4]:'',default:def,baseline,actual,source:baseline!==def?'机型覆盖':'继承 D0',changed:baseline!==def,description:`用于 ${family} 的业务参数，稳定身份 ${i}`});
+ }
+ return out;
+}
+function syntheticLogs(ws){const comps=['Scheduler','ConfigService','AuthAdapter','Parser','SyncTask','Network','DeviceIO'];const msgs=[
+ 'Parsed document: nodes=3128, elapsed=18ms, cache_hit=true','Config load succeeded, revision=B3, checksum=52c4e1','Queue worker started job=sync-2481, task=download','HTTP GET /api/v1/config/files status=200 duration=27ms','Retrying upstream request attempt=2, timeout=3000ms','Parameter out of range key=power_limit value=54.2 max=52.0','Session expired during download, status=500 body=empty','Database lock acquired, writer=changeset-2481','Applied baseline revision=B3 to machine=A-200','Rule mismatch key=sample_interval expected=20 actual=40', 'File archive completed: Default_MachineConstant.xml','Connection state changed: ONLINE -> DEGRADED'];
+ let arr=[];for(let i=0;i<210;i++){const level=i%23===0?'ERROR':i%11===0?'WARN':i%5===0?'DEBUG':'INFO';let msg=msgs[(i*5+(ws==='south'?3:0))%msgs.length];const time=`14:${String(Math.floor(i/60)+21).padStart(2,'0')}:${String((i*17)%60).padStart(2,'0')}.${String((i*39)%1000).padStart(3,'0')}`;arr.push({id:i+1,time,level,comp:comps[(i*3)%comps.length],message:msg,thread:`T${String(i%8+1).padStart(2,'0')}`,file:'cpqpsgx.log',line:10890+i})}return arr;
+}
+const state={workspace:'east',page:'overview',open:['overview','matrix','logs'],selectedParam:'PM-0001',matrix:{search:'',family:'all',view:'table',onlyChanged:false,page:1,size:30,drafts:{east:{},south:{}}},log:{search:'',case:false,word:false,regex:false,level:'all',theme:'dark',mode:'merged',pageRule:0,rules:[{text:'ERROR',color:'amber',enabled:true},{text:'timeout',color:'cyan',enabled:true},{text:'revision',color:'violet',enabled:true}],selected:0},version:{selected:'B3',mode:'graph'},approval:{selected:'CHG-2481',filter:'待处理'},files:{folder:'all',selected:'Default_MachineConstant.xml',items:{east:DEFAULT_FILES.map(f=>({...f})),south:DEFAULT_FILES.map(f=>({...f,name:f.name.replace('MachineConstant','ControlParams')}))}},gallery:{section:'all'},activity:[],data:[],logs:[],busy:false,scope:null};
+const approvalState={east:APPROVALS.map(a=>({...a,diffs:a.diffs.map(x=>x.slice())})),south:APPROVALS.map(a=>({...a,id:a.id.replace('CHG-','SH-'),scope:a.scope.replace('A-200','B-100'),status:a.id==='CHG-2481'?'已批准':a.status,diffs:a.diffs.map(x=>x.slice())}))};
+function getApprovals(){return approvalState[state.workspace]}
+const wsName=()=>state.workspace==='east'?'华东研发中心':'深圳验证中心';
+function activeDrafts(){return state.matrix.drafts[state.workspace]}
+function changedValue(row){return Object.prototype.hasOwnProperty.call(activeDrafts(),row.id)?activeDrafts()[row.id]:row.baseline}
+function isDirty(){return Object.keys(activeDrafts()).length>0}
+function fmt(n){return UD.numberFormat(n)}
+function truncate(s,n=40){s=String(s);return s.length>n?s.slice(0,n-1)+'…':s}
+function tone(status){return ({'待批准':'warn','已批准':'good','已驳回':'danger','继承 D0':'neutral','机型覆盖':'purple','当前版本':'good','历史':'neutral','已留档':'sky','成功':'good','运行中':'primary','失败':'danger'})[status]||'neutral'}
+function renderPage(title,subtitle,actions=[],opts={}){
+ const page=h('section',{class:'ud-page','data-page':state.page});const head=h('div',{class:'ud-page-heading'},h('div',{class:'ud-grow'},h('h1',{},title),subtitle?h('p',{class:'ud-subline'},subtitle):null),h('div',{class:'ud-page-actions'},actions));const content=h('div',{class:'ud-page-content '+(opts.class||'')});page.append(head,content);$('#ud-viewport').replaceChildren(page);return content;
+}
+function action(label,fn,variant='default',svg=null,small=false){const b=btn('',fn,variant,small?'sm':'');if(svg)b.append(icon(svg));b.append(document.createTextNode(label));return b}
+function line(label,value,extra){return h('div',{class:'ud-row',style:'justify-content:space-between;gap:16px'},h('span',{class:'ud-small ud-mut'},label),h('strong',{class:'ud-mono ud-small'},value),extra||null)}
+function sectionPanel(title,body,headerRight=null,cls=''){return h('section',{class:'ud-panel '+cls},h('div',{class:'ud-panel-head'},h('h2',{class:'ud-grow'},title),headerRight),body)}
+function titleBar(text,link){return h('div',{class:'ud-row',style:'justify-content:space-between'},h('h2',{},text),link||null)}
+function navigate(id){const entry=PAGES.find(p=>p.id===id);if(!entry)return;if(!state.open.includes(id)){state.open.push(id);if(state.open.length>7){const drop=state.open.find(x=>x!==id&&x!=='overview');if(drop)state.open=state.open.filter(x=>x!==drop)}}state.page=id;history.replaceState(null,'','#'+id);renderNavigation();renderTabs();renderActive();document.title=entry.name+' · Unify Design';document.body.classList.remove('is-mobile-nav-open');$('#ud-open-nav').setAttribute('aria-expanded','false');}
+function renderNavigation(){const host=$('#ud-navigation');host.replaceChildren();let group='';PAGES.forEach(p=>{if(p.group!==group){group=p.group;host.append(h('div',{class:'ud-nav-title'},group))}const b=h('button',{class:'ud-nav-item'+(state.page===p.id?' is-active':''),type:'button','aria-current':state.page===p.id?'page':null,'aria-label':p.name,onclick:()=>navigate(p.id)},icon(p.icon),h('span',{class:'ud-nav-label ud-grow'},p.name),p.count?h('span',{class:'ud-nav-badge'},state.approval?String(getApprovals().filter(x=>x.status==='待批准').length):p.count):null);host.append(b)})}
+function renderTabs(){const host=$('#ud-tabs');host.replaceChildren();state.open.forEach(id=>{const p=PAGES.find(p=>p.id===id);if(!p)return;const tab=h('button',{class:'ud-main-tab',type:'button',role:'tab','aria-selected':String(id===state.page),'aria-label':p.name,onclick:()=>navigate(id)},icon(p.icon,'sm'),h('span',{class:'ud-clip'},p.name));if(id!=='overview'){const x=h('span',{class:'ud-tab-close',role:'button',tabindex:'0','aria-label':'关闭 '+p.name},icon('close','sm'));x.addEventListener('click',e=>{e.stopPropagation();state.open=state.open.filter(x=>x!==id);if(state.page===id)navigate(state.open[state.open.length-1]||'overview');else renderTabs()});x.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();x.click()}});tab.append(x)}host.append(tab)})}
+function renderActive(){if(state.page==='overview')return renderOverview();if(state.page==='matrix')return renderMatrix();if(state.page==='versions')return renderVersions();if(state.page==='logs')return renderLogs();if(state.page==='approvals')return renderApprovals();if(state.page==='files')return renderFiles();if(state.page==='components')return renderComponents();if(state.page==='rules')return renderRules()}
+function syncHeader(){const w=$('#ud-workspace');w.value=state.workspace;const dirty=Object.keys(activeDrafts()).length;$('#ud-connection').lastElementChild.textContent=dirty?`${dirty} 项本地草稿`:'本地示例';}
+/* ===== 01 / Actionable overview ===== */
+function renderOverview(){
+ const APPROVALS=getApprovals();
+ const ws=wsName();const content=renderPage('工作总览',`${ws}  /  690 版本  ·  数据更新时间 14:35`,[
+  action('查看配置版本',()=>navigate('versions'),'default','git',true),action('新建变更单',()=>navigate('approvals'),'primary','plus',true)]);
+ const container=h('div',{class:'ud-overview-section'}),metrics=h('div',{class:'ud-view-grid'});
+ [['待审变更',4,'需要管理员决议','amber','shield'],['受管参数','3,200','6 个配置分组','blue','matrix'],['近期异常',7,'2 项需要复核','red','alert'],['校验状态','98.6%','本地合成统计','green','check']].forEach(([label,num,note,t,ic])=>{
+  const m=h('article',{class:'ud-metric','data-tone':t},h('div',{class:'ud-metric-label'},icon(ic),label),h('div',{class:'ud-metric-value'},num),h('div',{class:'ud-metric-foot'},note));metrics.append(m)});
+ const grid=h('div',{class:'ud-overview-layout'}),left=h('div',{class:'ud-overview-section'}),right=h('div',{class:'ud-overview-section'});
+ const workBody=h('div');[['CHG-2481','功率上限调整等待批准','变更涉及 2 个参数，15 分钟前提交','待批准','approvals','shield'],['EVT-0349','更新源出现会话过期','上游访问失败，原配置保持不变','需复核','logs','alert'],['CFG-690','基线 B3 待做机台对账','变更已冻结，现场值未覆盖最新观测','待对账','matrix','matrix']].forEach(([id,title,desc,tag,to,ic])=>{
+   workBody.append(h('div',{class:'ud-work-item'},h('div',{class:'ud-work-icon'},icon(ic)),h('div',{class:'ud-work-item-content'},h('strong',{},title),h('p',{},id+' · '+desc)),badge(tag,tag==='待批准'?'warn':tag==='待对账'?'sky':'danger'),action('处理',()=>navigate(to),'default',null,true)));
+ });
+ left.append(sectionPanel('待处理事项',workBody,action('全部变更',()=>navigate('approvals'),'ghost',null,true)));
+ const history=h('div',{class:'ud-table-scroll'});dataTable(history,{columns:[{label:'对象',render:r=>h('div',{},h('div',{class:'ud-em'},r.name),h('div',{class:'ud-small ud-mut ud-mono'},r.id))},{label:'类型',render:r=>badge(r.type,r.tone)},{label:'更新时间',key:'at'},{label:'操作人',key:'by'}],rows:[{id:'PM-0001',name:'采集控制参数',type:'基线修改',tone:'purple',at:'14:25',by:'刘工'},{id:'OBS-1029',name:'校准数据快照',type:'采集',tone:'sky',at:'13:42',by:'定时任务'},{id:'CHG-2477',name:'编码器归零策略',type:'已发布',tone:'good',at:'昨天 17:04',by:'周工'},{id:'V-690',name:'软件版本 690',type:'版本登记',tone:'primary',at:'10-28 11:18',by:'张工'}]});
+ left.append(sectionPanel('最近变更',history,action('查看审计',()=>navigate('versions'),'ghost',null,true)));
+ const quick=h('div',{class:'ud-panel-body'},h('div',{class:'ud-overview-quick'},action('参数矩阵',()=>navigate('matrix'),'default','matrix',true),action('日志查询',()=>navigate('logs'),'default','terminal',true),action('文件中心',()=>navigate('files'),'default','folder',true),action('组件规范',()=>navigate('components'),'default','boxes',true)));
+ right.append(sectionPanel('快捷入口',quick));
+ const act=h('div');[['14:26','变更单已提交','CHG-2481 · 刘工'],['14:22','从更新源发现异常','HTTP 500 · AuthAdapter'],['11:42','现场采集成功','ControlSystem.json · 3128 节点'],['昨天','版本 690 基线已更新','B2 → B3 · 2 项修改']].forEach(([time,title,desc],i)=>act.append(h('div',{class:'ud-activity'},h('span',{class:'ud-activity-dot',style:`background:${['#e0a35a','#d66a78','#56a785','#5685da'][i]}`}),h('div',{class:'ud-col ud-grow',style:'gap:2px'},h('strong',{},title),h('p',{},desc),h('time',{},time)))));
+ right.append(sectionPanel('活动记录',act));
+ const bars=h('div',{class:'ud-panel-body ud-bars'});[['配置已校验',93],['参数已映射',81],['改动已复核',64]].forEach(([l,v])=>bars.append(h('div',{class:'ud-bar-row'},h('span',{},l),h('div',{class:'ud-bar-track'},h('div',{class:'ud-bar-fill',style:`width:${v}%`})),h('strong',{style:'text-align:right'},v+'%'))));
+ right.append(sectionPanel('配置覆盖概况',bars,h('span',{class:'ud-small ud-mut'},'模拟样本')));
+ grid.append(left,right);container.append(metrics,grid);content.append(container);
+}
+/* ===== 02 / Parameter matrix with stable identity, pagination and draft preservation ===== */
+function matrixMatches(){const q=state.matrix.search.trim().toLocaleLowerCase();return state.data.filter(r=>{
+ if(state.matrix.family!=='all'&&r.family!==state.matrix.family)return false;
+ if(state.matrix.onlyChanged&&!r.changed&&!Object.prototype.hasOwnProperty.call(activeDrafts(),r.id))return false;
+ return !q||[r.name,r.path,r.id,r.type].some(t=>String(t).toLocaleLowerCase().includes(q));
+})}
+function renderMatrix(){const dirty=isDirty();const content=renderPage('参数矩阵',`${wsName()} · 版本 690  /  默认 D0 → 基线 B3 → 机台观测`,[
+ badge(dirty?`${Object.keys(activeDrafts()).length} 条未保存`:'基线 B3 · 只读来源',dirty?'warn':'primary'),
+ action('导出当前视图',()=>downloadMatrix(),'default','down',true),action('保存草稿',saveMatrix,'primary','check',true)] ,{class:'ud-table-page-content'});
+ const top=h('div',{class:'ud-toolbar'}),search=h('div',{class:'ud-searchbox',style:'width:min(280px,100%);flex:1 1 180px'},icon('search'),h('input',{class:'ud-input',type:'search',placeholder:'搜索名称、ID、路径…',value:state.matrix.search,'aria-label':'筛选参数'}));
+ search.lastElementChild.addEventListener('input',debounce(e=>{state.matrix.search=e.target.value;state.matrix.page=1;renderMatrixBody()},150));
+ const family=h('select',{class:'ud-select',style:'width:145px','aria-label':'配置分组'},h('option',{value:'all'},'全部配置分组'),FAMILIES.map(f=>h('option',{value:f},f)));family.value=state.matrix.family;family.addEventListener('change',()=>{state.matrix.family=family.value;state.matrix.page=1;renderMatrixBody()});
+ const changed=h('label',{class:'ud-check'},h('input',{type:'checkbox',checked:state.matrix.onlyChanged}), '仅看变更');changed.firstChild.addEventListener('change',e=>{state.matrix.onlyChanged=e.target.checked;state.matrix.page=1;renderMatrixBody()});
+ const toggle=h('div',{class:'ud-pill-select'},...[['table','列表'],['tree','层级']].map(([v,l])=>h('button',{type:'button','aria-pressed':String(state.matrix.view===v),onclick:()=>{state.matrix.view=v;renderMatrix()}},l)));
+ const count=h('span',{id:'ud-matrix-count',class:'ud-small ud-mut'});
+ top.append(search,family,changed,toggle,h('span',{class:'ud-grow'}),count);
+ const layout=h('div',{class:'ud-main-split'}),panel=h('section',{class:'ud-panel'}),head=h('div',{class:'ud-panel-head'},h('span',{class:'ud-plain-subheading ud-grow'},'参数 / 生效值 / 来源'),h('span',{class:'ud-small ud-mut'},'点击行查看详情'));
+ const body=h('div',{class:'ud-table-scroll ud-grow',id:'ud-matrix-body',tabindex:'0',role:'region','aria-label':'参数数据表'}),foot=h('div',{class:'ud-pager',id:'ud-matrix-pager'});panel.append(head,body,foot);
+ const inspect=h('section',{class:'ud-panel ud-inspector',id:'ud-matrix-inspector','aria-label':'所选参数详情'});layout.append(panel,inspect);content.append(top,layout);
+ function renderMatrixBody(){const matches=matrixMatches();const pages=Math.max(1,Math.ceil(matches.length/state.matrix.size));state.matrix.page=Math.min(state.matrix.page,pages);count.textContent=`${fmt(matches.length)} / ${fmt(state.data.length)} 项`;
+   const pageRows=matches.slice((state.matrix.page-1)*state.matrix.size,state.matrix.page*state.matrix.size);
+   if(!pageRows.length){body.replaceChildren(empty('没有匹配的参数','调整分组或搜索条件后再试。',action('清除筛选',()=>{state.matrix.search='';state.matrix.family='all';state.matrix.onlyChanged=false;renderMatrix()},'default',null,true)))}
+   else if(state.matrix.view==='table'){
+     dataTable(body,{columns:[{label:'参数 / 稳定 ID',class:'ud-sticky-first',cellClass:'ud-sticky-first',render:r=>h('div',{},h('div',{class:'ud-em ud-row'},r.name,Object.prototype.hasOwnProperty.call(activeDrafts(),r.id)?badge('草稿','warn'):null),h('div',{class:'ud-xs ud-mut ud-mono'},r.id+'  ·  '+truncate(r.path,40)))},{label:'默认 D0',render:r=>h('span',{class:'ud-mono'},r.default)},{label:'基线 B3',render:r=>h('strong',{class:'ud-mono'},changedValue(r))},{label:'机台观测',render:r=>h('span',{class:'ud-mono'},r.actual)},{label:'来源',render:r=>badge(r.source,r.source==='继承 D0'?'neutral':'purple')},{label:'变更',render:r=>r.changed?badge('~ 修改','warn'):h('span',{class:'ud-small ud-mut'},'—')}],rows:pageRows,rowId:r=>r.id,selectedId:state.selectedParam,onSelect:r=>{state.selectedParam=r.id;renderMatrixBody();renderInspector()}});
+   }else{
+     const group=h('div');let current=null;pageRows.forEach(r=>{if(r.family!==current){current=r.family;group.append(h('div',{class:'ud-tree-row',style:'background:#f6f8fc;font-weight:650'},icon('folder'),h('span',{},current)))}group.append(h('div',{class:'ud-tree-row',style:'padding-left:28px','aria-selected':String(r.id===state.selectedParam)},icon('file','sm'),h('button',{class:'ud-tree-label',onclick:()=>{state.selectedParam=r.id;renderMatrixBody();renderInspector()}},h('span',{},r.name),h('span',{class:'ud-tree-path'},'  · '+r.id)),h('span',{class:'ud-mono ud-small'},changedValue(r)),r.changed?badge('修改','warn'):null))});body.replaceChildren(group);
+   }
+   const per=h('select',{class:'ud-select sm',style:'width:78px','aria-label':'每页数量'},[20,30,50,100].map(n=>h('option',{value:String(n)},String(n))));per.value=state.matrix.size;per.addEventListener('change',()=>{state.matrix.size=Number(per.value);state.matrix.page=1;renderMatrixBody()});
+   foot.replaceChildren(h('span',{class:'ud-small ud-mut'},'每页'),per,h('span',{class:'ud-small ud-mut'},`第 ${state.matrix.page} / ${pages} 页`),h('span',{class:'ud-grow'}),action('上一页',()=>{state.matrix.page=Math.max(1,state.matrix.page-1);renderMatrixBody()},'default',null,true),action('下一页',()=>{state.matrix.page=Math.min(pages,state.matrix.page+1);renderMatrixBody()},'default',null,true));const buttons=$$('button',foot);buttons[0].disabled=state.matrix.page<=1;buttons[1].disabled=state.matrix.page>=pages;
+ }
+ function renderInspector(){const r=state.data.find(x=>x.id===state.selectedParam)||state.data[0];if(!r)return;const current=changedValue(r);
+   const head=h('div',{class:'ud-panel-head'},h('h2',{class:'ud-grow'},'参数详情'),badge(r.type,'sky'));
+   const details=h('div',{class:'ud-panel-body'},h('h2',{},r.name),h('p',{class:'ud-small ud-mut ud-mono ud-break',style:'margin:4px 0 15px'},r.path),h('dl',{class:'ud-kv'},h('dt',{},'稳定 ID'),h('dd',{class:'ud-mono'},r.id),h('dt',{},'配置类别'),h('dd',{},r.family),h('dt',{},'类型 / 单位'),h('dd',{},r.type+(r.unit?' · '+r.unit:'')),h('dt',{},'生效来源'),h('dd',{},badge(r.source,r.source==='机型覆盖'?'purple':'neutral'))),h('div',{class:'ud-subcard'},h('h3',{},'版本值对照'),h('div',{class:'ud-col',style:'gap:9px'},line('默认 D0',r.default),line('已发布 B3',r.baseline),line('现场采集',r.actual))),h('div',{class:'ud-subcard'},h('h3',{},'本地草稿（演示）')));
+   const input=h('input',{class:'ud-input ud-mono',value:current,autocomplete:'off'}),typeSelect=h('select',{class:'ud-select',style:'width:100%'},h('option',{value:'present'},'有值'),h('option',{value:'null'},'显式 null'),h('option',{value:'unset'},'未设置'));
+   typeSelect.value=current==='null'?'null':current==='未设'?'unset':'present';if(typeSelect.value!=='present')input.disabled=true;
+   const update=()=>{const raw=typeSelect.value==='null'?'null':typeSelect.value==='unset'?'未设':input.value;const invalid=typeSelect.value==='present'&&r.type==='decimal'&&raw.trim()!==''&&!Number.isFinite(Number(raw));setFieldError(input,invalid?'请输入有效数值':null);if(invalid)return;if(raw===r.baseline)delete activeDrafts()[r.id];else activeDrafts()[r.id]=raw;state.scope.setDirty(isDirty());syncHeader();const note=$('#ud-edit-note',inspect);if(note)note.textContent=isDirty()?`${Object.keys(activeDrafts()).length} 项本地修改，尚未提交`:'与已发布基线一致';};
+   input.addEventListener('input',update);typeSelect.addEventListener('change',()=>{input.disabled=typeSelect.value!=='present';update()});
+   const form=h('div',{class:'ud-col',style:'gap:11px'},field('值状态',typeSelect),field('拟值',input,'编辑仅保留在本地；保存草稿不发布基线。'),h('p',{class:'ud-small ud-mut',id:'ud-edit-note'},isDirty()?`${Object.keys(activeDrafts()).length} 项本地修改，尚未提交`:'与已发布基线一致'));
+   details.append(form,h('div',{class:'ud-subcard'},h('h3',{},'数据语义'),h('p',{class:'ud-small ud-mut'},'未设置、null、0、false 与空字符串分别表示，不能用默认值补齐缺失观测。')));
+   inspect.replaceChildren(head,details);
+ }
+ renderMatrixBody();renderInspector();
+}
+function downloadMatrix(){const rows=matrixMatches().slice(0,250);textDownload('unify-design-parameter-view.json',JSON.stringify({notice:'合成数据·非业务导出',workspace:state.workspace,displayed:rows,total:matrixMatches().length},null,2),'application/json;charset=utf-8');toast('good','已生成本地示例文件','仅导出前 250 条匹配数据，未发送网络请求。')}
+function saveMatrix(){const drafts=activeDrafts();if(!Object.keys(drafts).length){toast('warn','没有需要保存的修改');return}for(const [id,value]of Object.entries(drafts)){const row=state.data.find(p=>p.id===id);if(row){row.baseline=value;row.source='草稿覆盖';row.changed=true}}state.matrix.drafts[state.workspace]={};state.scope.setDirty(false);toast('good','本地草稿已保存','示例数据已更新，未写入服务器、未发布真实基线。');syncHeader();renderMatrix()}
+/* ===== 03 / Version lineage with independently meaningful edges ===== */
+const VERSIONS=[
+ {id:'D68C',label:'68C · 默认',detail:'软件默认出口',revision:'68C / D0',date:'10-22 08:42',x:35,y:14,tone:'primary',parent:'—',kind:'默认'},
+ {id:'D690',label:'690 · 默认',detail:'已冻结出口批次',revision:'690 / D0',date:'10-28 10:15',x:293,y:14,tone:'good',parent:'D68C',kind:'默认'},
+ {id:'D691',label:'691 · 默认',detail:'下一软件版本草稿',revision:'691 / D0',date:'待确认',x:552,y:14,tone:'warn',parent:'D690',kind:'默认'},
+ {id:'B1',label:'B1 · 机型基线',detail:'基于 68C / D0',revision:'68C / B1',date:'10-23 14:28',x:35,y:115,tone:'good',parent:'D68C',kind:'基线'},
+ {id:'B2',label:'B2 · 机型基线',detail:'基于 690 / D0',revision:'690 / B2',date:'10-28 17:30',x:293,y:115,tone:'good',parent:'D690',kind:'基线'},
+ {id:'B3',label:'B3 · 当前基线',detail:'B2 的后继修订',revision:'690 / B3',date:'10-30 13:05',x:552,y:115,tone:'primary',parent:'B2',kind:'基线'},
+ {id:'M1',label:'A-200 · r1',detail:'采用 690 / B2',revision:'A-200 / r1',date:'10-29 11:05',x:293,y:216,tone:'purple',parent:'B2',kind:'机台'},
+ {id:'M2',label:'A-200 · r2',detail:'采用 690 / B3',revision:'A-200 / r2',date:'10-30 14:23',x:552,y:216,tone:'purple',parent:'B3',kind:'机台'}];
+function renderVersions(){const content=renderPage('配置版本',`${wsName()} · 显式前序 / 基线采用 / 机台修订，不根据日期猜测父级`,[
+ action('查看参数矩阵',()=>navigate('matrix'),'default','matrix',true),action('新建版本',openVersionDialog,'primary','plus',true)],{class:'ud-table-page-content'});
+ const toolbar=h('div',{class:'ud-toolbar'},h('span',{class:'ud-small ud-mut'},'视图'),h('div',{class:'ud-pill-select'},...[['graph','关系图'],['table','版本列表']].map(([k,label])=>h('button',{type:'button','aria-pressed':String(state.version.mode===k),onclick:()=>{state.version.mode=k;renderVersions()}},label))),h('span',{class:'ud-grow'}),h('span',{class:'ud-small ud-mut'},'点击节点查看父引用与影响范围'));
+ const split=h('div',{class:'ud-main-split sm'}),panel=h('section',{class:'ud-panel'}),inspector=h('section',{class:'ud-panel ud-inspector'});
+ panel.append(h('div',{class:'ud-panel-head'},h('h2',{class:'ud-grow'},'版本谱系'),badge('已存在的关系','good'),badge('计划中','warn')));
+ if(state.version.mode==='graph'){
+   const wrap=h('div',{class:'ud-graph-area ud-scrollbar'}),stage=h('div',{class:'ud-graph-stage',style:'width:775px;min-width:775px;height:300px'});
+   const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('viewBox','0 0 775 300');svg.setAttribute('class','ud-graph-edges');svg.setAttribute('aria-hidden','true');
+   const paths=[
+    ['D68C','B1'],['D690','B2'],['D691','B3'],['B1','B2'],['B2','B3'],['B2','M1'],['B3','M2']
+   ];
+   paths.forEach(([a,b])=>{const p=VERSIONS.find(x=>x.id===a),q=VERSIONS.find(x=>x.id===b);let d;if(p.y===q.y){const sy=p.y+35,ex=q.x,ey=q.y+35;d=`M ${p.x+169} ${sy} C ${p.x+203} ${sy} ${ex-33} ${ey} ${ex} ${ey}`;}else{const sx=p.x+84,sy=p.y+70,ex=q.x+84,ey=q.y;d=`M ${sx} ${sy} C ${sx} ${(sy+ey)/2} ${ex} ${(sy+ey)/2} ${ex} ${ey}`;}
+    const path=document.createElementNS('http://www.w3.org/2000/svg','path');path.setAttribute('d',d);path.setAttribute('data-tone',b==='B3'&&a==='D691'?'primary':'normal');svg.append(path)
+   });stage.append(svg);
+   [['软件默认',8],['基线修订',106],['机台修订',207]].forEach(([name,y])=>stage.append(h('div',{class:'ud-graph-lane',style:`top:${y}px`},name)));
+   VERSIONS.forEach(v=>{const node=h('button',{type:'button',class:'ud-graph-node'+(v.id===state.version.selected?' is-active':''),style:`left:${v.x}px;top:${v.y}px`,onclick:()=>{state.version.selected=v.id;renderVersions()}},h('strong',{},v.label),h('small',{},v.detail),h('span',{class:'ud-dot','data-tone':v.tone==='good'?'good':v.tone==='warn'?'warn':'primary'}));stage.append(node)});
+   wrap.append(stage);panel.append(wrap,h('div',{class:'ud-panel-body',style:'padding:10px 14px'},h('div',{class:'ud-graph-key'},h('span',{},h('i',{class:'ud-line-swatch'}),'已确认引用'),h('span',{},h('i',{class:'ud-line-swatch dash'}),'计划或候选关系'),h('span',{class:'ud-small ud-mut'},'关系按示例显式定义，不由图中位置推断'))));
+ }else{
+   const table=h('div',{class:'ud-table-scroll ud-grow'});dataTable(table,{columns:[{label:'版本 / 对象',render:v=>h('span',{class:'ud-em'},v.label)},{label:'类别',key:'kind'},{label:'引用上级',render:v=>h('span',{class:'ud-mono'},v.parent)},{label:'变更时间',key:'date'}],rows:VERSIONS,selectedId:state.version.selected,rowId:r=>r.id,onSelect:r=>{state.version.selected=r.id;renderVersions()}});panel.append(table);
+ }
+ panel.append(h('div',{class:'ud-panel-foot'},h('span',{class:'ud-small ud-mut'},'稳定排布 + 文字等价关系表；不叠加交叉连线。')));
+ const v=VERSIONS.find(x=>x.id===state.version.selected)||VERSIONS[0],dependents=VERSIONS.filter(x=>x.parent===v.id).map(x=>x.label).join('、')||'无';
+ inspector.append(h('div',{class:'ud-panel-head'},h('h2',{class:'ud-grow'},'修订详情'),badge(v.kind,v.kind==='机台'?'purple':'primary')),
+ h('div',{class:'ud-panel-body'},h('h2',{},v.label),h('p',{class:'ud-small ud-mut',style:'margin:5px 0 18px'},v.detail),h('dl',{class:'ud-kv'},h('dt',{},'修订标识'),h('dd',{class:'ud-mono'},v.revision),h('dt',{},'采用父级'),h('dd',{class:'ud-mono'},v.parent),h('dt',{},'记录时间'),h('dd',{},v.date),h('dt',{},'直接下级'),h('dd',{},dependents)),h('div',{class:'ud-subcard'},h('h3',{},'关系规则'),h('p',{class:'ud-small ud-mut'},'前序修订、引用默认、采用基线具有不同语义。正式项目应使用明确引用字段生成图，不能从版本编号或布局位置猜测。')),action('查看关联参数',()=>navigate('matrix'),'default','arrow',true)));
+ split.append(panel,inspector);content.append(toolbar,split);
+}
+function openVersionDialog(){const dlg=$('#ud-form-dialog');$('#ud-form-title').textContent='新建软件版本（示例）';const body=$('#ud-form-body');const name=h('input',{class:'ud-input ud-mono',placeholder:'例如 692'});const parent=h('select',{class:'ud-select'},VERSIONS.filter(x=>x.kind==='默认').map(x=>h('option',{value:x.id},x.label)));body.replaceChildren(h('div',{class:'ud-col',style:'gap:14px'},field('版本编号',name,'此处仅校验演示字段，实际项目由版本契约决定编码。'),field('显式前序版本',parent),h('div',{class:'ud-notice'},icon('info'),h('span',{class:'ud-small'},'仅生成本地演示通知，不写入任何真实版本库。'))));const accept=$('#ud-form-accept');accept.textContent='创建示例';const handler=()=>{if(!name.value.trim()){setFieldError(name,'请填写版本编号');return}dlg.close('done');toast('good','已创建版本草稿（模拟）',name.value.trim()+' · 上级 '+parent.value)};accept.onclick=handler;dlg.addEventListener('close',()=>{accept.onclick=null},{once:true});dlg.showModal();name.focus()}
+/* ===== 04 / Log explorer and multi-rule highlights ===== */
+function patternOf(raw,opts){if(!raw)return null;try{let source=opts.regex?raw:raw.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');if(opts.word)source=`(?<![\\p{L}\\p{N}_])(?:${source})(?![\\p{L}\\p{N}_])`;return new RegExp(source,opts.case?'gu':'giu')}catch(e){return {error:e.message}}}
+function matchingLogRows(){const q=patternOf(state.log.search,state.log),rules=state.log.rules.filter(x=>x.enabled&&x.text);const compiled=rules.map(x=>({item:x,pattern:patternOf(x.text,{case:state.log.case,word:state.log.word,regex:false})}));const results=[];
+ for(const l of state.logs){if(state.log.level!=='all'&&l.level!==state.log.level)continue;if(q&&q.error)return {error:q.error,rows:[]};if(q&&!q.test(l.message+' '+l.comp+' '+l.level))continue;if(q)q.lastIndex=0;
+  if(compiled.length){const hits=compiled.map((r,i)=>{r.pattern.lastIndex=0;return {i,yes:r.pattern.test(l.message+' '+l.level+' '+l.comp)}}).filter(x=>x.yes);if(!hits.length)continue;if(state.log.mode==='per'&&!hits.some(x=>x.i===state.log.pageRule))continue;}results.push(l)}
+ return {error:null,rows:results};
+}
+function messageWithHighlights(text){const el=h('span',{class:'ud-log-message'});const active=state.log.rules.filter(x=>x.enabled&&x.text).map(x=>({...x,re:patternOf(x.text,{case:state.log.case,word:state.log.word,regex:false})}));let spans=[];
+ active.forEach(x=>{let m,guard=0;x.re.lastIndex=0;while((m=x.re.exec(text))&&guard++<30){if(!m[0]){x.re.lastIndex++;continue}spans.push({start:m.index,end:m.index+m[0].length,color:x.color})}});
+ spans.sort((a,b)=>a.start-b.start||b.end-a.end);let at=0;spans.forEach(s=>{if(s.start<at)return;el.append(document.createTextNode(text.slice(at,s.start)),h('mark',{'data-color':s.color},text.slice(s.start,s.end)));at=s.end});el.append(document.createTextNode(text.slice(at)));return el;
+}
+function renderLogs(){const content=renderPage('日志探索',`${wsName()} · cpqpsgx.log  /  合成样例 · 解析规则与高亮均在浏览器执行`,[
+ action('导出结果',()=>exportLogs(),'default','down',true),action('模拟新日志',()=>{state.logs.unshift({id:state.logs.length+1,time:'14:59:59.993',level:'WARN',comp:'SyncTask',message:'Retrying upstream request attempt=3, timeout=3000ms',thread:'T04',file:'cpqpsgx.log',line:10999});renderLogs()},'primary','plus',true)],{class:'ud-table-page-content'});
+ const toolbar=h('div',{class:'ud-toolbar'}),search=h('div',{class:'ud-searchbox',style:'width:230px;flex:1 1 160px'},icon('search'),h('input',{class:'ud-input',type:'search',value:state.log.search,placeholder:'筛选日志正文','aria-label':'日志搜索'}));
+ search.lastChild.addEventListener('input',debounce(e=>{state.log.search=e.target.value;updateRows()},170));
+ const flag=(name,key)=>{const lab=h('label',{class:'ud-check'},h('input',{type:'checkbox',checked:state.log[key]}),name);lab.firstChild.addEventListener('change',e=>{state.log[key]=e.target.checked;updateRows()});return lab};
+ const level=h('select',{class:'ud-select',style:'width:105px','aria-label':'日志等级'},['all','ERROR','WARN','INFO','DEBUG'].map(x=>h('option',{value:x},x==='all'?'全部等级':x)));level.value=state.log.level;level.addEventListener('change',()=>{state.log.level=level.value;updateRows()});
+ const theme=h('select',{class:'ud-select',style:'width:116px','aria-label':'日志主题'},[['dark','One Dark'],['nord','Nord'],['light','Light']].map(([v,l])=>h('option',{value:v},l)));theme.value=state.log.theme;theme.addEventListener('change',()=>{state.log.theme=theme.value;$('#ud-log-lines').dataset.theme=theme.value});
+ const stat=h('span',{class:'ud-small ud-mut',id:'ud-log-count'});
+ toolbar.append(search,flag('大小写','case'),flag('完整词','word'),flag('正则','regex'),level,theme,h('span',{class:'ud-grow'}),stat);
+ const split=h('div',{class:'ud-main-split sm'}),left=h('section',{class:'ud-panel'}),right=h('section',{class:'ud-panel ud-inspector'});
+ const logHead=h('div',{class:'ud-panel-head'},h('div',{class:'ud-row ud-grow'},icon('terminal'),h('h2',{},'cpqpsgx.log'),badge('本地示例','sky')),h('span',{class:'ud-small ud-mut'},'行号 · 时间 · 等级 · 模块 · 事件'));
+ const viewer=h('div',{class:'ud-log-view',id:'ud-log-lines','data-theme':state.log.theme,role:'listbox',tabindex:'0','aria-label':'日志事件列表'}),legend=h('div',{class:'ud-log-legend'},h('span',{},h('i',{style:'background:#ee878f'}),'ERROR'),h('span',{},h('i',{style:'background:#eac180'}),'WARN'),h('span',{},h('i',{style:'background:#76b2e9'}),'INFO'),h('span',{class:'ud-grow'}),h('span',{},'点击日志行查看原文与定位信息'));
+ left.append(logHead,viewer,legend);
+ const ruleHeader=h('div',{class:'ud-panel-head'},h('h2',{class:'ud-grow'},'筛选规则'),badge('多规则','primary'));
+ const info=h('div',{class:'ud-panel-body',style:'padding:10px'},h('p',{class:'ud-small ud-mut'},'每条规则采用独立的高亮色；可合并显示，或单独分页查看。'));
+ const ruleMode=h('div',{class:'ud-row',style:'margin-top:10px'},h('span',{class:'ud-small ud-mut'},'结果显示'),h('div',{class:'ud-pill-select'},...[['merged','合并'],['per','分页']].map(([v,t])=>h('button',{type:'button','aria-pressed':String(state.log.mode===v),onclick:()=>{state.log.mode=v;renderLogs()}},t))));
+ const pager=h('div',{id:'ud-rule-pages',style:'display:flex;gap:5px;flex-wrap:wrap;margin-top:8px'}),ruleList=h('div',{id:'ud-rules-list',style:'margin-top:10px;border:1px solid var(--ud-line);border-radius:6px'});
+ const newRule=h('input',{class:'ud-input sm',placeholder:'新增关键词规则…',id:'ud-new-rule','aria-label':'新增日志规则'}),add=action('添加',()=>{const raw=newRule.value.trim();if(!raw)return;if(state.log.rules.some(x=>x.text.toLowerCase()===raw.toLowerCase())){toast('warn','规则已存在');return}state.log.rules.push({text:raw,color:['amber','cyan','violet'][state.log.rules.length%3],enabled:true});renderLogs()},'default','plus',true);
+ info.append(ruleMode,pager,ruleList,h('div',{class:'ud-row',style:'margin-top:10px'},newRule,add));
+ const selectedInfo=h('div',{id:'ud-log-detail',class:'ud-panel-body',style:'padding-top:4px'});
+ right.append(ruleHeader,info,h('div',{class:'ud-panel-head',style:'margin-top:4px'},h('h2',{},'事件详情')),selectedInfo);split.append(left,right);content.append(toolbar,split);
+ function renderRules(){ruleList.replaceChildren();state.log.rules.forEach((r,i)=>{
+   const check=h('input',{type:'checkbox',checked:r.enabled,'aria-label':'启用规则 '+r.text});check.addEventListener('change',()=>{r.enabled=check.checked;updateRows()});
+   const text=h('input',{class:'ud-input',value:r.text,'aria-label':'规则表达式 '+(i+1)});text.addEventListener('change',()=>{r.text=text.value;updateRows()});
+   const colors=h('select',{class:'ud-select','aria-label':'高亮颜色'},[['amber','琥珀'],['cyan','青色'],['violet','紫色']].map(([k,t])=>h('option',{value:k},t)));colors.value=r.color;colors.addEventListener('change',()=>{r.color=colors.value;updateRows()});
+   const rm=btn(icon('close','sm'),()=>{state.log.rules.splice(i,1);state.log.pageRule=Math.min(state.log.pageRule,Math.max(0,state.log.rules.length-1));renderLogs()},'ghost','icon sm');rm.setAttribute('aria-label','删除规则 '+r.text);
+   ruleList.append(h('div',{class:'ud-rule-row'},check,text,colors,rm))});
+   pager.replaceChildren();if(state.log.mode==='per')state.log.rules.forEach((r,i)=>pager.append(h('button',{class:'ud-chip',type:'button','aria-pressed':String(state.log.pageRule===i),onclick:()=>{state.log.pageRule=i;updateRows()}},`规则 ${i+1}`)));
+ }
+ function renderLogDetail(log){selectedInfo.replaceChildren();if(!log){selectedInfo.append(empty('未选择日志','点击任意日志行查看完整信息。'));return}selectedInfo.append(h('dl',{class:'ud-kv'},h('dt',{},'等级'),h('dd',{},badge(log.level,log.level==='ERROR'?'danger':log.level==='WARN'?'warn':'sky')),h('dt',{},'时间'),h('dd',{class:'ud-mono'},log.time),h('dt',{},'模块'),h('dd',{class:'ud-mono'},log.comp),h('dt',{},'线程'),h('dd',{class:'ud-mono'},log.thread),h('dt',{},'源文件行号'),h('dd',{class:'ud-mono'},log.line)),h('div',{class:'ud-subcard'},h('h3',{},'完整原文'),h('p',{class:'ud-mono ud-small ud-break'},log.message)),action('复制日志',()=>{navigator.clipboard?.writeText(log.message).then(()=>toast('good','已复制日志')).catch(()=>toast('warn','复制受浏览器限制'))},'default','copy',true));}
+ function updateRows(){renderRules();const res=matchingLogRows();viewer.replaceChildren();stat.textContent=res.error?'正则表达式错误':`${fmt(res.rows.length)} 条命中 / ${state.logs.length} 条`;
+   if(res.error){viewer.append(h('div',{class:'ud-notice','data-tone':'danger',style:'margin:12px;color:var(--ud-negative)'},icon('alert'),'正则表达式无效：'+res.error));return}
+   if(!res.rows.length){viewer.append(h('div',{class:'ud-state',style:'color:#dfe5ef'},'没有匹配日志 · 请修改规则或清空筛选'));renderLogDetail(null);return}
+   res.rows.slice(0,260).forEach(l=>{
+     const row=h('div',{class:'ud-log-row'+(state.log.selected===l.id?' is-active':''),role:'option',tabindex:'0','aria-selected':String(state.log.selected===l.id)},h('span',{class:'ud-log-num'},l.line),h('div',{class:'ud-log-body'},h('span',{class:'ud-log-date'},l.time),h('span',{class:'ud-log-level '+l.level.toLowerCase()},l.level),h('span',{class:'ud-log-comp'},l.comp),messageWithHighlights(l.message)));
+     const select=()=>{state.log.selected=l.id;$$('.ud-log-row',viewer).forEach(el=>{el.classList.remove('is-active');el.setAttribute('aria-selected','false')});row.classList.add('is-active');row.setAttribute('aria-selected','true');renderLogDetail(l)};
+     row.addEventListener('click',select);row.addEventListener('keydown',e=>{if(e.key==='Enter'){select()}});viewer.append(row);
+   });renderLogDetail(res.rows.find(x=>x.id===state.log.selected)||res.rows[0]);
+ }
+ renderRules();updateRows();
+}
+function exportLogs(){const res=matchingLogRows();if(res.error){toast('danger','无法导出','正则规则无效，请先修复');return}const txt=res.rows.map(l=>[l.time,l.level,l.comp,l.message].join(' ')).join('\n');textDownload('unify-design-logs-filtered.log',txt);toast('good','已导出示例日志',`${res.rows.length} 条记录，仅包含合成数据`)}
+/* ===== 05 / Approval workflow (simulation, no real publishing) ===== */
+function renderApprovals(){const APPROVALS=getApprovals();const content=renderPage('变更审批',`${wsName()} · 审阅记录与真实发布动作分离，以下全部为本地模拟`,[
+ action('返回总览',()=>navigate('overview'),'default','home',true),action('创建变更草稿',()=>{toast('primary','已准备变更草稿（模拟）','选择参数后可建立有来源的变更提案');navigate('matrix')},'primary','plus',true)],{class:'ud-table-page-content'});
+ const toolbar=h('div',{class:'ud-toolbar'}),buttons=h('div',{class:'ud-chipbar'});['待处理','已批准','已驳回','全部'].forEach(x=>buttons.append(h('button',{class:'ud-chip',type:'button','aria-pressed':String(x===state.approval.filter),onclick:()=>{state.approval.filter=x;renderApprovals()}},x,' ',x==='待处理'?APPROVALS.filter(a=>a.status==='待批准').length:'')));
+ toolbar.append(buttons,h('span',{class:'ud-grow'}),h('span',{class:'ud-small ud-mut'},'高风险动作提供影响范围与确认'));
+ const split=h('div',{class:'ud-main-split'}),list=h('section',{class:'ud-panel'}),detail=h('section',{class:'ud-panel ud-inspector'});
+ const items=APPROVALS.filter(a=>state.approval.filter==='全部'||state.approval.filter==='待处理'&&a.status==='待批准'||a.status===state.approval.filter);
+ list.append(h('div',{class:'ud-panel-head'},h('h2',{class:'ud-grow'},'变更单'),h('span',{class:'ud-small ud-mut'},items.length+' 张')));
+ if(!items.length)list.append(empty('此状态下没有变更单','切换筛选条件可查看历史记录。'));
+ else items.forEach(a=>list.append(h('div',{class:'ud-approval-item'+(state.approval.selected===a.id?' is-active':''),role:'button',tabindex:'0',onclick:()=>{state.approval.selected=a.id;renderApprovals()},onkeydown:e=>{if(e.key==='Enter'){state.approval.selected=a.id;renderApprovals()}}},h('div',{class:'ud-avatar-sm'},a.owner.slice(0,1)),h('div',{class:'ud-col',style:'gap:3px'},h('strong',{},a.name),h('small',{class:'ud-mono'},a.id+'  ·  '+a.scope),h('small',{},a.owner+' · '+a.time)),h('div',{class:'ud-col',style:'align-items:flex-end;gap:7px'},badge(a.status,tone(a.status)),h('span',{class:'ud-small ud-mut'},a.diffs.length+' 项变更')))));
+ let a=APPROVALS.find(x=>x.id===state.approval.selected)||APPROVALS[0];
+ const steps=h('div',{class:'ud-stepper'},
+   h('div',{class:'ud-step is-done'},h('b',{},icon('check','sm')),'草稿'),
+   h('span',{class:'ud-step-line'}),h('div',{class:'ud-step is-done'},h('b',{},icon('check','sm')),'提交'),
+   h('span',{class:'ud-step-line'}),h('div',{class:'ud-step '+(a.status==='待批准'?'is-current':'is-done')},h('b',{},a.status==='待批准'?'3':icon('check','sm')),'审批'));
+ const changes=h('div',{class:'ud-subcard'},h('h3',{},'修改前 → 拟值'));
+ a.diffs.forEach(d=>changes.append(h('div',{class:'ud-col',style:'gap:5px;margin-bottom:12px'},
+   h('span',{class:'ud-xs ud-mut ud-mono'},d[0]),
+   h('div',{class:'ud-diff-value'},h('del',{},d[1]),icon('arrow'),h('ins',{},d[2])))));
+ const detailBody=h('div',{class:'ud-panel-body'},h('h2',{},a.name),h('p',{class:'ud-small ud-mut',style:'margin-top:4px'},a.id+' · '+a.scope),
+   h('div',{class:'ud-subcard'},steps),h('div',{class:'ud-subcard'},h('h3',{},'变更原因'),h('p',{class:'ud-small'},a.reason)),changes);
+ detail.append(h('div',{class:'ud-panel-head'},h('h2',{class:'ud-grow'},'变更详情'),badge(a.status,tone(a.status))),detailBody);
+ if(a.status==='待批准'){
+   const actions=h('div',{class:'ud-row ud-wrap',style:'margin-top:13px'},action('批准并发布',async()=>{const ok=await confirmAction({title:'批准变更 '+a.id,message:`将模拟发布 ${a.diffs.length} 项修改到 ${a.scope}。实际项目必须在服务器重新校验权限、状态和基线修订。`,confirmText:'确认模拟批准'});if(!ok)return;a.status='已批准';toast('good','模拟审批已记录',a.id+' · 未执行实际发布');renderApprovals()},'primary','check',true),action('驳回',async()=>{const ok=await confirmAction({title:'驳回变更 '+a.id,message:'驳回会保留审批历史，不清除原变更单。',confirmText:'确认模拟驳回',danger:true});if(!ok)return;a.status='已驳回';toast('warn','模拟驳回已记录',a.id);renderApprovals()},'danger-ghost',null,true));detail.lastChild.append(actions);
+ }else detail.lastChild.append(h('div',{class:'ud-notice',style:'margin-top:13px','data-tone':a.status==='已批准'?'good':'warn'},icon('info'),h('span',{class:'ud-small'},'已进入终态，恢复编辑应另建变更单并保留历史引用。')));
+ split.append(list,detail);content.append(toolbar,split);
+}
+/* ===== 06 / Unified file entry: folders, list, preview, import ===== */
+function renderFiles(){const items=state.files.items[state.workspace];const content=renderPage('文件资源',`${wsName()} · 资源浏览、上传与预览采用同一入口`,[
+ action('导出清单',()=>{textDownload('unify-design-file-index.json',JSON.stringify(items.map(({content,...meta})=>meta),null,2),'application/json');toast('good','已导出本地文件清单')},'default','down',true),action('上传文件',()=>$('#ud-file-input').click(),'primary','upload',true)],{class:'ud-table-page-content'});
+ const hidden=h('input',{type:'file',id:'ud-file-input',multiple:true,style:'display:none',accept:'.xml,.json,.txt,.yaml,.yml,.log'});
+ hidden.addEventListener('change',async()=>{let added=0;for(const file of hidden.files){if(file.size>1024*1024){toast('warn','文件太大，未加入',file.name+' 超过演示限制 1 MB');continue}if(items.some(x=>x.name===file.name)){toast('warn','文件名已存在',file.name+'；不会覆盖已有演示条目');continue}const content=await file.text();items.push({name:file.name,kind:(file.name.split('.').pop()||'TXT').toUpperCase(),size:(file.size/1024).toFixed(1)+' KB',date:'刚刚',folder:'config',status:'临时导入',content});added++}if(added){state.files.selected=items[items.length-1].name;toast('good','已加入本地文件清单',added+' 个文件，未上传到服务器');renderFiles()}});
+ const toolbar=h('div',{class:'ud-toolbar'},h('span',{class:'ud-small ud-mut'},'资源中心  /  '+(state.files.folder==='all'?'全部文件':{'config':'配置文件','history':'历史版本','records':'记录与报告'}[state.files.folder])),h('span',{class:'ud-grow'}),badge(items.length+' 个文件','sky'));
+ const grid=h('div',{class:'ud-file-grid'}),folder=h('div',{class:'ud-panel ud-file-tree'}),list=h('div',{class:'ud-panel'}),preview=h('div',{class:'ud-panel ud-file-preview'});
+ folder.append(h('div',{class:'ud-panel-head'},h('h2',{},'目录与来源')),h('div',{class:'ud-col',style:'gap:2px;padding:8px'}));
+ [['all','全部文件','layers'],['config','配置文件','folder'],['history','历史版本','clock'],['records','记录与报告','file']].forEach(([id,name,ic])=>folder.lastChild.append(h('button',{class:'ud-file-folder'+(state.files.folder===id?' is-active':''),onclick:()=>{state.files.folder=id;renderFiles()}},icon(ic),h('span',{class:'ud-grow'},name),h('span',{class:'ud-small ud-mut'},id==='all'?items.length:items.filter(x=>x.folder===id).length))));
+ const matches=items.filter(x=>state.files.folder==='all'||x.folder===state.files.folder);list.append(h('div',{class:'ud-panel-head'},h('h2',{class:'ud-grow'},'文件列表'),h('span',{class:'ud-small ud-mut'},matches.length+' 项')));
+ const table=h('div',{class:'ud-table-scroll ud-grow'});dataTable(table,{columns:[{label:'名称',render:r=>h('div',{class:'ud-row'},icon('file'),h('div',{},h('div',{class:'ud-em'},r.name),h('div',{class:'ud-xs ud-mut'},r.date)))},{label:'格式',render:r=>badge(r.kind,r.kind==='XML'?'warn':'sky')},{label:'大小',key:'size'},{label:'状态',render:r=>badge(r.status,tone(r.status))}],rows:matches,selectedId:state.files.selected,rowId:r=>r.name,onSelect:r=>{state.files.selected=r.name;renderFiles()}});list.append(table,h('div',{class:'ud-panel-foot'},h('span',{class:'ud-small ud-mut'},'一个文件身份 / 一个资源管理入口')));
+ let file=items.find(x=>x.name===state.files.selected)||matches[0];
+ if(!file){preview.append(empty('未选择文件','从列表选择文件查看内容。'))}
+ else{
+   const previewCode=h('pre',{class:'ud-code-preview ud-scrollbar'},file.content);preview.append(h('div',{class:'ud-panel-head'},h('h2',{class:'ud-grow ud-clip'},'文件预览'),action('下载',()=>{textDownload(file.name,file.content);toast('good','已触发本地 Blob 下载','浏览器未打开新页面')},'default','down',true)),h('div',{class:'ud-emptybar'},h('span',{class:'ud-mono'},file.name),' · '+file.size+' · '+file.status),previewCode,h('div',{class:'ud-panel-foot'},h('span',{class:'ud-small ud-mut'},'预览保留原文，下载不修改内容')));
+ }
+ grid.append(folder,list,preview);content.append(toolbar,hidden,grid);
+}
+/* ===== 07 / Component library demo, not isolated screenshots ===== */
+function renderComponents(){const content=renderPage('组件图鉴','基础交互、密度、表单、状态、反馈与复合组件采用同一视觉语言',[
+ action('查看设计规则',()=>navigate('rules'),'default','layers',true),action('显示通知',()=>toast('good','操作成功（模拟）','真实项目只在服务端回执后宣告成功'),'primary','bell',true)]);
+ const root=h('div',{class:'ud-lab-frame'}),intro=h('div',{class:'ud-notice'},icon('info'),h('span',{class:'ud-small'},'组件均为可交互示例。设计 token 与原生 JS 可单独引入；当前演示不会连接服务器、操作真实数据或修改权限。'));
+ const gallery=h('div',{class:'ud-gallery-grid'});
+ // Actions and badges
+ gallery.append(sectionPanel('按钮 · 操作层级',h('div',{class:'ud-panel-body'},h('div',{class:'ud-gallery-sample'},action('主要操作',()=>toast('good','主要操作触发'),'primary','check'),action('次要操作',()=>toast('primary','次要操作触发'),'default','copy'),action('文本操作',()=>toast('primary','已操作'),'ghost'),action('删除',()=>confirmAction({title:'删除示例',message:'这只是一次危险操作确认演示，不会删除真实数据。',danger:true,confirmText:'确认示例'}).then(ok=>{if(ok)toast('warn','确认已完成（模拟）')}),'danger-ghost','trash'),h('button',{class:'ud-btn',disabled:true},'无权限')),h('p',{class:'ud-card-caption'},'关键动作常驻可见；同一任务区突出一个主要操作，其他操作使用次级层级。'))));
+ gallery.append(sectionPanel('语义色 · 状态标签',h('div',{class:'ud-panel-body'},h('div',{class:'ud-gallery-sample'},badge('已发布','good'),badge('正在处理','primary'),badge('待审 / 变更','warn'),badge('处理失败','danger'),badge('绑定变量','purple'),badge('只读','neutral'),badge('采集记录','sky')),h('p',{class:'ud-card-caption'},'每种颜色都配文字。警告、修改、故障、危险分别明确，不靠单一红橙表达所有状态。'))));
+ // Forms and field validations
+ const name=h('input',{class:'ud-input',value:'采集控制参数',id:'ud-showcase-name'}),number=h('input',{class:'ud-input ud-mono',value:'-1',id:'ud-showcase-number','aria-invalid':'true'});
+ const formBody=h('div',{class:'ud-panel-body ud-col',style:'gap:13px'},field('配置名称',name,'展示名称可修改，稳定 ID 不改变。'),field('重试上限（0–10）',number));
+ number.addEventListener('input',()=>setFieldError(number,(!/^\d+$/.test(number.value)||Number(number.value)>10)?'请输入 0–10 的整数':'') );setFieldError(number,'请输入 0–10 的整数');
+ formBody.append(h('div',{class:'ud-row ud-wrap'},h('label',{class:'ud-toggle'},h('input',{type:'checkbox',checked:true}),'启用自动校验'),h('label',{class:'ud-check'},h('input',{type:'checkbox'}),'仅本次操作有效')),h('div',{class:'ud-row'},h('select',{class:'ud-select',style:'max-width:200px','aria-label':'配置环境'},h('option',{},'生产隔离区'),h('option',{},'测试环境'),h('option',{},'演示环境')),action('验证输入',()=>{if(number.getAttribute('aria-invalid')==='true')toast('danger','表单无法提交','修复标红字段后再尝试');else toast('good','示例表单校验通过')},'primary',null,true)));
+ gallery.append(sectionPanel('表单 · 字段级错误',formBody));
+ const statuses=h('div',{class:'ud-panel-body ud-col',style:'gap:10px'},h('div',{class:'ud-notice','data-tone':'good'},icon('check'),h('div',{},h('strong',{},'保存完成'),h('p',{class:'ud-small'},'服务端已确认，可继续下一步。'))),h('div',{class:'ud-notice','data-tone':'warn'},icon('alert'),h('div',{},h('strong',{},'文件已被他人更新'),h('p',{class:'ud-small'},'输入仍保留。重新核对后再提交。'))),h('div',{class:'ud-notice','data-tone':'danger'},icon('alert'),h('div',{class:'ud-grow'},h('strong',{},'写入失败'),h('p',{class:'ud-small'},'该操作没有成功；请查看错误原因。')),action('重试',()=>toast('primary','开始重试（模拟）'),'default','refresh',true)));
+ gallery.append(sectionPanel('反馈 · 成功 / 警告 / 失败',statuses));
+ // Empty loading error switch
+ const demoState=h('div',{class:'ud-panel-body',id:'ud-state-sample'}),stateSelector=h('select',{class:'ud-select sm',style:'width:126px','aria-label':'状态演示'},[['empty','空状态'],['nomatch','无匹配'],['loading','加载中'],['error','失败'],['readonly','只读']].map(([v,t])=>h('option',{value:v},t)));
+ const showState=()=>{const v=stateSelector.value;demoState.replaceChildren();if(v==='loading'){demoState.append(h('div',{class:'ud-col',style:'gap:13px;padding:10px'},h('div',{class:'ud-skeleton',style:'width:35%'}),h('div',{class:'ud-skeleton',style:'width:90%'}),h('div',{class:'ud-skeleton',style:'width:70%'}),h('p',{class:'ud-small ud-mut'},'正在加载示例…')))}else if(v==='error')demoState.append(empty('读取失败','无法连接数据服务。输入与筛选条件已保留。',action('重试',()=>toast('warn','演示无真实服务，不能恢复连接'),'default',null,true)));else if(v==='nomatch')demoState.append(empty('没有匹配结果','尝试清空筛选条件，或检查大小写与正则规则。',action('清空条件',()=>{stateSelector.value='empty';showState()},'default',null,true)));else if(v==='readonly')demoState.append(empty('当前身份只读','有查看权限，但不能保存或发布。',h('span',{class:'ud-badge'},'查看当前角色')));else demoState.append(empty('还没有数据','在资源中心上传文件，或从已有配置导入。',action('前往文件资源',()=>navigate('files'),'primary','upload',true)))};
+ stateSelector.addEventListener('change',showState);showState();gallery.append(sectionPanel('状态容器 · 五种独立语义',demoState,stateSelector));
+ // Table + stepper
+ const miniTable=h('div',{class:'ud-table-scroll'});dataTable(miniTable,{columns:[{label:'编号',key:'id'},{label:'对象',key:'name'},{label:'状态',render:r=>badge(r.state,tone(r.state))}],rows:[{id:'T-101',name:'基线校验',state:'已批准'},{id:'T-102',name:'设备回读',state:'待批准'},{id:'T-103',name:'现场导入',state:'已驳回'}]});gallery.append(sectionPanel('数据表 · 紧凑 / 可读',h('div',{class:'ud-panel-body'},miniTable,h('p',{class:'ud-card-caption'},'表头固定、对象稳定 ID、操作可定位，宽表只在自身容器横向滚动。'))));
+ const progress=h('div',{class:'ud-panel-body ud-col'},h('div',{class:'ud-stepper'},h('div',{class:'ud-step is-done'},h('b',{},icon('check','sm')),'草稿'),h('span',{class:'ud-step-line'}),h('div',{class:'ud-step is-done'},h('b',{},icon('check','sm')),'待审'),h('span',{class:'ud-step-line'}),h('div',{class:'ud-step is-current'},h('b',{},'3'),'发布')),h('div',{class:'ud-notice'},icon('info'),'操作完成状态与发布结果分别记录，不把下载成功当作部署成功。'),action('打开确认框',()=>confirmAction({title:'应用到目标基线？',message:'示例会解释对象、范围和后果。实际保存必须等服务端成功回执。',confirmText:'确认示例'}).then(ok=>{if(ok)toast('good','已确认演示操作')}),'default','external',true));gallery.append(sectionPanel('多步流程 · 操作边界',progress));
+ const natural=h('div',{class:'ud-panel-body ud-col',style:'gap:14px'},h('div',{class:'ud-gallery-sample'},action('信息通知',()=>toast('primary','信息提醒','状态已更新（模拟）'),'default','info',true),action('错误提示',()=>toast('danger','请求失败','请检查网络或使用恢复操作'),'default','alert',true),action('成功提示',()=>toast('good','已保存（模拟）','仅限本地示例'),'default','check',true)),h('details',{},h('summary',{style:'cursor:pointer;color:var(--ud-primary-ink)'},'可展开的业务帮助'),h('p',{class:'ud-small ud-mut',style:'margin-top:8px'},'可选补充信息使用原生 details，支持键盘与触屏。主任务必需的说明应直接可见。')),h('div',{class:'ud-row'},action('文件上传演示',()=>navigate('files'),'default','upload',true),action('关系图演示',()=>navigate('versions'),'default','git',true)));
+ gallery.append(sectionPanel('通知、Disclosure 与跳转',natural));
+ root.append(intro,gallery);content.append(root);
+}
+/* ===== 08 / Design laboratory — rules and anti-patterns ===== */
+function renderRules(){const content=renderPage('设计原则','基于 MCChecker 设计语言的跨业务提炼；当前实现、历史整改与改进建议分开记录',[
+ action('组件图鉴',()=>navigate('components'),'default','boxes',true),action('导出设计 Tokens',()=>{textDownload('unify-design-tokens.json',JSON.stringify({version:'1.0.1',primary:getComputedStyle(document.body).getPropertyValue('--ud-primary').trim(),density:document.body.dataset.density,accent:document.body.dataset.accent},null,2),'application/json');toast('good','已导出 Tokens（示例）')},'primary','down',true)]);
+ const root=h('div',{class:'ud-lab-frame'}),palette=h('div',{class:'ud-design-palette'});
+ [['主色','--ud-primary'],['成功','--ud-positive'],['危险','--ud-negative'],['警告','--ud-amber'],['关联','--ud-purple'],['背景','--ud-bg']].forEach(([name,t])=>palette.append(h('div',{class:'ud-color-card'},h('div',{class:'ud-color-block',style:`--swatch:var(${t})`}),h('div',{class:'ud-color-label'},name,h('div',{class:'ud-mono'},t)))));
+ root.append(sectionPanel('语义色板 · 颜色帮助理解但不代替文字',h('div',{class:'ud-panel-body'},palette,h('p',{class:'ud-card-caption'},'业务语义先决定颜色；不要为了界面丰富而创造过多状态色。'))));
+ const before=h('div',{class:'ud-before'},h('div',{style:'background:#f8f8f8;padding:14px;margin-bottom:8px;font-size:18px'},'欢迎使用配置系统'),h('div',{style:'padding:11px;background:white;margin-bottom:8px'},'这里您可以对所有配置项目进行一站式操作'),h('div',{style:'padding:10px;background:white'},'统计  |  介绍  |  重复入口'),h('div',{style:'margin-top:12px;height:45px;background:#ddd'},'数据区被向下挤压'));
+ const after=h('div',{class:'ud-after'},h('div',{class:'ud-row',style:'justify-content:space-between;margin-bottom:10px'},h('strong',{},'配置管理'),h('span',{class:'ud-badge','data-tone':'primary'},'690 · 当前')),h('div',{class:'ud-row',style:'gap:5px'},h('input',{class:'ud-input sm',placeholder:'搜索配置或参数',style:'flex:1;max-width:210px'}),action('新建版本',()=>toast('primary','主操作位置明确'),'primary',null,true)),h('div',{style:'background:#fff;border:1px solid var(--ud-line);margin-top:9px;padding:10px;border-radius:5px'},h('span',{class:'ud-small ud-mut'},'数据区紧邻操作条；没有空标题区')));
+ root.append(sectionPanel('空间整改前后 · 保留必要信息，删除重复容器',h('div',{class:'ud-panel-body ud-design-comparison'},h('div',{},badge('避免','danger'),before),h('div',{},badge('推荐','good'),after))));
+ const rules=h('div',{class:'ud-gallery-grid'});
+ [['布局与空间','主区优先，缩减无效头部；表格/树/图各自在自己的容器滚动。','不要用缩小字体代替修复布局，也不要在每一层叠加白色卡片。'],['对象和入口','同一资源归属同一管理入口，同一个创建动作只有一个明显入口。','不要把上传、版本创建、导入和资源列表拆成平行的重复工作流。'],['复杂数据','稳定 ID、真实层级、筛选分页、明确来源和旧版本引用。','不要把 3000+ 项平铺到一个大列表；不要靠数组下标当身份。'],['编辑状态','列表/层级共享草稿；保存失败保留输入；切工作区隔离旧响应。','不要把临时值默认为已发布，也不要切视图就丢输入。'],['版本关系','前序、采用、合并分别建模，优先清晰的泳道和选中高亮。','不要凭位置推断边，不要用密集交叉连线遮住节点。'],['状态与证据','加载、空、失败、只读、冲突分离；成功依据真实回执。','不要用 toast 冒充保存证据，不要用 UI 模拟表述为生产验证。']].forEach(([title,good,bad])=>{
+ const body=h('div',{class:'ud-panel-body ud-col',style:'gap:12px'},h('div',{},badge('应当','good'),h('p',{style:'margin-top:6px'},good)),h('div',{},badge('避免','danger'),h('p',{style:'margin-top:6px'},bad)));rules.append(sectionPanel(title,body))});root.append(rules);
+ const notice=h('div',{class:'ud-notice'},icon('shield'),h('div',{},h('strong',{},'业务规则优先级高于视觉模板'),h('p',{class:'ud-small',style:'margin-top:4px'},'统一设计不允许改变现有权限、数据作用域、审计、兼容层、原有工作流和生产安全边界。')));root.append(notice);content.append(root);
+}
+/* ===== Navigation, global actions, workspace context ===== */
+function designMenu(){const trigger=$('#ud-design-menu');$('.ud-popover')?.remove();const pop=h('div',{class:'ud-popover',role:'dialog','aria-label':'外观设置',style:'width:240px'}),head=h('div',{class:'ud-col',style:'gap:10px;padding:5px 8px 10px'},h('strong',{},'外观与密度'));
+ const accent=h('select',{class:'ud-select','aria-label':'强调色'},[['blue','经典蓝'],['teal','工程青'],['indigo','靛紫']].map(([v,t])=>h('option',{value:v},t)));accent.value=document.body.dataset.accent;accent.addEventListener('change',()=>{document.body.dataset.accent=accent.value;toast('primary','主题已切换',accent.selectedOptions[0].textContent)});
+ const density=h('select',{class:'ud-select','aria-label':'显示密度'},[['compact','紧凑'],['comfortable','舒适']].map(([v,t])=>h('option',{value:v},t)));density.value=document.body.dataset.density;density.addEventListener('change',()=>{document.body.dataset.density=density.value;toast('primary','密度已调整')});
+ const contrast=h('label',{class:'ud-toggle'},h('input',{type:'checkbox',checked:document.body.dataset.contrast==='high'}),'增强文字与边界对比');contrast.firstChild.addEventListener('change',e=>document.body.dataset.contrast=e.target.checked?'high':'normal');
+ head.append(field('强调色',accent),field('组件密度',density),contrast);pop.append(head);
+ const rect=trigger.getBoundingClientRect();document.body.append(pop);pop.style.top=(rect.bottom+8)+'px';pop.style.left=Math.min(window.innerWidth-250,Math.max(10,rect.right-240))+'px';
+ const close=e=>{if(e.type==='keydown'&&e.key!=='Escape')return;if(e.type==='click'&&(pop.contains(e.target)||trigger.contains(e.target)))return;pop.remove();document.removeEventListener('click',close,true);document.removeEventListener('keydown',close,true)};
+ setTimeout(()=>{document.addEventListener('click',close,true);document.addEventListener('keydown',close,true)},0);
+}
+function commandPalette(){const dlg=$('#ud-command-dialog'),input=$('#ud-command-input'),results=$('#ud-command-results');if(dlg.open)return;dlg.showModal();input.value='';let selected=0,matches=[];
+ function draw(){const q=input.value.trim().toLowerCase();matches=PAGES.filter(p=>!q||p.name.toLowerCase().includes(q)||p.id.includes(q));results.replaceChildren();if(!matches.length){results.append(empty('没有找到匹配页面','尝试使用“配置”“日志”“审批”等关键词。'));return}matches.forEach((p,i)=>{const b=h('button',{class:'ud-file-folder'+(i===selected?' is-active':''),style:'border-radius:6px',type:'button',onclick:()=>{dlg.close('open');navigate(p.id)}},icon(p.icon),h('span',{class:'ud-grow'},p.name),icon('arrow','sm'));results.append(b)})}
+ input.oninput=()=>{selected=0;draw()};input.onkeydown=e=>{if(e.key==='ArrowDown'){e.preventDefault();selected=Math.min(matches.length-1,selected+1);draw()}else if(e.key==='ArrowUp'){e.preventDefault();selected=Math.max(0,selected-1);draw()}else if(e.key==='Enter'&&matches[selected]){e.preventDefault();dlg.close('open');navigate(matches[selected].id)}};draw();input.focus();}
+function setup(){
+ state.dataByWorkspace={east:syntheticParameters('east'),south:syntheticParameters('south')};state.logsByWorkspace={east:syntheticLogs('east'),south:syntheticLogs('south')};state.data=state.dataByWorkspace.east;state.logs=state.logsByWorkspace.east;
+ UD.init(document.body); // native dialogs and shared primitive accessibility wiring
+ $('#ud-collapse-nav').append(icon('panel'));$('#ud-open-nav').append(icon('menu'));$('#ud-icon-workspace').append(icon('layers','sm'));$('#ud-icon-search').append(icon('search'));$('#ud-icon-palette').append(icon('search'));$('#ud-design-menu').append(icon('sliders'));
+ $('#ud-collapse-nav').addEventListener('click',()=>{document.body.classList.toggle('is-nav-collapsed');const closed=document.body.classList.contains('is-nav-collapsed');$('#ud-collapse-nav').setAttribute('aria-label',closed?'展开侧栏':'收起侧栏')});
+ $('#ud-open-nav').addEventListener('click',()=>{const active=document.body.classList.toggle('is-mobile-nav-open');$('#ud-open-nav').setAttribute('aria-expanded',String(active))});
+ $('#ud-nav-overlay').addEventListener('click',()=>{$('#ud-open-nav').setAttribute('aria-expanded','false');document.body.classList.remove('is-mobile-nav-open')});
+ $('#ud-design-menu').addEventListener('click',designMenu);$('#ud-command-trigger').addEventListener('click',commandPalette);
+ document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();commandPalette()}else if(e.key==='Escape'&&document.body.classList.contains('is-mobile-nav-open')){document.body.classList.remove('is-mobile-nav-open');$('#ud-open-nav').focus()}});
+ $('#ud-tabs').addEventListener('keydown',e=>{if(!['ArrowLeft','ArrowRight','Home','End'].includes(e.key))return;const arr=state.open.filter(id=>PAGES.some(p=>p.id===id));const idx=arr.indexOf(state.page);let next=idx;if(e.key==='ArrowLeft')next=(idx-1+arr.length)%arr.length;if(e.key==='ArrowRight')next=(idx+1)%arr.length;if(e.key==='Home')next=0;if(e.key==='End')next=arr.length-1;e.preventDefault();navigate(arr[next]);$('#ud-tabs').querySelector('[aria-selected="true"]')?.focus()});
+ state.scope=UD.createWorkspaceScope({initialId:'east',confirmLeave:async({from,to})=>{const ok=await confirmAction({title:'切换全局工作区',message:`${from==='east'?'华东研发中心':'深圳验证中心'} 有尚未保存的参数草稿。放弃这些修改并切换到 ${to==='east'?'华东研发中心':'深圳验证中心'}？`,confirmText:'放弃修改并切换',danger:true});return ok},onReset:context=>{
+  // No old response or scoped draft is permitted to flow into the next workspace.
+  state.matrix.drafts[context.previousId]={};state.workspace=context.workspaceId;
+  $('#ud-viewport').replaceChildren(empty('正在切换工作区','当前视图与数据正在重新关联。'));},
+ onChange:context=>state.scope.run(async()=>({rows:state.dataByWorkspace[context.workspaceId],logs:state.logsByWorkspace[context.workspaceId]}),(payload)=>{
+  state.data=payload.rows;state.logs=payload.logs;state.matrix.page=1;state.matrix.search='';state.matrix.family='all';state.matrix.onlyChanged=false;state.matrix.view='table';state.selectedParam='PM-0001';state.log.search='';state.log.level='all';state.log.selected=0;state.files.selected=state.files.items[state.workspace][0].name;state.approval.selected=getApprovals()[0].id;renderNavigation();renderTabs();renderActive();syncHeader();})});
+ $('#ud-workspace').addEventListener('change',async e=>{const target=e.target.value;e.target.value=state.workspace;const res=await state.scope.switchTo(target);if(res.status==='changed'){toast('primary','工作区已切换',wsName()+' · 业务数据已重新关联')}else if(res.status==='cancelled'){toast('warn','已留在当前工作区','未保存的内容保留')}else if(res.status==='error'){toast('danger','切换失败','可以重新选择当前工作区');}e.target.value=state.workspace});
+ const hash=(location.hash||'').replace('#','');if(PAGES.some(p=>p.id===hash)){state.page=hash;if(!state.open.includes(hash))state.open.push(hash)}
+ window.addEventListener('hashchange',()=>{const id=(location.hash||'').replace('#','');if(PAGES.some(p=>p.id===id)&&id!==state.page)navigate(id)});
+ renderNavigation();renderTabs();renderActive();syncHeader();
+ window.UnifyDesignDemo={getState:()=>({workspace:state.workspace,page:state.page,dirty:isDirty(),drafts:structuredClone(activeDrafts()),visibleParamCount:matrixMatches().length,opened:state.open.slice()}),navigate,filterLogs:matchingLogRows};
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',setup);else setup();
+})();
+
+</script>
+</body>
+</html>
